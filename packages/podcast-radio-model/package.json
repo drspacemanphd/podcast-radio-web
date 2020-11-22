@@ -22,7 +22,7 @@
   },
   "scripts": {
     "test": "jest --coverage",
-    "build": "tsc -p ./tsconfig.json"
+    "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
   },
-  "gitHead": "1697749b3a48008efa2c313474f8f939e71639cc"
+  "gitHead": "d2e12ef87c7a3e853eb33ef21b739f3ac6cc1424"
 }
