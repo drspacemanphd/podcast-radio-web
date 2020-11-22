@@ -1,6 +1,6 @@
 {
   "name": "@drspacemanphd/podcast-radio-interfaces",
-  "version": "0.0.1-alpha.31",
+  "version": "0.0.1-alpha.40",
   "description": "A common package of interfaces to be implemented",
   "main": "./dist/index",
   "types": "./dist/index",
@@ -23,5 +23,5 @@
   "dependencies": {
     "@drspacemanphd/podcast-radio-model": "0.0.1-alpha.5"
   },
-  "gitHead": "d2e12ef87c7a3e853eb33ef21b739f3ac6cc1424"
+  "gitHead": "b3787dfd8e8dfc9d33a19e8ea8ef6677166ac744"
 }
