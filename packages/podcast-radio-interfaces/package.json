@@ -22,5 +22,6 @@
   },
   "dependencies": {
     "@drspacemanphd/podcast-radio-model": "^0.0.1-alpha.1"
-  }
+  },
+  "gitHead": "cf0b7d1a473db99a00b8316705e37ba299a93dcc"
 }
