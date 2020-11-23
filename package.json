@@ -11,5 +11,8 @@
   ],
   "devDependencies": {
     "typescript": "^4.1.2"
+  },
+  "scripts": {
+    "deploy": "lerna version --yes && lerna run build && lerna publish from-package --contents dist"
   }
 }

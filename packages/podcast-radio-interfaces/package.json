@@ -1,6 +1,6 @@
 {
   "name": "@drspacemanphd/podcast-radio-interfaces",
-  "version": "0.0.1-alpha.51",
+  "version": "0.0.1-alpha.60",
   "description": "A common package of interfaces to be implemented",
   "main": "./dist/index",
   "types": "./dist/index",
