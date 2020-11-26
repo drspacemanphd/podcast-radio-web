@@ -21,7 +21,7 @@
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
   },
   "dependencies": {
-    "@drspacemanphd/podcast-radio-model": "0.0.1-alpha.5"
+    "@drspacemanphd/podcast-radio-model": "0.0.1-alpha.61"
   },
   "gitHead": "b3787dfd8e8dfc9d33a19e8ea8ef6677166ac744"
 }
