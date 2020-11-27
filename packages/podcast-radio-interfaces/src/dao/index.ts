@@ -1,2 +1,2 @@
-export { IPodcastQueries } from './podcast-queries';
-export { IEpisodeQueries } from './episode-queries';
+export * from './podcast';
+export * from './episode';
