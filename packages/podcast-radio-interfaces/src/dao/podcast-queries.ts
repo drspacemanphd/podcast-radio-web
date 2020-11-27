@@ -1,5 +1,5 @@
 import { Podcast } from '@drspacemanphd/podcast-radio-model';
-import IQueryRunner from '../query/query-runner';
+import { IQueryRunner } from '../query/query-runner';
 
 export interface IPodcastQueries {
   getPodcast(id: string, queryRunner: IQueryRunner<Podcast>): Podcast;
