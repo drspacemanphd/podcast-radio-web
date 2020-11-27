@@ -12,6 +12,7 @@
   "homepage": "https://github.com/drspacemanphd/podcast-radio-web#readme",
   "license": "ISC",
   "main": "./dist/index",
+  "types": "./dist/index",
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/drspacemanphd/podcast-radio-web.git",
@@ -32,5 +33,6 @@
   "dependencies": {
     "@drspacemanphd/podcast-radio-interfaces": "^0.0.1-alpha.65",
     "aws-sdk": "^2.799.0"
-  }
+  },
+  "gitHead": "07bb3df44f87de0ca2c33296dd205dc98be98740"
 }
