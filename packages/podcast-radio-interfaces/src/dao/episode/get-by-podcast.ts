@@ -1,5 +1,5 @@
 import { Episode } from '@drspacemanphd/podcast-radio-model';
 
 export interface IGetEpisodeByPodcast {
-  getByPodcast(podcastId: string): Episode[];
+  getByPodcast(podcastId: string): Episode[] | Promise<Episode[]>;
 }

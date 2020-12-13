@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  localstack:
+    container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main}"
+    image: localstack/localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - LOCALSTACK_SERVICES=dynamodb
+  dynamo_db_initialize:
+    build: 
+      dockerfile: ./Dockerfile.local
+      context: ./
+    environment: 
+      - AWS_SDK_LOAD_CONFIG=1
+    volumes: 
+      - ./:/app/
+      - ../../node_modules:/app/node_modules
+      - ~/.aws:/root/.aws
+    depends_on: 
+      - localstack

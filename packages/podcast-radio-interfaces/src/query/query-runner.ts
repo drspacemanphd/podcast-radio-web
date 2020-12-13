@@ -1,5 +1,5 @@
 import { IQuery } from './query';
 
-export interface IQueryRunner<T> {
-  run(query: IQuery<T>): T
+export interface IQueryRunner<T, U> {
+  run(query: IQuery<U>): T
 }

@@ -1,23 +1,20 @@
-import { IGetEpisodeByCategory, IGetEpisodeById, IGetEpisodeByPodcast, IQueryRunner } from '@drspacemanphd/podcast-radio-interfaces';
-import { Episode } from '@drspacemanphd/podcast-radio-model';
+import { configureDynamoDB } from './config/dynamo-db';
+import { IEpisodeDao } from './dao/episode-dao';
+import { IPodcastDao } from './dao/podcast-dao';
+import { DynamoDBEpisodeQueryRunner } from './query-runner/episode-query-runner';
+import { DynamoDBPodcastQueryRunner } from './query-runner/podcast-query-runner';
 
-export class IEpisodeDao implements IGetEpisodeById, IGetEpisodeByPodcast, IGetEpisodeByCategory {
-  private queryRunner: IQueryRunner<Episode[]>;
+const env = process.env;
 
-  constructor(queryRunner: IQueryRunner<Episode[]>) {
-    this.queryRunner = queryRunner
-  }
+const dynamoDB = configureDynamoDB(env);
 
-  getEpisode(id: string): Episode {
-    throw new Error('Method not implemented.');
-  }
+const podcastQueryRunner = new DynamoDBPodcastQueryRunner(dynamoDB);
+const episodeQueryRunner = new DynamoDBEpisodeQueryRunner(dynamoDB);
 
-  getByPodcast(podcastId: string): Episode[] {
-    throw new Error('Method not implemented.');
-  }
+const PodcastDao = new IPodcastDao(podcastQueryRunner);
+const EpisodeDao = new IEpisodeDao(episodeQueryRunner);
 
-  getByCategory(podcastId: string): Episode[] {
-    throw new Error('Method not implemented.');
-  }
-
+export {
+  PodcastDao,
+  EpisodeDao
 }
