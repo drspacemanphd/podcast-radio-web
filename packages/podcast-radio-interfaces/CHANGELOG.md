@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.1-alpha.69](https://github.com/drspacemanphd/podcast-radio-web/compare/@drspacemanphd/podcast-radio-interfaces@0.0.1-alpha.68...@drspacemanphd/podcast-radio-interfaces@0.0.1-alpha.69) (2020-12-13)
+
+**Note:** Version bump only for package @drspacemanphd/podcast-radio-interfaces
+
+
+
+
+
 ## [0.0.1-alpha.68](https://github.com/drspacemanphd/podcast-radio-web/compare/@drspacemanphd/podcast-radio-interfaces@0.0.1-alpha.67...@drspacemanphd/podcast-radio-interfaces@0.0.1-alpha.68) (2020-11-27)
 
 **Note:** Version bump only for package @drspacemanphd/podcast-radio-interfaces
