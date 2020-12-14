@@ -3,10 +3,10 @@ import { DynamoDB } from 'aws-sdk'
 
 function getQuery(category: string): IQuery<DynamoDB.DocumentClient.QueryInput> {
   const params: DynamoDB.DocumentClient.QueryInput = {
-    TableName: 'EPISODE',
+    TableName: 'PODCAST',
     KeyConditionExpression: 'CATEGORY = :category',
     ExpressionAttributeValues: {
-      ':category': { 'S': category }
+      ':category': category
     }
   };
 

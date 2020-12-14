@@ -1,6 +1,7 @@
-const { DynamoDB }= require('aws-sdk');
-const client = new DynamoDB({ endpoint: 'http://localstack:4566' });
+require('custom-env').env('local');
 
+const { DynamoDB }= require('aws-sdk');
+const client = new DynamoDB({ endpoint: process.env.DYNAMODB_ENDPOINT, region: process.env.DYNAMODB_REGION });
 
 initialize(client)
   .then(() => {

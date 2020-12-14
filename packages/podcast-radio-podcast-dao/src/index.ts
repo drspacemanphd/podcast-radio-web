@@ -1,6 +1,6 @@
 import { configureDynamoDB } from './config/dynamo-db';
-import { IEpisodeDao } from './dao/episode-dao';
-import { IPodcastDao } from './dao/podcast-dao';
+import { EpisodeDao as EDao } from './dao/episode-dao';
+import { PodcastDao as PDao } from './dao/podcast-dao';
 import { DynamoDBEpisodeQueryRunner } from './query-runner/episode-query-runner';
 import { DynamoDBPodcastQueryRunner } from './query-runner/podcast-query-runner';
 
@@ -11,10 +11,5 @@ const dynamoDB = configureDynamoDB(env);
 const podcastQueryRunner = new DynamoDBPodcastQueryRunner(dynamoDB);
 const episodeQueryRunner = new DynamoDBEpisodeQueryRunner(dynamoDB);
 
-const PodcastDao = new IPodcastDao(podcastQueryRunner);
-const EpisodeDao = new IEpisodeDao(episodeQueryRunner);
-
-export {
-  PodcastDao,
-  EpisodeDao
-}
+export const PodcastDao = new PDao(podcastQueryRunner);
+export const EpisodeDao = new EDao(episodeQueryRunner);

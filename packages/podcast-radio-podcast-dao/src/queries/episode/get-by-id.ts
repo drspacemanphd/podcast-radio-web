@@ -6,7 +6,7 @@ function getQuery(id: string): IQuery<DynamoDB.DocumentClient.QueryInput> {
     TableName: 'EPISODE',
     KeyConditionExpression: 'GUID = :id',
     ExpressionAttributeValues: {
-      ':id': { 'S': id }
+      ':id': id
     }
   };
 

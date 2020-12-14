@@ -3,11 +3,12 @@ import { DynamoDB } from 'aws-sdk'
 
 function getQuery(author: string): IQuery<DynamoDB.DocumentClient.QueryInput> {
   const params: DynamoDB.DocumentClient.QueryInput = {
-    TableName: 'EPISODE',
+    TableName: 'PODCAST',
     KeyConditionExpression: 'AUTHOR = :author',
     ExpressionAttributeValues: {
-      ':author': { 'S': author }
-    }
+      ':author': author
+    },
+    IndexName: 'AUTHOR_TITLE'
   };
 
   return {

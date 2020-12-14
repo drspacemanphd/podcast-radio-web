@@ -3,8 +3,8 @@ import { DynamoDB } from "aws-sdk";
 
 export function itemToEpisode(item: DynamoDB.DocumentClient.AttributeMap): Episode {
   return new Episode(
-    item['GUID']['S'], item['TITLE']['S'], item['AUTHOR']['S'], item['PODCAST_ID']['S'],
-    item['PODCAST_TITLE']['S'], item['DESCRIPTION']['S'], item['AUDIO_URL']['S'], item['DURATION']['N'],
-    new Date(item['PUBLICATION_DATE']['N']), item['PLAY_COUNT']['N'], [], []
+    item['GUID'], item['TITLE'], item['AUTHOR'], item['PODCAST_ID'],
+    item['PODCAST_TITLE'], item['DESCRIPTION'], item['AUDIO_URL'], item['DURATION'],
+    new Date(item['PUBLICATION_DATE']), item['PLAY_COUNT'], item['KEYWORDS'], item['TAGS']
   );
 }

@@ -1,1 +1,1 @@
-export * as PodcastDao from './src/index';
+export * from './src/index';

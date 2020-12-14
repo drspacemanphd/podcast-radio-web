@@ -7,15 +7,36 @@ services:
       - "4566:4566"
     environment:
       - LOCALSTACK_SERVICES=dynamodb
-  dynamo_db_initialize:
+    networks: 
+      podcast-radio-podcast-db-local:
+  dynamo_db_bootstrap:
     build: 
-      dockerfile: ./Dockerfile.local
+      dockerfile: ./Dockerfile.local.db
       context: ./
-    environment: 
-      - AWS_SDK_LOAD_CONFIG=1
     volumes: 
       - ./:/app/
-      - ../../node_modules:/app/node_modules
+      - ../../node_modules:/app/node_modules # neccessary to bring in top-level dependencies for local dev
       - ~/.aws:/root/.aws
     depends_on: 
       - localstack
+    networks: 
+      podcast-radio-podcast-db-local:
+  dev_server:
+    build: 
+      dockerfile: ./Dockerfile.local.server
+      context: ./
+    ports: 
+      - "9000:9000"
+    command: nodemon -e ts,js --watch ./src/* --watch ./scripts/local/* --exec npm run build && node ./scripts/local/setup-local-dev-server.js
+    volumes: 
+      - ./:/app/
+      - ../../node_modules:/app/node_modules # neccessary to bring in top-level dependencies for local dev
+      - ../../packages:/app/packages # necessary only when referencing local non-published packages for local dev
+      - ~/.aws:/root/.aws
+    depends_on: 
+      - localstack
+    networks: 
+      podcast-radio-podcast-db-local:
+
+networks: 
+  podcast-radio-podcast-db-local:

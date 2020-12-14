@@ -6,7 +6,7 @@ function getQuery(category: string): IQuery<DynamoDB.DocumentClient.QueryInput> 
     TableName: 'PODCAST',
     KeyConditionExpression: 'CATEGORY = :category',
     ExpressionAttributeValues: {
-      ':category': { 'S': category }
+      ':category': category
     }
   };
 
