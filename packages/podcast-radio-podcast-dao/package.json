@@ -23,7 +23,8 @@
   },
   "scripts": {
     "local": "docker-compose down && docker-compose -f docker-compose.yml up -d --build",
-    "test": "jest --coverage",
+    "test:unit": "jest --coverage --testMatch=**/unit/**/*.test.ts",
+    "test:integration": "jest --setupFiles ./tests/integration/setup.ts --testMatch=**/integration/**/*.test.ts",
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
   },
   "devDependencies": {
