@@ -17,3 +17,5 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Bootstrap
         run: lerna bootstrap
+      - name: Run Integration Tests
+        run: lerna run test:integration:ci
