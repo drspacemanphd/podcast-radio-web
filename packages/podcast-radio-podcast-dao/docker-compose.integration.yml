@@ -19,10 +19,9 @@ services:
       - ./:/app/
       - ../../node_modules:/app/node_modules # neccessary to bring in top-level dependencies for local dev
       - ../../packages:/app/packages # necessary only when referencing local non-published packages for local dev
-      - ~/.aws:/root/.aws
     depends_on: 
       - localstack
-    command: jest --setupFiles ./tests/integration/setup.ts --testMatch=**/integration/**/*.test.ts
+    command: jest --globalSetup ./tests/integration/setup.js --testMatch=**/integration/**/*.test.ts --maxConcurrency=0 --detectOpenHandles --verbose
     env_file: 
       - ./.env.local
     networks: 
