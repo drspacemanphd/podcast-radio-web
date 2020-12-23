@@ -1,4 +1,4 @@
 FROM node:14
 WORKDIR /app
 RUN npm install -g jest
-CMD ["npm", "run", "test:integration"]
+CMD ["npm", "run", "test:integration:ci"]
