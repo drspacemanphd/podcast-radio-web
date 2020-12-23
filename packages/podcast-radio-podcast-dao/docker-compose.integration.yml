@@ -22,7 +22,7 @@ services:
       - ~/.aws:/root/.aws
     depends_on: 
       - localstack
-    command: jest --setupFiles ./tests/integration/setup.ts --testMatch=**/integration/**/*.test.ts
+    command: jest --globalSetup ./tests/integration/setup.js --testMatch=**/integration/**/*.test.ts --maxConcurrency=0 --detectOpenHandles --verbose
     env_file: 
       - ./.env.local
     networks: 

@@ -23,9 +23,9 @@
   },
   "scripts": {
     "local": "docker-compose -f docker-compose.local.yml down && docker-compose -f docker-compose.local.yml up -d --build",
-    "test:unit": "jest --coverage --testMatch=**/unit/**/*.test.ts",
+    "test:unit": "jest --coverage --testMatch=**/unit/**/*.test.ts --verbose",
     "test:integration:local": "docker-compose -f docker-compose.integration.yml up -d --build",
-    "test:integration:ci": "node ./tests/integration/container-runner.js",
+    "test:integration:ci": "node ./tests/integration/container-runner",
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
   },
   "devDependencies": {

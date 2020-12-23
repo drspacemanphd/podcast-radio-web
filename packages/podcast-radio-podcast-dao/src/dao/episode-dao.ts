@@ -12,7 +12,7 @@ export class EpisodeDao implements IGetEpisodeById, IGetEpisodeByPodcast {
     this.queryRunner = queryRunner
   }
 
-  async getEpisode(id: string): Promise<Episode> {
+  async getById(id: string): Promise<Episode> {
     const params: IQuery<DynamoDB.DocumentClient.QueryInput> = getEpisodeById(id);
     return this.queryRunner.run(params)
       .then(episodes => {

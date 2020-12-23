@@ -15,8 +15,8 @@ export class PodcastDao implements IGetPodcastById, IGetPodcastByTitle, IGetPodc
   async getById(id: string): Promise<Podcast> {
     const params: IQuery<DynamoDB.DocumentClient.QueryInput> = getPodcastById(id);
     return this.queryRunner.run(params)
-      .then(episodes => {
-        if (episodes) return episodes[0];
+      .then(podcasts => {
+        if (podcasts) return podcasts[0];
       });
   }
 

@@ -4,7 +4,7 @@ import { IQuery, IQueryRunner } from '@drspacemanphd/podcast-radio-interfaces';
 import { itemToPodcast } from '../util/item-to-podcast';
 
 export class DynamoDBPodcastQueryRunner implements IQueryRunner<Promise<Podcast[]>, DynamoDB.DocumentClient.QueryInput> {
-  client: DynamoDB.DocumentClient;
+  private client: DynamoDB.DocumentClient;
 
   constructor(client: DynamoDB.DocumentClient) {
     this.client = client;
