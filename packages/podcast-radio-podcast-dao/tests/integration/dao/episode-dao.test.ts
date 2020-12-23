@@ -3,7 +3,7 @@ import { Episode } from '@drspacemanphd/podcast-radio-model';
 import { DynamoDBEpisodeQueryRunner } from '../../../src/query-runner/episode-query-runner';
 import { EpisodeDao } from '../../../src/dao/episode-dao';
 
-describe('Podcast Dao', () => {
+describe('Episode Dao', () => {
   let client: DynamoDB.DocumentClient;
   let runner;
   let dao: EpisodeDao;
@@ -36,7 +36,7 @@ describe('Podcast Dao', () => {
     expect(episodeThree).toBeUndefined();
   });
 
-  test('can retrieve a podcast by title', async () => {
+  test('can retrieve a episode by title', async () => {
     // Test
     const episodeOne: Episode[] = await dao.getByPodcast('12345');
     const episodeTwo: Episode[] = await dao.getByPodcast('23456');
