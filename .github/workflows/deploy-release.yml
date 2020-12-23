@@ -20,5 +20,7 @@ jobs:
         run: npm install -g lerna
       - name: Bootstrap
         run: lerna bootstrap
-      - name: Deploy
+      - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
         run: yarn run deploy
