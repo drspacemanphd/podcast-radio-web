@@ -5,7 +5,6 @@ on:
     branches:
       - 'RELEASE-**'
 
-
 jobs:
   deploy_release:
     runs-on: ubuntu-latest
@@ -23,5 +22,7 @@ jobs:
       - uses: oleksiyrudenko/gha-git-credentials@v2-latest
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
+      - name: Setup npmrc
+        run: echo "//npm.pkg.github.com/:_authToken=${{secrets.NPM_AUTH_TOKEN}}" > .npmrc
       - name: Deploy
         run: yarn run deploy
