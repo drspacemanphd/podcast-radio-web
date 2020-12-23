@@ -1,6 +1,6 @@
 {
   "name": "@drspacemanphd/podcast-radio-model",
-  "version": "0.0.1-alpha.62",
+  "version": "0.0.1-alpha.63",
   "description": "A common model package for podcast radio",
   "main": "./dist/index",
   "types": "./dist/index",
