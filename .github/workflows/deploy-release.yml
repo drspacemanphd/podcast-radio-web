@@ -1,0 +1,24 @@
+name: Deploy Release
+
+on:
+  create:
+    branches:
+      - 'RELEASE-**'
+
+
+jobs:
+  deploy_release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+      - name: Install lerna
+        run: npm install -g lerna
+      - name: Bootstrap
+        run: lerna bootstrap
+      - name: Deploy
+        run: yarn run deploy
