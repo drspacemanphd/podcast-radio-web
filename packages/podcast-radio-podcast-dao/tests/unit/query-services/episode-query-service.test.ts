@@ -1,14 +1,14 @@
 import { Episode } from '@drspacemanphd/podcast-radio-model';
-import { EpisodeDao } from '../../../src/dao/episode-dao';
+import { EpisodeQueryService } from '../../../src/query-services/episode-query-service';
 import { DynamoDBEpisodeQueryRunner } from '../../../src/query-runner/episode-query-runner';
 
-describe('Episode Dao', () => {
+describe('Episode Query Service', () => {
   test('can get a episode by an id', async () => {
     // Setup
     const expectedEpisode = new Episode('12345', 'A_TITLE', 'AN_AUTHOR', 'A PODCAST', 'A PODCAST TITLE', 'A_DESCRIPTION', 'AUDIO URL', 1000, new Date(10000), 3, ['A keyword'], ['a tag']);
 
     const runner = new DynamoDBEpisodeQueryRunner(null);
-    const dao = new EpisodeDao(runner);
+    const dao = new EpisodeQueryService(runner);
     jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve([expectedEpisode]));
   
     // Test
@@ -18,12 +18,25 @@ describe('Episode Dao', () => {
     expect(expectedEpisode).toEqual(actualEpisode);
   });
 
+  test('returns undefined if id is not found', async () => {
+    // Setup
+    const runner = new DynamoDBEpisodeQueryRunner(null);
+    const dao = new EpisodeQueryService(runner);
+    jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve(undefined));
+  
+    // Test
+    const actualEpisode = await dao.getById('12345');
+
+    // Assertions
+    expect(actualEpisode).toEqual(undefined);
+  });
+
   test('can get a episode by a podcast id', async () => {
     // Setup
     const expectedEpisodes = [new Episode('12345', 'A_TITLE', 'AN_AUTHOR', 'A PODCAST', 'A PODCAST TITLE', 'A_DESCRIPTION', 'AUDIO URL', 1000, new Date(10000), 3, ['A keyword'], ['a tag'])
   ];
     const runner = new DynamoDBEpisodeQueryRunner(null);
-    const dao = new EpisodeDao(runner);
+    const dao = new EpisodeQueryService(runner);
     jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve(expectedEpisodes));
   
     // Test

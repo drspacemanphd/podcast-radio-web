@@ -1,17 +1,17 @@
 import { DynamoDB } from 'aws-sdk';
 import { Podcast } from '@drspacemanphd/podcast-radio-model';
 import { DynamoDBPodcastQueryRunner } from '../../../src/query-runner/podcast-query-runner';
-import { PodcastDao } from '../../../src/dao/podcast-dao';
+import { PodcastQueryService } from '../../../src/query-services/podcast-query-service';
 
-describe('Podcast Dao', () => {
+describe('Podcast Query Service', () => {
   let client: DynamoDB.DocumentClient;
   let runner;
-  let dao: PodcastDao;
+  let dao: PodcastQueryService;
 
   beforeEach(() => {
     client = new DynamoDB.DocumentClient({ endpoint: process.env.DYNAMODB_ENDPOINT, region: process.env.DYNAMODB_REGION });
     runner = new DynamoDBPodcastQueryRunner(client);
-    dao = new PodcastDao(runner);
+    dao = new PodcastQueryService(runner);
   });
 
   test('can retrieve a podcast by id', async () => {
