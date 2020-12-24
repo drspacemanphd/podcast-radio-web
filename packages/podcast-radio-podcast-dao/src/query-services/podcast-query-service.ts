@@ -5,7 +5,7 @@ import { getQuery as getPodcastById } from '../queries/podcast/get-by-id';
 import { getQuery as getPodcastByTitle } from '../queries/podcast/get-by-title';
 import { getQuery as getPodcastByAuthor } from '../queries/podcast/get-by-author';
 
-export class PodcastDao implements IGetPodcastById, IGetPodcastByTitle, IGetPodcastByAuthor {
+export class PodcastQueryService implements IGetPodcastById, IGetPodcastByTitle, IGetPodcastByAuthor {
   private queryRunner: IQueryRunner<Promise<Podcast[]>, DynamoDB.DocumentClient.QueryInput>;
 
   constructor(queryRunner: IQueryRunner<Promise<Podcast[]>, DynamoDB.DocumentClient.QueryInput>) {

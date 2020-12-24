@@ -1,13 +1,13 @@
 import { Podcast } from '@drspacemanphd/podcast-radio-model';
-import { PodcastDao } from '../../../src/dao/podcast-dao';
+import { PodcastQueryService } from '../../../src/query-services/podcast-query-service';
 import { DynamoDBPodcastQueryRunner } from '../../../src/query-runner/podcast-query-runner';
 
-describe('Podcast Dao', () => {
+describe('Podcast Query Service', () => {
   test('can get a podcast by an id', async () => {
     // Setup
     const expectedPodcast = new Podcast('12345', 'A_TITLE', 'AN_AUTHOR', 'A_DESCRIPTION', ['A CAT'], 'An image url', ['A keyword'], ['a tag']);
     const runner = new DynamoDBPodcastQueryRunner(null);
-    const dao = new PodcastDao(runner);
+    const dao = new PodcastQueryService(runner);
     jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve([expectedPodcast]));
   
     // Test
@@ -17,11 +17,24 @@ describe('Podcast Dao', () => {
     expect(expectedPodcast).toEqual(actualPodcast);
   });
 
+  test('returns undefined if id is not found', async () => {
+    // Setup
+    const runner = new DynamoDBPodcastQueryRunner(null);
+    const dao = new PodcastQueryService(runner);
+    jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve(undefined));
+  
+    // Test
+    const actualPodcast = await dao.getById('12345');
+
+    // Assertions
+    expect(actualPodcast).toEqual(undefined);
+  });
+
   test('can get a podcast by an title', async () => {
     // Setup
     const expectedPodcasts = [new Podcast('12345', 'A_TITLE', 'AN_AUTHOR', 'A_DESCRIPTION', ['A CAT'], 'An image url', ['A keyword'], ['a tag'])];
     const runner = new DynamoDBPodcastQueryRunner(null);
-    const dao = new PodcastDao(runner);
+    const dao = new PodcastQueryService(runner);
     jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve(expectedPodcasts));
   
     // Test
@@ -35,11 +48,11 @@ describe('Podcast Dao', () => {
     // Setup
     const expectedPodcasts = [new Podcast('12345', 'A_TITLE', 'AN_AUTHOR', 'A_DESCRIPTION', ['A CAT'], 'An image url', ['A keyword'], ['a tag'])];
     const runner = new DynamoDBPodcastQueryRunner(null);
-    const dao = new PodcastDao(runner);
+    const dao = new PodcastQueryService(runner);
     jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve(expectedPodcasts));
   
     // Test
-    const actualPodcasts = await dao.getByTitle('AN_AUTHOR');
+    const actualPodcasts = await dao.getByAuthor('AN_AUTHOR');
 
     // Assertions
     expect(expectedPodcasts).toEqual(actualPodcasts);

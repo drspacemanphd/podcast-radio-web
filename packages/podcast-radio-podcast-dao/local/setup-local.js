@@ -3,7 +3,7 @@ require('custom-env').env(process.env.NODE_ENV);
 const { DynamoDB } = require('aws-sdk');
 const express = require('express');
 
-const { PodcastDao, EpisodeDao } = require('../dist/index');
+const { PodcastQueryService, EpisodeQueryService, PodcastMutationService, EpisodeMutationService } = require('../dist/index');
 const { CREATE_PODCAST_TABLE_PARAMS, CREATE_EPISODE_TABLE_PARAMS, PODCASTS, EPISODES } = require('./local-db-fixtures');
 
 const client = new DynamoDB({ endpoint: process.env.DYNAMODB_ENDPOINT, region: process.env.DYNAMODB_REGION });
@@ -42,31 +42,45 @@ async function initializeDB() {
 function setupApi() {
   app.get('/podcast/author/:author', async (req, res) => {
     const author = req.params.author;
-    const podcast = await PodcastDao.getByAuthor(author);
+    const podcast = await PodcastQueryService.getByAuthor(author);
     res.json(podcast);
   });
   
   app.get('/podcast/:id', async (req, res) => {
     const id = req.params.id;
-    const podcast = await PodcastDao.getById(id);
+    const podcast = await PodcastQueryService.getById(id);
     res.json(podcast);
   });
   
   app.get('/podcast/title/:title', async (req, res) => {
     const title = req.params.title;
-    const podcast = await PodcastDao.getByTitle(title);
+    const podcast = await PodcastQueryService.getByTitle(title);
     res.json(podcast);
+  });
+
+  app.post('/podcast/new/', async (req, res) => {
+    const podcast = await PodcastQueryService.getById('12345');
+    podcast.guid = '34567';
+    await PodcastMutationService.insertPodcast(podcast);
+    const added = await PodcastQueryService.getById('34567');
+    res.json(added);
   });
   
   app.get('/episode/:id', async (req, res) => {
     const id = req.params.id;
-    const episode = await EpisodeDao.getEpisode(id);
+    const episode = await EpisodeQueryService.getEpisode(id);
     res.json(episode);
   });
   
   app.get('/episode/podcast/:podcastId', async (req, res) => {
     const podcastId = req.params.podcastId;
-    const episode = await EpisodeDao.getByPodcast(podcastId);
+    const episode = await EpisodeQueryService.getByPodcast(podcastId);
+    res.json(episode);
+  });
+
+  app.get('/episode/podcast/:podcastId', async (req, res) => {
+    const podcastId = req.params.podcastId;
+    const episode = await EpisodeQueryService.getByPodcast(podcastId);
     res.json(episode);
   });
   
