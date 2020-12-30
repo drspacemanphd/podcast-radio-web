@@ -1,6 +1,6 @@
 import { DynamoDB } from 'aws-sdk';
 import { Episode } from '@drspacemanphd/podcast-radio-model';
-import { DynamoDBEpisodeQueryRunner } from '../../../src/query-runner/episode-query-runner';
+import { DynamoDBQueryRunner } from '../../../src/runners/query-runner';
 import { EpisodeQueryService } from '../../../src/query-services/episode-query-service';
 
 describe('Episode Query Service', () => {
@@ -10,7 +10,7 @@ describe('Episode Query Service', () => {
 
   beforeEach(() => {
     client = new DynamoDB.DocumentClient({ endpoint: process.env.DYNAMODB_ENDPOINT, region: process.env.DYNAMODB_REGION });
-    runner = new DynamoDBEpisodeQueryRunner(client);
+    runner = new DynamoDBQueryRunner(client);
     dao = new EpisodeQueryService(runner);
   });
 

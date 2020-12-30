@@ -1,7 +1,7 @@
 import { DynamoDB } from 'aws-sdk';
 import { Episode } from '@drspacemanphd/podcast-radio-model';
-import { DynamoDBEpisodeQueryRunner } from '../../../src/query-runner/episode-query-runner';
-import { DynamoDBEpisodeMutationRunner } from '../../../src/mutation-runner/episode-mutation-runner';
+import { DynamoDBQueryRunner } from '../../../src/runners/query-runner';
+import { DynamoDBPutRunner } from '../../../src/runners/put-runner';
 import { EpisodeMutationService } from '../../../src/mutation-services/episode-mutation-service';
 import { EpisodeQueryService } from '../../../src/query-services/episode-query-service';
 
@@ -15,8 +15,8 @@ describe('Episode Mutation Service', () => {
 
   beforeEach(() => {
     client = new DynamoDB.DocumentClient({ endpoint: process.env.DYNAMODB_ENDPOINT, region: process.env.DYNAMODB_REGION });
-    queryRunner = new DynamoDBEpisodeQueryRunner(client);
-    mutationRunner = new DynamoDBEpisodeMutationRunner(client);
+    queryRunner = new DynamoDBQueryRunner(client);
+    mutationRunner = new DynamoDBPutRunner(client);
     queryService = new EpisodeQueryService(queryRunner);
     mutationService = new EpisodeMutationService(mutationRunner);
   });

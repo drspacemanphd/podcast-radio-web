@@ -1,9 +1,9 @@
 require('custom-env').env(process.env.NODE_ENV);
 
 const { DynamoDB } = require('aws-sdk');
-const express = require('express');
+const express = require('express')
+const { PodcastQueryService, EpisodeQueryService, PodcastMutationService, EpisodeMutationService } = require('@drspacemanphd/podcast-radio-podcast-dao');
 
-const { PodcastQueryService, EpisodeQueryService, PodcastMutationService, EpisodeMutationService } = require('../dist/index');
 const { CREATE_PODCAST_TABLE_PARAMS, CREATE_EPISODE_TABLE_PARAMS, PODCASTS, EPISODES } = require('./local-db-fixtures');
 
 const client = new DynamoDB({ endpoint: process.env.DYNAMODB_ENDPOINT, region: process.env.DYNAMODB_REGION });
@@ -84,6 +84,14 @@ function setupApi() {
     res.json(episode);
   });
   
+  app.post('/episode/new/', async (req, res) => {
+    const episode = await EpisodeQueryService.getById('12345');
+    episode.guid = '34567';
+    await EpisodeMutationService.insertEpisode(episode);
+    const added = await EpisodeQueryService.getById('34567');
+    res.json(added);
+  });
+
   app.listen(9000, () => {
     console.log('Listening');
   });
