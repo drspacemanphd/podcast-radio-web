@@ -25,7 +25,7 @@ describe('Rss Feed Query Service', () => {
     jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve(expectedResults as PromiseResult<DynamoDB.DocumentClient.QueryOutput, AWSError>));
   
     // Test
-    const actualFeed = await dao.getFeedById('12345');
+    const actualFeed = await dao.getRssFeedById('12345');
 
     // Assertions
     expect(expectedFeed).toEqual(actualFeed);
@@ -38,7 +38,7 @@ describe('Rss Feed Query Service', () => {
     jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve(undefined));
   
     // Test
-    const actualFeed = await dao.getFeedById('12345');
+    const actualFeed = await dao.getRssFeedById('12345');
 
     // Assertions
     expect(actualFeed).toEqual(undefined);
@@ -64,7 +64,7 @@ describe('Rss Feed Query Service', () => {
     jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve(expectedResults as PromiseResult<DynamoDB.DocumentClient.QueryOutput, AWSError>));
   
     // Test
-    const actualFeed = await dao.getFeedByUrl('A URL');
+    const actualFeed = await dao.getRssFeedByUrl('A URL');
 
     // Assertions
     expect(expectedFeed).toEqual(actualFeed);

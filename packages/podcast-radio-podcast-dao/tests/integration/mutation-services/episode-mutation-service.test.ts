@@ -23,12 +23,12 @@ describe('Episode Mutation Service', () => {
 
   test('can insert an episode', async () => {
     // Setup
-    const episode: Episode = await queryService.getById('12345');
+    const episode: Episode = await queryService.getEpisodeById('12345');
     episode.guid = idToSave;
 
     // Test
     const episodeToSave = await mutationService.insertEpisode(episode);
-    const savedEpisode = await queryService.getById(idToSave);
+    const savedEpisode = await queryService.getEpisodeById(idToSave);
 
     // Assertions
     expect(episodeToSave).toBeDefined();

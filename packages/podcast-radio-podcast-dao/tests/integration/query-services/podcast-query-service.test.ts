@@ -16,9 +16,9 @@ describe('Podcast Query Service', () => {
 
   test('can retrieve a podcast by id', async () => {
     // Test
-    const podcastOne: Podcast = await dao.getById('12345');
-    const podcastTwo: Podcast = await dao.getById('23456');
-    const podcastThree: Podcast = await dao.getById('34567');
+    const podcastOne: Podcast = await dao.getPodcastById('12345');
+    const podcastTwo: Podcast = await dao.getPodcastById('23456');
+    const podcastThree: Podcast = await dao.getPodcastById('34567');
 
     // Assertions
     expect(podcastOne).toBeDefined();
@@ -36,9 +36,9 @@ describe('Podcast Query Service', () => {
 
   test('can retrieve a podcast by title', async () => {
     // Test
-    const podcastOne: Podcast[] = await dao.getByTitle('The Daily');
-    const podcastTwo: Podcast[] = await dao.getByTitle('Pod Save America');
-    const podcastThree: Podcast[] = await dao.getByTitle('Pod Save');
+    const podcastOne: Podcast[] = await dao.getPodcastsByTitle('The Daily');
+    const podcastTwo: Podcast[] = await dao.getPodcastsByTitle('Pod Save America');
+    const podcastThree: Podcast[] = await dao.getPodcastsByTitle('Pod Save');
 
     // Assertions
     expect(podcastOne).toBeDefined();
@@ -59,9 +59,9 @@ describe('Podcast Query Service', () => {
 
   test('can retrieve a podcast by author', async () => {
     // Test
-    const podcastOne: Podcast[] = await dao.getByAuthor('The New York Times');
-    const podcastTwo: Podcast[] = await dao.getByAuthor('Crooked Media');
-    const podcastThree: Podcast[] = await dao.getByAuthor('Crooked');
+    const podcastOne: Podcast[] = await dao.getPodcastsByAuthor('The New York Times');
+    const podcastTwo: Podcast[] = await dao.getPodcastsByAuthor('Crooked Media');
+    const podcastThree: Podcast[] = await dao.getPodcastsByAuthor('Crooked');
 
     // Assertions
     expect(podcastOne).toBeDefined();

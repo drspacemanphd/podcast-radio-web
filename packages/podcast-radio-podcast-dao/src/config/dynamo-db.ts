@@ -1,15 +1,15 @@
 import { DynamoDB } from 'aws-sdk';
 
 function configureDynamoDB (env: Record<string, string>): DynamoDB.DocumentClient {
-  if (env.DYNAMODB_ENDPOINT) {
+  if (env.endpoint) {
     return new DynamoDB.DocumentClient({
-      endpoint: env.DYNAMODB_ENDPOINT,
-      region: env.DYNAMODB_REGION
+      endpoint: env.endpoint,
+      region: env.region
     });
   }
 
   return new DynamoDB.DocumentClient({
-    region: env.DYNAMODB_REGION
+    region: env.region
   });
 }
 

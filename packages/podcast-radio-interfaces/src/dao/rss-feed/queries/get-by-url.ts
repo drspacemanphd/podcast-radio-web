@@ -1,3 +1,3 @@
 export interface IGetRssFeedByUrl {
-  getFeedByUrl(url: string): any
+  getRssFeedByUrl(url: string): any
 }

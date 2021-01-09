@@ -22,7 +22,7 @@ services:
       - ~/.aws:/root/.aws
     depends_on: 
       - localstack
-    command: nodemon -e ts,js --watch ./src/* --exec npm run build && node ./local/index.js
+    command: nodemon -e ts,js --watch ./src/* --exec npm run build && node ./local-development/index.js
     env_file:
       - ./.env.local
     networks: 

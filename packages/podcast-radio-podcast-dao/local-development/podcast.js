@@ -1,69 +1,3 @@
-const CREATE_PODCAST_TABLE_PARAMS = {
-  TableName: 'PODCAST',
-  AttributeDefinitions: [
-    {
-      AttributeName: 'GUID',
-      AttributeType: 'S'
-    },
-    {
-      AttributeName: 'TITLE',
-      AttributeType: 'S'
-    },
-    {
-      AttributeName: 'AUTHOR',
-      AttributeType: 'S'
-    }
-  ],
-  KeySchema: [
-    {
-      AttributeName: 'GUID',
-      KeyType: 'HASH'
-    }
-  ],
-  ProvisionedThroughput: {
-    ReadCapacityUnits: 100,
-    WriteCapacityUnits: 100
-  },
-  GlobalSecondaryIndexes: [
-    {
-      IndexName: 'TITLE',
-      KeySchema: [
-        {
-          AttributeName: 'TITLE',
-          KeyType: 'HASH'
-        }
-      ],
-      Projection: {
-        ProjectionType: 'ALL'
-      },
-      ProvisionedThroughput: {
-        ReadCapacityUnits: 100,
-        WriteCapacityUnits: 100
-      }
-    },
-    {
-      IndexName: 'AUTHOR_TITLE',
-      KeySchema: [
-        {
-          AttributeName: 'AUTHOR',
-          KeyType: 'HASH'
-        },
-        {
-          AttributeName: 'TITLE',
-          KeyType: 'RANGE'
-        }
-      ],
-      Projection: {
-        ProjectionType: 'ALL'
-      },
-      ProvisionedThroughput: {
-        ReadCapacityUnits: 100,
-        WriteCapacityUnits: 100
-      }
-    }
-  ]
-};
-
 const PODCAST_ONE = {
   TableName: 'PODCAST',
   Item: {
@@ -127,6 +61,5 @@ const PODCAST_TWO = {
 const PODCASTS = [PODCAST_ONE, PODCAST_TWO];
 
 module.exports = {
-  CREATE_PODCAST_TABLE_PARAMS,
   PODCASTS,
 };

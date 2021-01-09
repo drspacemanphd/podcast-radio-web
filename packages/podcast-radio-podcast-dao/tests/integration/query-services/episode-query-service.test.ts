@@ -16,9 +16,9 @@ describe('Episode Query Service', () => {
 
   test('can retrieve an episode by id', async () => {
     // Test
-    const episodeOne: Episode = await dao.getById('12345');
-    const episodeTwo: Episode = await dao.getById('23456');
-    const episodeThree: Episode = await dao.getById('34567');
+    const episodeOne: Episode = await dao.getEpisodeById('12345');
+    const episodeTwo: Episode = await dao.getEpisodeById('23456');
+    const episodeThree: Episode = await dao.getEpisodeById('34567');
 
     // Assertions
     expect(episodeOne).toBeDefined();
@@ -38,9 +38,9 @@ describe('Episode Query Service', () => {
 
   test('can retrieve a episode by title', async () => {
     // Test
-    const episodeOne: Episode[] = await dao.getByPodcast('12345');
-    const episodeTwo: Episode[] = await dao.getByPodcast('23456');
-    const episodeThree: Episode[] = await dao.getByPodcast('34567');
+    const episodeOne: Episode[] = await dao.getEpisodesByPodcast('12345');
+    const episodeTwo: Episode[] = await dao.getEpisodesByPodcast('23456');
+    const episodeThree: Episode[] = await dao.getEpisodesByPodcast('34567');
 
     // Assertions
     expect(episodeOne).toBeDefined();

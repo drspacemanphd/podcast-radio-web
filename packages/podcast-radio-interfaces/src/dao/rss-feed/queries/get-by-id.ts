@@ -1,3 +1,3 @@
 export interface IGetRssFeedById {
-  getFeedById(id: string): any
+  getRssFeedById(id: string): any
 }

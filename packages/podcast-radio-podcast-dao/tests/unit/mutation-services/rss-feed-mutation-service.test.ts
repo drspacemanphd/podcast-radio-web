@@ -11,7 +11,7 @@ describe('Podcast Mutation Service', () => {
     jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve(null));
   
     // Test
-    const actualFeed = await dao.insertFeed(expectedFeed);
+    const actualFeed = await dao.insertRssFeed(expectedFeed);
 
     // Assertions
     expect(expectedFeed).toEqual(actualFeed);

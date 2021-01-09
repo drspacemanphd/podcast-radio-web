@@ -14,7 +14,7 @@ describe('DynamoDB Client', () => {
     mockClient.mockImplementation(params => params);
 
     // Test
-    const configuredDB: any = <any> configureDynamoDB({ DYNAMODB_ENDPOINT: 'endpoint', DYNAMODB_REGION: 'region' });
+    const configuredDB: any = <any> configureDynamoDB({ endpoint: 'endpoint', region: 'region' });
 
     // Assertions
     expect(configuredDB.endpoint).toEqual('endpoint');
@@ -27,7 +27,7 @@ describe('DynamoDB Client', () => {
     mockClient.mockImplementation(params => params);
 
     // Test
-    const configuredDB: any = <any> configureDynamoDB({ DYNAMODB_REGION: 'region' });
+    const configuredDB: any = <any> configureDynamoDB({ region: 'region' });
 
     // Assertions
     expect(configuredDB.endpoint).toBeUndefined();

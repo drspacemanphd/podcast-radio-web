@@ -33,7 +33,7 @@ describe('Episode Query Service', () => {
     jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve(expectedResults as PromiseResult<DynamoDB.DocumentClient.QueryOutput, AWSError>));
   
     // Test
-    const actualEpisode = await dao.getById('12345');
+    const actualEpisode = await dao.getEpisodeById('12345');
 
     // Assertions
     expect(expectedEpisode).toEqual(actualEpisode);
@@ -46,7 +46,7 @@ describe('Episode Query Service', () => {
     jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve(undefined));
   
     // Test
-    const actualEpisode = await dao.getById('12345');
+    const actualEpisode = await dao.getEpisodeById('12345');
 
     // Assertions
     expect(actualEpisode).toEqual(undefined);
@@ -79,7 +79,7 @@ describe('Episode Query Service', () => {
     jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve(expectedResults as PromiseResult<DynamoDB.DocumentClient.QueryOutput, AWSError>));
   
     // Test
-    const actualEpisodes = await dao.getByPodcast('A PODCAST');
+    const actualEpisodes = await dao.getEpisodesByPodcast('A PODCAST');
 
     // Assertions
     expect(expectedEpisodes).toEqual(actualEpisodes);

@@ -16,7 +16,7 @@ export class PodcastQueryService implements IGetPodcastById, IGetPodcastByTitle,
     this.queryRunner = queryRunner
   }
 
-  async getById(id: string): Promise<Podcast> {
+  async getPodcastById(id: string): Promise<Podcast> {
     const params: IQuery<DynamoDB.DocumentClient.QueryInput> = getPodcastById(id);
     return this.queryRunner.run(params)
       .then(results => {
@@ -24,13 +24,13 @@ export class PodcastQueryService implements IGetPodcastById, IGetPodcastByTitle,
       });
   }
 
-  async getByTitle(title: string): Promise<Podcast[]> {
+  async getPodcastsByTitle(title: string): Promise<Podcast[]> {
     const params: IQuery<DynamoDB.DocumentClient.QueryInput> = getPodcastByTitle(title);
     const results = await this.queryRunner.run(params);
     return results.Items.map(p => itemToPodcast(p));
   }
 
-  async getByAuthor(author: string): Promise<Podcast[]> {
+  async getPodcastsByAuthor(author: string): Promise<Podcast[]> {
     const params: IQuery<DynamoDB.DocumentClient.QueryInput> = getPodcastByAuthor(author);
     const results = await this.queryRunner.run(params);
     return results.Items.map(p => itemToPodcast(p));

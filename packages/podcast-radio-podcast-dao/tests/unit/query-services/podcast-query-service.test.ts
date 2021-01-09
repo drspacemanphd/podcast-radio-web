@@ -28,7 +28,7 @@ describe('Podcast Query Service', () => {
     jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve(expectedResults as PromiseResult<DynamoDB.DocumentClient.QueryOutput, AWSError>));
   
     // Test
-    const actualPodcast = await dao.getById('12345');
+    const actualPodcast = await dao.getPodcastById('12345');
 
     // Assertions
     expect(expectedPodcast).toEqual(actualPodcast);
@@ -41,7 +41,7 @@ describe('Podcast Query Service', () => {
     jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve(undefined));
   
     // Test
-    const actualPodcast = await dao.getById('12345');
+    const actualPodcast = await dao.getPodcastById('12345');
 
     // Assertions
     expect(actualPodcast).toEqual(undefined);
@@ -70,7 +70,7 @@ describe('Podcast Query Service', () => {
     jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve(expectedResults as PromiseResult<DynamoDB.DocumentClient.QueryOutput, AWSError>));
   
     // Test
-    const actualPodcasts = await dao.getByTitle('A_TITLE');
+    const actualPodcasts = await dao.getPodcastsByTitle('A_TITLE');
 
     // Assertions
     expect(expectedPodcasts).toEqual(actualPodcasts);
@@ -99,7 +99,7 @@ describe('Podcast Query Service', () => {
     jest.spyOn(runner, 'run').mockImplementation(() => Promise.resolve(expectedResults as PromiseResult<DynamoDB.DocumentClient.QueryOutput, AWSError>));
   
     // Test
-    const actualPodcasts = await dao.getByAuthor('AN_AUTHOR');
+    const actualPodcasts = await dao.getPodcastsByAuthor('AN_AUTHOR');
 
     // Assertions
     expect(expectedPodcasts).toEqual(actualPodcasts);

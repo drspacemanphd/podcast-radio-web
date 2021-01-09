@@ -15,7 +15,7 @@ export class RssFeedQueryService implements IGetRssFeedByUrl {
     this.queryRunner = queryRunner
   }
 
-  async getFeedById(id: string): Promise<RssFeed> {
+  async getRssFeedById(id: string): Promise<RssFeed> {
     const params: IQuery<DynamoDB.DocumentClient.QueryInput> = getFeedById(id);
     return this.queryRunner.run(params)
       .then(results => {
@@ -23,7 +23,7 @@ export class RssFeedQueryService implements IGetRssFeedByUrl {
       });
   }
 
-  async getFeedByUrl(url: string): Promise<RssFeed[]> {
+  async getRssFeedByUrl(url: string): Promise<RssFeed[]> {
     const params: IQuery<DynamoDB.DocumentClient.QueryInput> = getFeedByUrl(url);
     const results = await this.queryRunner.run(params);
     return results.Items.map(p => itemToRssFeed(p));

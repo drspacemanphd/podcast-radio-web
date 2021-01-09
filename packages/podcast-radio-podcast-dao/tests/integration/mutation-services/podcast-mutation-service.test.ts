@@ -23,12 +23,12 @@ describe('Podcast Mutation Service', () => {
 
   test('can insert a podcast', async () => {
     // Setup
-    const podcast: Podcast = await queryService.getById('12345');
+    const podcast: Podcast = await queryService.getPodcastById('12345');
     podcast.guid = idToSave;
 
     // Test
     const podcastToSave = await mutationService.insertPodcast(podcast);
-    const savedPodcast = await queryService.getById(idToSave);
+    const savedPodcast = await queryService.getPodcastById(idToSave);
 
     // Assertions
     expect(podcastToSave).toBeDefined();

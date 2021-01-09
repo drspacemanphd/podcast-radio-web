@@ -1,53 +1,3 @@
-const CREATE_EPISODE_TABLE_PARAMS = {
-  TableName: 'EPISODE',
-  AttributeDefinitions: [
-    {
-      AttributeName: 'GUID',
-      AttributeType: 'S'
-    },
-    {
-      AttributeName: 'PODCAST_ID',
-      AttributeType: 'S'
-    },
-    {
-      AttributeName: 'PUBLICATION_DATE',
-      AttributeType: 'N'
-    }
-  ],
-  KeySchema: [
-    {
-      AttributeName: 'GUID',
-      KeyType: 'HASH'
-    }
-  ],
-  ProvisionedThroughput: {
-    ReadCapacityUnits: 100,
-    WriteCapacityUnits: 100
-  },
-  GlobalSecondaryIndexes: [
-    {
-      IndexName: 'PODCAST_ID',
-      KeySchema: [
-        {
-          AttributeName: 'PODCAST_ID',
-          KeyType: 'HASH'
-        },
-        {
-          AttributeName: 'PUBLICATION_DATE',
-          KeyType: 'RANGE'
-        }
-      ],
-      Projection: {
-        ProjectionType: 'ALL'
-      },
-      ProvisionedThroughput: {
-        ReadCapacityUnits: 100,
-        WriteCapacityUnits: 100
-      }
-    }
-  ]
-};
-
 const EPISODE_ONE = {
   TableName: 'EPISODE',
   Item: {
@@ -135,6 +85,5 @@ const EPISODE_TWO = {
 const EPISODES = [EPISODE_ONE, EPISODE_TWO];
 
 module.exports = {
-  CREATE_EPISODE_TABLE_PARAMS,
   EPISODES,
 };

@@ -7,7 +7,9 @@ function getQuery(url: string): IQuery<DynamoDB.DocumentClient.QueryInput> {
     KeyConditionExpression: 'RSS_URL = :url',
     ExpressionAttributeValues: {
       ':url': url
-    }
+    },
+    IndexName: 'RSS_URL',
+    ScanIndexForward: true
   };
 
   return {

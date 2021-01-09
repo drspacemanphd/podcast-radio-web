@@ -15,7 +15,7 @@ export class EpisodeQueryService implements IGetEpisodeById, IGetEpisodeByPodcas
     this.queryRunner = queryRunner
   }
 
-  async getById(id: string): Promise<Episode> {
+  async getEpisodeById(id: string): Promise<Episode> {
     const params: IQuery<DynamoDB.DocumentClient.QueryInput> = getEpisodeById(id);
     return this.queryRunner.run(params)
       .then(results => {
@@ -23,7 +23,7 @@ export class EpisodeQueryService implements IGetEpisodeById, IGetEpisodeByPodcas
       });
   }
 
-  async getByPodcast(podcastId: string): Promise<Episode[]> {
+  async getEpisodesByPodcast(podcastId: string): Promise<Episode[]> {
     const params: IQuery<DynamoDB.DocumentClient.QueryInput> = getEpisodeByPodcast(podcastId);
     const results = await this.queryRunner.run(params);
     return results.Items.map(e => itemToEpisode(e));
