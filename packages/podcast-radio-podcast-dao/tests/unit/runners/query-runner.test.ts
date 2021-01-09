@@ -1,7 +1,6 @@
 import AWS from 'aws-sdk';
-import { Podcast } from '@drspacemanphd/podcast-radio-model';
 import { IQuery } from '@drspacemanphd/podcast-radio-interfaces';
-import { DynamoDBPodcastQueryRunner } from '../../../src/query-runner/podcast-query-runner';
+import { DynamoDBQueryRunner } from '../../../src/runners/query-runner';
 
 let expectedResults: AWS.DynamoDB.DocumentClient.QueryOutput;
 
@@ -17,7 +16,7 @@ jest.mock('aws-sdk', () => ({
   }
 }));
 
-describe('Podcast Query Runner', () => {
+describe('Query Runner', () => {
   afterEach(() => {
     expectedResults = undefined;
   });
@@ -39,10 +38,6 @@ describe('Podcast Query Runner', () => {
       ]
     }
 
-    const expectedPodcasts = [
-      new Podcast('12345', 'A_TITLE', 'AN_AUTHOR', 'A_DESCRIPTION', ['A CAT'], 'An image url', ['A keyword'], ['a tag'])
-    ];
-
     const client = new AWS.DynamoDB.DocumentClient();
 
     const query: IQuery<AWS.DynamoDB.DocumentClient.QueryInput> = {
@@ -55,12 +50,12 @@ describe('Podcast Query Runner', () => {
       }
     }
 
-    const runner: DynamoDBPodcastQueryRunner = new DynamoDBPodcastQueryRunner(client);
+    const runner: DynamoDBQueryRunner = new DynamoDBQueryRunner(client);
 
     // Tests
-    const actualResults: Podcast[] = await runner.run(query);
+    const actualResults: any = await runner.run(query);
 
     // Assertions
-    expect(expectedPodcasts).toEqual(actualResults);
+    expect(expectedResults).toEqual(actualResults);
   });
 });

@@ -8,5 +8,9 @@
   ],
   "transform": {
     "^.+\\.(ts|tsx)$": "ts-jest"
-  }
+  },
+  "collectCoverageFrom": [
+    "src/**/*.{ts,js}",
+    "!src/**/*.d.ts"
+  ]
 }

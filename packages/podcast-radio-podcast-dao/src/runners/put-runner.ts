@@ -1,7 +1,7 @@
 import { DynamoDB } from 'aws-sdk';
 import { IQuery, IQueryRunner } from '@drspacemanphd/podcast-radio-interfaces';
 
-export class DynamoDBEpisodeMutationRunner implements IQueryRunner<any, DynamoDB.DocumentClient.PutItemInput> {
+export class DynamoDBPutRunner implements IQueryRunner<any, DynamoDB.DocumentClient.PutItemInput> {
   private client: DynamoDB.DocumentClient;
 
   constructor(client: DynamoDB.DocumentClient) {

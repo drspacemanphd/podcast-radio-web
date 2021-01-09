@@ -8,7 +8,7 @@ services:
     environment:
       - LOCALSTACK_SERVICES=dynamodb
     networks: 
-      podcast-radio-podcast-db-local:
+      podcast-radio-local:
   local_server:
     build: 
       dockerfile: ./Dockerfile.local
@@ -22,11 +22,11 @@ services:
       - ~/.aws:/root/.aws
     depends_on: 
       - localstack
-    command: nodemon -e ts,js --watch ./src/* --exec npm run build && node ./local/setup-local.js
+    command: nodemon -e ts,js --watch ./src/* --exec npm run build && node ./local-development/index.js
     env_file:
       - ./.env.local
     networks: 
-      podcast-radio-podcast-db-local:
+      podcast-radio-local:
 
 networks: 
-  podcast-radio-podcast-db-local:
+  podcast-radio-local:

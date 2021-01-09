@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  localstack:
+    container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main}"
+    image: localstack/localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - LOCALSTACK_SERVICES=dynamodb,sqs,s3
+    networks: 
+      podcast-radio-local:
+  podcast_dao:
+    build: 
+      dockerfile: ./Dockerfile.local
+      context: ./packages/podcast-radio-podcast-dao
+    ports:
+      - "9000:9000"
+    volumes: 
+      - ./:/app/
+      - ~/.aws:/root/.aws
+    depends_on: 
+      - localstack
+    command: nodemon -e ts,js --watch .packages/podcast-radio-podcast-dao/src/* --exec yarn --cwd ./packages/podcast-radio-podcast-dao run build && node ./local/index.js
+    env_file:
+      - ./.env.local
+    networks: 
+      podcast-radio-local:
+
+networks: 
+  podcast-radio-local:

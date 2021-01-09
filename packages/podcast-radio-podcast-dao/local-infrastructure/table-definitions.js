@@ -21,8 +21,8 @@ const CREATE_PODCAST_TABLE_PARAMS = {
     }
   ],
   ProvisionedThroughput: {
-    ReadCapacityUnits: 100,
-    WriteCapacityUnits: 100
+    ReadCapacityUnits: 10,
+    WriteCapacityUnits: 10
   },
   GlobalSecondaryIndexes: [
     {
@@ -87,8 +87,8 @@ const CREATE_EPISODE_TABLE_PARAMS = {
     }
   ],
   ProvisionedThroughput: {
-    ReadCapacityUnits: 100,
-    WriteCapacityUnits: 100
+    ReadCapacityUnits: 10,
+    WriteCapacityUnits: 10
   },
   GlobalSecondaryIndexes: [
     {
@@ -107,14 +107,74 @@ const CREATE_EPISODE_TABLE_PARAMS = {
         ProjectionType: 'ALL'
       },
       ProvisionedThroughput: {
-        ReadCapacityUnits: 100,
-        WriteCapacityUnits: 100
+        ReadCapacityUnits: 10,
+        WriteCapacityUnits: 10
       }
     }
   ]
 };
 
+const CREATE_RSS_FEED_TABLE_PARAMS = {
+  TableName: 'RSS_FEED',
+  AttributeDefinitions: [
+    {
+      AttributeName: 'GUID',
+      AttributeType: 'S'
+    },
+    {
+      AttributeName: 'RSS_URL',
+      AttributeType: 'S'
+    },
+    {
+      AttributeName: 'NEXT_START',
+      AttributeType: 'N'
+    }
+  ],
+  KeySchema: [
+    {
+      AttributeName: 'GUID',
+      KeyType: 'HASH'
+    }
+  ],
+  ProvisionedThroughput: {
+    ReadCapacityUnits: 10,
+    WriteCapacityUnits: 10
+  },
+  GlobalSecondaryIndexes: [
+    {
+      IndexName: 'RSS_URL',
+      KeySchema: [
+        {
+          AttributeName: 'RSS_URL',
+          KeyType: 'HASH'
+        },
+        {
+          AttributeName: 'NEXT_START',
+          KeyType: 'RANGE'
+        }
+      ],
+      Projection: {
+        ProjectionType: 'ALL'
+      },
+      ProvisionedThroughput: {
+        ReadCapacityUnits: 10,
+        WriteCapacityUnits: 10
+      }
+    }
+  ]
+};
+
+const UPDATE_RSS_FEED_TABLE_TTL_PARAMS = {
+  TableName: 'RSS_FEED',
+  TimeToLiveSpecification: {
+    Enabled: true,
+    AttributeName: 'NEXT_START'
+  }
+}
+
 module.exports = {
   CREATE_PODCAST_TABLE_PARAMS,
-  CREATE_EPISODE_TABLE_PARAMS
+  CREATE_EPISODE_TABLE_PARAMS,
+  CREATE_RSS_FEED_TABLE_PARAMS,
+  UPDATE_RSS_FEED_TABLE_TTL_PARAMS
 };

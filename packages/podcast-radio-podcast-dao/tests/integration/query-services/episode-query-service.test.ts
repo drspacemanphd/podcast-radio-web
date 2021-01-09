@@ -1,6 +1,6 @@
 import { DynamoDB } from 'aws-sdk';
 import { Episode } from '@drspacemanphd/podcast-radio-model';
-import { DynamoDBEpisodeQueryRunner } from '../../../src/query-runner/episode-query-runner';
+import { DynamoDBQueryRunner } from '../../../src/runners/query-runner';
 import { EpisodeQueryService } from '../../../src/query-services/episode-query-service';
 
 describe('Episode Query Service', () => {
@@ -10,15 +10,15 @@ describe('Episode Query Service', () => {
 
   beforeEach(() => {
     client = new DynamoDB.DocumentClient({ endpoint: process.env.DYNAMODB_ENDPOINT, region: process.env.DYNAMODB_REGION });
-    runner = new DynamoDBEpisodeQueryRunner(client);
+    runner = new DynamoDBQueryRunner(client);
     dao = new EpisodeQueryService(runner);
   });
 
   test('can retrieve an episode by id', async () => {
     // Test
-    const episodeOne: Episode = await dao.getById('12345');
-    const episodeTwo: Episode = await dao.getById('23456');
-    const episodeThree: Episode = await dao.getById('34567');
+    const episodeOne: Episode = await dao.getEpisodeById('12345');
+    const episodeTwo: Episode = await dao.getEpisodeById('23456');
+    const episodeThree: Episode = await dao.getEpisodeById('34567');
 
     // Assertions
     expect(episodeOne).toBeDefined();
@@ -38,9 +38,9 @@ describe('Episode Query Service', () => {
 
   test('can retrieve a episode by title', async () => {
     // Test
-    const episodeOne: Episode[] = await dao.getByPodcast('12345');
-    const episodeTwo: Episode[] = await dao.getByPodcast('23456');
-    const episodeThree: Episode[] = await dao.getByPodcast('34567');
+    const episodeOne: Episode[] = await dao.getEpisodesByPodcast('12345');
+    const episodeTwo: Episode[] = await dao.getEpisodesByPodcast('23456');
+    const episodeThree: Episode[] = await dao.getEpisodesByPodcast('34567');
 
     // Assertions
     expect(episodeOne).toBeDefined();

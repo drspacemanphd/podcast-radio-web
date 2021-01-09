@@ -5,3 +5,4 @@ dist
 **/coverage
 .npmrc
 **.log
+**/.vscode/*

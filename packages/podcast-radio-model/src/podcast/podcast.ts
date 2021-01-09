@@ -40,4 +40,25 @@ export default class Podcast {
       podcast.tags,
     );
   }
+
+  public static isPodcast(input: Record<string, any>): boolean {
+    return input && input instanceof Podcast;
+  }
+
+  public equals(podcast: Record<string, any>): boolean {
+    return podcast && Podcast.isPodcast(podcast) && Object.entries(this).reduce((result: boolean, entry: [string, any]) => {
+      const corresponding: any = podcast[entry[0]];
+
+      if (!result) {
+        return false;
+      } else if (Array.isArray(entry[1])) {
+        return Array.isArray(corresponding) && corresponding.length === entry[1].length &&
+          entry[1].every((val: any, index: number) => {
+            return corresponding[index] === val;
+          });
+      } else {
+        return corresponding === entry[1];
+      }
+    }, true);
+  }
 }
