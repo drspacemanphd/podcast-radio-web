@@ -1,6 +1,6 @@
 {
   "name": "@drspacemanphd/podcast-radio-podcast-dao",
-  "version": "0.0.1-alpha.12",
+  "version": "0.0.1-alpha.13",
   "description": "A module for querying and maniuplating podcast and episode DB entries",
   "keywords": [
     "Podcast",
@@ -39,8 +39,8 @@
     "typescript": "^4.1.2"
   },
   "dependencies": {
-    "@drspacemanphd/podcast-radio-interfaces": "^0.0.1-alpha.73",
-    "@drspacemanphd/podcast-radio-model": "^0.0.1-alpha.65",
+    "@drspacemanphd/podcast-radio-interfaces": "^0.0.1-alpha.74",
+    "@drspacemanphd/podcast-radio-model": "^0.0.1-alpha.66",
     "aws-sdk": "^2.799.0",
     "custom-env": "^2.0.1"
   },
