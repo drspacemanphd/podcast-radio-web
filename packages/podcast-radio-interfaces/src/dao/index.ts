@@ -1,12 +1,14 @@
 import { IGetEpisodeById, IGetEpisodeByPodcast, IInsertEpisode } from './episode';
 import { IGetPodcastByAuthor, IGetPodcastById, IGetPodcastByTitle, IInsertPodcast } from './podcast';
-import { IGetRssFeedById, IGetRssFeedByUrl, IInsertRssFeed } from './rss-feed';
+import { IGetRssScheduleById, IGetRssScheduleByUrl, IInsertRssSchedule } from './rss-schedule';
 
 export * from './podcast';
 export * from './episode';
-export * from './rss-feed';
+export * from './rss-schedule';
 
-export interface IPodcastRadioDao extends 
+export interface IPodcastDao extends 
   IGetPodcastById, IGetPodcastByTitle, IGetPodcastByAuthor, IInsertPodcast,
-  IGetEpisodeById, IGetEpisodeByPodcast, IInsertEpisode,
-  IGetRssFeedById, IGetRssFeedByUrl, IInsertRssFeed {}
+  IGetEpisodeById, IGetEpisodeByPodcast, IInsertEpisode {}
+
+export interface IRssScheduleDao extends
+  IGetRssScheduleById, IGetRssScheduleByUrl, IInsertRssSchedule {}
