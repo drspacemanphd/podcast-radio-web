@@ -11,7 +11,7 @@
   "author": "drspacemanphd",
   "homepage": "https://github.com/drspacemanphd/podcast-radio-web#readme",
   "license": "ISC",
-  "main": "dist/index.js",
+  "main": "dist/index",
   "types": "dist/index",
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "clean": "rm -rf ./dist",
+    "clean": "sudo rm -rf ./dist",
     "test:unit": "echo SUCCESS",
     "test:integration:ci": "echo SUCCESS",
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"

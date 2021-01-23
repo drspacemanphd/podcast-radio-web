@@ -11,8 +11,8 @@
   "author": "drspacemanphd",
   "homepage": "https://github.com/drspacemanphd/podcast-radio-web#readme",
   "license": "ISC",
-  "main": "dist/index.js",
-  "types": "dist/index",
+  "main": "./dist/index",
+  "types": "./dist/index",
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/drspacemanphd/podcast-radio-web.git",
@@ -23,6 +23,7 @@
   },
   "scripts": {
     "clean": "rm -rf ./dist/",
+    "local": "docker-compose -f docker-compose.local.yml down && docker-compose -f docker-compose.local.yml up -d --build",
     "test:unit": "echo SUCCESS",
     "test:integration:ci": "echo SUCCESS",
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"

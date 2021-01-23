@@ -6,21 +6,23 @@ services:
     ports:
       - "4566:4566"
     environment:
-      - LOCALSTACK_SERVICES=dynamodb,sqs,s3
+      - LOCALSTACK_SERVICES=dynamodb,sqs
     networks: 
       podcast-radio-local:
-  podcast_dao:
+  local_server:
     build: 
       dockerfile: ./Dockerfile.local
-      context: ./packages/podcast-radio-podcast-dao
+      context: ./
     ports:
       - "9000:9000"
     volumes: 
       - ./:/app/
+      - ../../local-infrastructure:/app/local-infrastructure # necessary to bring in shared local infrastructure definitions     
+      - ../../packages:/app/packages # necessary only when referencing local non-published packages for local dev
       - ~/.aws:/root/.aws
     depends_on: 
       - localstack
-    command: nodemon -e ts,js --watch .packages/podcast-radio-podcast-dao/src/* --exec yarn --cwd ./packages/podcast-radio-podcast-dao run build && node ./local/index.js
+    command: nodemon -e ts,js --watch ./src/* --exec npm run build && node ./local-development/index.js
     env_file:
       - ./.env.local
     networks: 
