@@ -1,8 +1,15 @@
 import _ from 'lodash';
-import { RssScheduleDao } from '@drspacemanphd/podcast-radio-podcast-dao'
+import { URL } from 'url';
+import { RssScraper } from '@drspacemanphd/podcast-radio-scrapers';
 
 export async function handler(event: Record<string, any>): Promise<any> {
-  return null;
+  if (_isEventInvalid(event)) {
+    return;
+  }
+
+  const rssUrl = _.get(event, 'Records[0].OldImage["RSS_URL"]["S"]');
+
+  return await RssScraper.scrape(new URL(rssUrl));
 }
 
 function _isEventInvalid(event: Record<string, any>): boolean {
@@ -21,3 +28,4 @@ function _isEventInvalid(event: Record<string, any>): boolean {
 
   return false;
 }
+

@@ -1,9 +1,7 @@
 require('custom-env').env(process.env.NODE_ENV);
 
-const { DynamoDB } = require('aws-sdk');
+const { DynamoDB, Lambda } = require('aws-sdk');
 const express = require('express');
-
-const { PodcastRadioDao } = require('../dist/index');
 
 const { 
   CREATE_PODCAST_TABLE_PARAMS,
@@ -18,12 +16,14 @@ const { EPISODES } = require('./episode');
 const { FEEDS } = require('./rss-feed');
 
 const client = new DynamoDB({ endpoint: process.env.DYNAMODB_ENDPOINT, region: process.env.DYNAMODB_REGION });
+const lambda = new Lambda({ endpoint: process.env.LAMBDA_ENDPOINT, region: process.env.LAMBDA_REGION })
 
 const app = express();
 app.use(express.json());
 
 async function setup() {
-  await bootstrapDB();
+  // await bootstrapDB();
+  await setupFunction();
   setupApi();
 }
 
@@ -56,6 +56,24 @@ async function initializeDB() {
   FEEDS.forEach(async (r) => {
     await client.putItem(r).promise();
   });
+}
+
+async function setupFunction() {
+  try {
+    const result = await lambda.getFunction({ FunctionName: 'podcast-radio-rss-poller' }).promise();
+    console.log(result);
+  } catch(err) {
+    console.log(`Error: ${err.message}`);
+    await lambda.createFunction({ 
+      FunctionName: 'podcast-radio-rss-poller',
+      Runtime: 'nodejs12.x',
+      Role: 'rss-poller-role',
+      Handler: 'src/index.handler',
+      Code: {
+        ZipFile: 'fileb://./lambda.zip'
+      }
+    }).promise();
+  }
 }
 
 function setupApi() {  
