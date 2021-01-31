@@ -25,8 +25,8 @@
     "clean": "sudo rm -rf ./dist/",
     "local": "docker-compose -f docker-compose.local.yml down && docker-compose -f docker-compose.local.yml up -d --build",
     "test:unit": "jest --testMatch=**/unit/**/*.test.ts --verbose --coverage --collectCoverageFrom=./src/**/*.ts",
-    "test:integration:local": "docker-compose -f docker-compose.integration.yml down && docker-compose -f docker-compose.integration.yml up -d --build",
-    "test:integration:ci": "node ./tests/integration/ci-runner",
+    "test:integration:local": "sh ./tests/integration/run-integration-tests.sh",
+    "test:integration:ci": "sh ./tests/integration/run-integration-tests.sh",
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
   },
   "devDependencies": {

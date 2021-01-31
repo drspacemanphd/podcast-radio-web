@@ -122,6 +122,10 @@ const CREATE_RSS_SCHEDULE_TABLE_PARAMS = {
       AttributeType: 'S'
     },
     {
+      AttributeName: 'PODCAST_ID',
+      AttributeType: 'S'
+    },
+    {
       AttributeName: 'RSS_URL',
       AttributeType: 'S'
     },
@@ -146,6 +150,26 @@ const CREATE_RSS_SCHEDULE_TABLE_PARAMS = {
       KeySchema: [
         {
           AttributeName: 'RSS_URL',
+          KeyType: 'HASH'
+        },
+        {
+          AttributeName: 'NEXT_START',
+          KeyType: 'RANGE'
+        }
+      ],
+      Projection: {
+        ProjectionType: 'ALL'
+      },
+      ProvisionedThroughput: {
+        ReadCapacityUnits: 10,
+        WriteCapacityUnits: 10
+      }
+    },
+    {
+      IndexName: 'PODCAST_ID',
+      KeySchema: [
+        {
+          AttributeName: 'PODCAST_ID',
           KeyType: 'HASH'
         },
         {

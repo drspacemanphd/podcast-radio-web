@@ -4,6 +4,9 @@ const RSS_SCHEDULE_ONE = {
     'GUID': {
       S: '12345'
     },
+    'PODCAST_ID': {
+      S: '23456'
+    },
     'RSS_URL': {
       S: 'http://feeds.feedburner.com/pod-save-america'
     },
@@ -20,6 +23,9 @@ const RSS_SCHEDULE_TWO = {
   TableName: 'RSS_SCHEDULE',
   Item: {
     'GUID': {
+      S: '23456'
+    },
+    'PODCAST_ID': {
       S: '23456'
     },
     'RSS_URL': {
@@ -40,6 +46,9 @@ const RSS_SCHEDULE_THREE = {
     'GUID': {
       S: '34567'
     },
+    'PODCAST_ID': {
+      S: '12345'
+    },
     'RSS_URL': {
       S: 'http://rss.art19.com/the-daily'
     },
@@ -57,6 +66,9 @@ const RSS_SCHEDULE_FOUR = {
   Item: {
     'GUID': {
       S: '45678'
+    },
+    'PODCAST_ID': {
+      S: '12345'
     },
     'RSS_URL': {
       S: 'http://rss.art19.com/the-daily'

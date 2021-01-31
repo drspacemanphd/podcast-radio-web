@@ -20,9 +20,18 @@ describe('Rss Schedule Mutation Service', () => {
     mutationService = new RssScheduleMutationService(mutationRunner);
   });
 
+  afterEach(async () => {
+    await client.delete({
+      TableName: 'RSS_SCHEDULE',
+      Key: {
+        GUID: '56789'
+      }
+    });
+  });
+
   test('can insert a podcast', async () => {
     // Setup
-    const rssFeed: RssSchedule = new RssSchedule('56789', 'http://feeds.feedburner.com/lovett-or-leave-it', '*/10 * * * * *', new Date(9000000).getTime());
+    const rssFeed: RssSchedule = new RssSchedule('56789', '34567', 'http://feeds.feedburner.com/lovett-or-leave-it', '*/10 * * * * *', new Date(9000000).getTime());
 
     // Test
     const rssFeedToSave = await mutationService.insertRssSchedule(rssFeed);
@@ -32,13 +41,5 @@ describe('Rss Schedule Mutation Service', () => {
     expect(rssFeedToSave).toBeDefined();
     expect(savedRssFeed).toBeDefined();
     expect(rssFeedToSave).toEqual(savedRssFeed);
-
-    // Cleanup
-    await client.delete({
-      TableName: 'PODCAST',
-      Key: {
-        GUID: '56789'
-      }
-    });
   });
 });

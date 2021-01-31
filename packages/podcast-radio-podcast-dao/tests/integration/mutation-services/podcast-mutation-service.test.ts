@@ -21,6 +21,15 @@ describe('Podcast Mutation Service', () => {
     mutationService = new PodcastMutationService(mutationRunner);
   });
 
+  afterEach(async () => {
+    await client.delete({
+      TableName: 'PODCAST',
+      Key: {
+        GUID: idToSave
+      }
+    });
+  });
+
   test('can insert a podcast', async () => {
     // Setup
     const podcast: Podcast = await queryService.getPodcastById('12345');
@@ -34,13 +43,5 @@ describe('Podcast Mutation Service', () => {
     expect(podcastToSave).toBeDefined();
     expect(savedPodcast).toBeDefined();
     expect(podcastToSave).toEqual(savedPodcast);
-
-    // Cleanup
-    await client.delete({
-      TableName: 'PODCAST',
-      Key: {
-        GUID: idToSave
-      }
-    })
   });
 });

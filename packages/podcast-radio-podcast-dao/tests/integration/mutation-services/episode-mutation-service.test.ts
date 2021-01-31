@@ -21,6 +21,15 @@ describe('Episode Mutation Service', () => {
     mutationService = new EpisodeMutationService(mutationRunner);
   });
 
+  afterEach(async () => {
+    await client.delete({
+      TableName: 'EPISODE',
+      Key: {
+        GUID: idToSave
+      }
+    });
+  })
+
   test('can insert an episode', async () => {
     // Setup
     const episode: Episode = await queryService.getEpisodeById('12345');
@@ -34,13 +43,5 @@ describe('Episode Mutation Service', () => {
     expect(episodeToSave).toBeDefined();
     expect(savedEpisode).toBeDefined();
     expect(episodeToSave).toEqual(savedEpisode);
-
-    // Cleanup
-    await client.delete({
-      TableName: 'EPISODE',
-      Key: {
-        GUID: idToSave
-      }
-    });
   });
 });

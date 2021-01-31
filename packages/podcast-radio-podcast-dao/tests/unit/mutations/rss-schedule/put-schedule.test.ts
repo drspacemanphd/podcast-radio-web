@@ -6,9 +6,10 @@ import { getMutation as putSchedule } from '../../../../src/mutations/rss-schedu
 describe('Mutation', () => {
   test('is correct', () => {
     // Setup
-    const feed = new RssSchedule('12345', 'A URL', 'A CRON', 1000);
+    const feed = new RssSchedule('12345', '23456', 'A URL', 'A CRON', 1000);
     const expectedItem: any = {
       'GUID': '12345',
+      'PODCAST_ID': '23456',
       'RSS_URL': 'A URL',
       'CRON': 'A CRON',
       'NEXT_START': 1000

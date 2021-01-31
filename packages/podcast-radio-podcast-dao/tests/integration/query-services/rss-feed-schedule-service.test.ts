@@ -25,21 +25,25 @@ describe('Rss Schedule Query Service', () => {
     // Assertions
     expect(rssFeedOne).toBeDefined();
     expect(rssFeedOne.url).toEqual('http://feeds.feedburner.com/pod-save-america');
+    expect(rssFeedOne.podcastId).toEqual('23456');
     expect(rssFeedOne.cronSchedule).toEqual('*/15 * * * *');
     expect(rssFeedOne.nextStartSecs).toBeDefined();
 
     expect(rssFeedTwo).toBeDefined();
     expect(rssFeedTwo.url).toEqual('http://feeds.feedburner.com/pod-save-america');
+    expect(rssFeedTwo.podcastId).toEqual('23456');
     expect(rssFeedTwo.cronSchedule).toEqual('*/15 * * * *');
     expect(rssFeedTwo.nextStartSecs).toBeDefined();
 
     expect(rssFeedThree).toBeDefined();
     expect(rssFeedThree.url).toEqual('http://rss.art19.com/the-daily');
+    expect(rssFeedThree.podcastId).toEqual('12345');
     expect(rssFeedThree.cronSchedule).toEqual('*/5 * * * *');
     expect(rssFeedThree.nextStartSecs).toBeDefined();
 
     expect(rssFeedFour).toBeDefined();
     expect(rssFeedFour.url).toEqual('http://rss.art19.com/the-daily');
+    expect(rssFeedFour.podcastId).toEqual('12345');
     expect(rssFeedFour.cronSchedule).toEqual('*/5 * * * *');
     expect(rssFeedFour.nextStartSecs).toBeDefined();
 
