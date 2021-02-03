@@ -8,10 +8,10 @@ provider "aws" {
   skip_requesting_account_id  = true
 
   endpoints {
-    cloudwatch     = "http://localhost:4566"
-    dynamodb       = "http://localhost:4566"
-    iam            = "http://localhost:4566"
-    lambda         = "http://localhost:4566"
-    s3             = "http://localhost:4566"
+    cloudwatch     = "http://localstack:4566"
+    dynamodb       = "http://localstack:4566"
+    iam            = "http://localstack:4566"
+    lambda         = "http://localstack:4566"
+    s3             = "http://localstack:4566"
   }
 }

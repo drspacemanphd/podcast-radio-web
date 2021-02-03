@@ -9,7 +9,7 @@
   "workspaces": {
     "packages": [
       "./packages/*",
-      "./microservices/*"
+      "./services/*"
     ],
     "nohoist": [
       "**/podcast-radio-rss-poller/**"

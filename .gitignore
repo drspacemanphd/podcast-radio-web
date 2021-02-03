@@ -14,5 +14,6 @@ dist
 *.hcl
 *.terraform/
 *.tfstate
+*.tfstate.backup
 
 **/.vscode/*
