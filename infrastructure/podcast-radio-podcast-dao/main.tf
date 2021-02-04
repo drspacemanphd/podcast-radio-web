@@ -1,5 +1,5 @@
 module "dynamodb_table" {
-  source = "../../dynamo_db"
+  source = "../dynamo_db"
 }
 
 data "external" "threeMinsFromNow" {

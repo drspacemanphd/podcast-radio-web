@@ -1,5 +1,5 @@
 module "dynamodb_table" {
-  source = "../../dynamo_db"
+  source = "../dynamo_db"
 }
 
 data "external" "threeMinsFromNow" {
@@ -17,7 +17,6 @@ data "external" "oneMinFromNow" {
     minsToAdd = "1"
   }
 }
-
 
 module "dynamodb_fixtures" {
   source              = "./fixtures/dynamo_db"
