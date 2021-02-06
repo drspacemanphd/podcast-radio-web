@@ -28,3 +28,12 @@ module "dynamodb_fixtures" {
     data.external.oneMinFromNow
   ]
 }
+
+module "lambda_function" {
+  source              = "../lambda"
+  environment         = "local"
+  service_name        = "podcast-radio-rss-poller"
+  lambda_description  = "microservice for polling rss feeds to process any new episodes"
+  lambda_code_path    = "../../services/podcast-radio-rss-poller/lambda.zip"
+  dynamodb_rss_schedule_table_stream_arn = "${module.dynamodb_table.dynamodb_rss_schedule_table_stream_arn}"
+}

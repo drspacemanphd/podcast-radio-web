@@ -6,4 +6,4 @@ services:
     ports:
       - "4566:4566"
     environment:
-      - LOCALSTACK_SERVICES=dynamodb,sqs,lambda,dynamodbstreams
+      - LOCALSTACK_SERVICES=iam,s3,lambda,dynamodb,dynamodbstreams,sqs
