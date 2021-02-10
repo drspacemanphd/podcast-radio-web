@@ -56,56 +56,26 @@ resource "aws_iam_role_policy_attachment" "additional_policies" {
   policy_arn  = each.value
 }
 
-resource "aws_s3_bucket" "lambda_code_bucket" {
-  bucket           = "${var.service_name}-function-code"
-  acl              = "authenticated-read"
-
-  versioning {
-    enabled        = true
-  }
-
-  tags = {
-    application = "podcast-radio-web"
-    environment = var.environment
-    service = var.service_name
-  }
-}
-
-resource "aws_s3_bucket_object" "lambda_code" {
-  bucket   = "${var.service_name}-function-code"
-  key      = var.service_name
-  source   = var.lambda_code_path
-
-  tags = {
-    application = "podcast-radio-web"
-    environment = var.environment
-    service = var.service_name
-  }
-}
-
 resource "aws_lambda_function" "lambda_function" {
   function_name     = var.service_name
   handler           = "index.handler"
   role              = aws_iam_role.lambda_execution_role.id
 
-  description       = var.lambda_description
+  description       = var.description
 
-  s3_bucket         = "${var.service_name}-function-code"
-  s3_key            = aws_s3_bucket_object.lambda_code.id
-  s3_object_version = aws_s3_bucket_object.lambda_code.version_id
+  filename          = var.lambda_code_path
 
-  runtime           = "nodejs"
+  runtime           = "nodejs12.x"
   memory_size       = 512
-  timeout           = 60
+  timeout           = 30
+
+  environment {
+    variables = var.lambda_variables
+  }
 
   tags = {
     application = "podcast-radio-web"
     environment = var.environment
     service = var.service_name
   }
-}
-
-resource "aws_lambda_event_source_mapping" "rss_schedule_ttl_mapping" {
-  event_source_arn      = var.dynamodb_rss_schedule_table_stream_arn
-  function_name         = aws_lambda_function.lambda_function.arn
 }

@@ -7,3 +7,18 @@ services:
       - "4566:4566"
     environment:
       - LOCALSTACK_SERVICES=iam,s3,lambda,dynamodb,dynamodbstreams,sqs
+      - LAMBDA_EXECUTOR=docker
+      - LAMBDA_DOCKER_NETWORK=podcast-radio-rss-poller_default
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+  lambda:
+    image: drspacemanphd/nodejs-jest-terraform:1.0.0
+    working_dir: /app
+    command: sh ./run-local.sh
+    env_file: ./.env.local
+    volumes: 
+      - ./:/app/
+      - ../../infrastructure:/app/infrastructure # necessary to bring in shared local infrastructure definitions     
+      - ../../packages:/app/packages # necessary only when referencing local non-published packages for local dev
+    depends_on: 
+      - localstack

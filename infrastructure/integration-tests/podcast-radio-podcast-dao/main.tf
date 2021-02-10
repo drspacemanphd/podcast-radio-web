@@ -2,11 +2,11 @@ module "dynamodb_table" {
   source = "../dynamo_db"
 }
 
-data "external" "threeMinsFromNow" {
+data "external" "thirtySecsFromNow" {
   program = ["node", "${path.module}/timestamp.js"]
 
   query = {
-    minsToAdd = "3"
+    minsToAdd = "0.5"
   }
 }
 
@@ -21,7 +21,7 @@ data "external" "oneMinFromNow" {
 
 module "dynamodb_fixtures" {
   source              = "./fixtures/dynamo_db"
-  threeMinsFromNow    = data.external.threeMinsFromNow.result.time
+  thirtySecsFromNow    = data.external.thirtySecsFromNow.result.time
   oneMinFromNow       = data.external.oneMinFromNow.result.time 
   depends_on = [
     module.dynamodb_table,

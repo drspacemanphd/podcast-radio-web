@@ -5,34 +5,21 @@ services:
     image: localstack/localstack:0.12.5
     ports:
       - "4566:4566"
-    volumes: 
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./dist:/tmp/localstack/dist
     environment:
-      - LOCALSTACK_SERVICES=dynamodb,sqs,lambda,s3,dynamodbstreams
+      - LOCALSTACK_SERVICES=iam,s3,lambda,dynamodb,dynamodbstreams,sqs
       - LAMBDA_EXECUTOR=docker-reuse
-      - LAMBDA_DOCKER_NETWORK=podcast-radio-rss-poller_podcast-radio-local
-    networks: 
-      - podcast-radio-local
-  # local_server:
-  
-  #   build: 
-  #     dockerfile: ./Dockerfile.local
-  #     context: ./
-  #   ports:
-  #     - "9000:9000"
-  #   volumes: 
-  #     - ./:/app/
-  #     - ../../local-infrastructure:/app/local-infrastructure # necessary to bring in shared local infrastructure definitions     
-  #     - ../../packages:/app/node_modules/@drspacemanphd # necessary only when referencing local non-published packages for local dev
-  #     - ~/.aws:/root/.aws
-  #   depends_on: 
-  #     - localstack
-  #   command: nodemon -e ts,js --watch ./src/* --exec npm run build && (cd ./dist && zip -r9q ../local-development/lambda.zip *) && zip -r9q ./local-development/lambda.zip ./node_modules && node ./local-development/index.js
-  #   env_file:
-  #     - ./.env.local
-  #   networks: 
-  #     - podcast-radio-local
-
-networks: 
-  podcast-radio-local:
+      - LAMBDA_DOCKER_NETWORK=podcast-radio-rss-poller_default # annoyingly unless specified, lambda is executed outside default network
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+  lambda:
+    image: drspacemanphd/nodejs-jest-terraform:1.0.0
+    container_name: "integration_tests"
+    working_dir: /app
+    command: sh ./scripts/run-integration-tests.sh
+    env_file: ./.env.integration
+    volumes: 
+      - ./:/app/
+      - ../../infrastructure:/app/infrastructure # necessary to bring in shared local infrastructure definitions     
+      - ../../packages:/app/packages # necessary only when referencing local non-published packages for local dev
+    depends_on: 
+      - localstack

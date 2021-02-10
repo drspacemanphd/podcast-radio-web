@@ -1,5 +1,5 @@
 module "dynamodb_table" {
-  source = "../dynamo_db"
+  source = "../../common/dynamo_db"
 }
 
 data "external" "threeMinsFromNow" {
@@ -30,10 +30,18 @@ module "dynamodb_fixtures" {
 }
 
 module "lambda_function" {
-  source              = "../lambda"
-  environment         = "local"
-  service_name        = "podcast-radio-rss-poller"
-  lambda_description  = "microservice for polling rss feeds to process any new episodes"
-  lambda_code_path    = "../../services/podcast-radio-rss-poller/lambda.zip"
-  dynamodb_rss_schedule_table_stream_arn = "${module.dynamodb_table.dynamodb_rss_schedule_table_stream_arn}"
+  source            = "../../common/lambda_from_local"
+  service_name      = "podcast-radio-rss-poller"
+  environment       = "integration"
+  lambda_code_path  = "../../../lambda.zip"
+  description       = "poller for rss feeds"
+  lambda_variables  = {
+    NODE_ENV = "local"
+  }
+}
+
+resource "aws_lambda_event_source_mapping" "rss_schedule_ttl" {
+  event_source_arn  = module.dynamodb_table.dynamodb_rss_schedule_table_stream_arn
+  function_name     = module.lambda_function.lambda_function_arn
+  batch_size        = 1
 }
