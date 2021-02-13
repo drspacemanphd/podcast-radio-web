@@ -1,4 +1,4 @@
-if [ -z "$bump" ]; then
+if [ -z "$BUMP" ]; then
   echo MUST PROVIDE VALID LERNA BUMP FOR VERSIONING
   return 1
 else 
