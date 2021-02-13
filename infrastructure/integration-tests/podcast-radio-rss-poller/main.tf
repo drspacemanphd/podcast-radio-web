@@ -24,7 +24,7 @@ module "dynamodb_fixtures" {
   oneMinFromNow       = data.external.oneMinFromNow.result.time 
   depends_on = [
     module.dynamodb_table,
-    data.external.threeMinsFromNow,
+    data.external.thirtySecsFromNow,
     data.external.oneMinFromNow
   ]
 }
