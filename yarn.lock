@@ -290,6 +290,11 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@drspacemanphd/podcast-radio-model@^0.0.1-alpha.68":
+  version "0.0.1-alpha.68"
+  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-model/0.0.1-alpha.68/d0fbd29b9a793f96e6179d0257f6a0e752d04a5ee637a04454f5e233436e3929#f990aca80bb2ec5a7214294ad7b15ab29d411049"
+  integrity sha512-ohFgl38gDq43AJEPxpU5fYWRVspnPQvWETxDVyFjMeRQid/FNryvfiJUgQ/fKnUGYy8idRA32UMbdpXKlKRJbA==
+
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@evocateur/libnpmaccess/-/libnpmaccess-3.1.2.tgz#ecf7f6ce6b004e9f942b098d92200be4a4b1c845"
