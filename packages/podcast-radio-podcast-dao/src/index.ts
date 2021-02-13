@@ -1,3 +1,2 @@
 export * from './daos';
-
-// test commit for dummy release
+export * from './util';

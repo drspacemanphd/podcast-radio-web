@@ -1,0 +1,37 @@
+{
+	"Records": [{
+		"eventID": "1",
+		"eventVersion": "1.1",
+		"dynamodb": {
+			"ApproximateCreationDateTime": 1613217664.3827124,
+			"StreamViewType": "NEW_AND_OLD_IMAGES",
+			"SizeBytes": -1,
+			"Keys": {
+				"GUID": {
+					"S": "45678"
+				}
+			},
+			"OldImage": {
+				"GUID": {
+					"S": "45678"
+				},
+				"CRON": {
+					"S": "*/1 * * * *"
+				},
+				"PODCAST_ID": {
+					"S": "12345"
+				},
+				"NEXT_START": {
+					"N": "1613217663"
+				},
+				"RSS_URL": {
+					"S": "http://rss.art19.com/the-daily"
+				}
+			}
+		},
+		"awsRegion": "us-east-1",
+		"eventSource": "aws:dynamodb",
+		"eventName": "REMOVE",
+		"eventSourceARN": "arn:aws:dynamodb:us-east-1:000000000000:table/RSS_SCHEDULE"
+	}]
+}

@@ -3,6 +3,6 @@ import { DynamoDB } from "aws-sdk";
 
 export function itemToRssSchedule(item: DynamoDB.DocumentClient.AttributeMap): RssSchedule {
   return new RssSchedule(
-    item['GUID'], item['RSS_URL'], item['CRON'], item['NEXT_START']
+    item['GUID'], item['PODCAST_ID'], item['RSS_URL'], item['CRON'], item['NEXT_START']
   );
 }

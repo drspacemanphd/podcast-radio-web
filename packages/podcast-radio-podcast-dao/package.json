@@ -22,11 +22,10 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
-    "clean": "sudo rm -rf ./dist/",
-    "local": "docker-compose -f docker-compose.local.yml down && docker-compose -f docker-compose.local.yml up -d --build",
+    "clean": "rm -rf ./dist/",
+    "local": "jest --testMatch=**/unit/**/*.test.ts --detectOpenHandles --verbose --coverage --collectCoverageFrom=./src/**/*.ts --watchAll",
     "test:unit": "jest --testMatch=**/unit/**/*.test.ts --verbose --coverage --collectCoverageFrom=./src/**/*.ts",
-    "test:integration:local": "docker-compose -f docker-compose.integration.yml down && docker-compose -f docker-compose.integration.yml up -d --build",
-    "test:integration:ci": "node ./tests/integration/ci-runner",
+    "test:integration": "node ./tests/integration/run-integration-tests.js",
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
   },
   "devDependencies": {

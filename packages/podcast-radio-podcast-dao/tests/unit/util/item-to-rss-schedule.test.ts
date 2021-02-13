@@ -6,12 +6,13 @@ describe('Item To Rss Schedule function', () => {
     // Setup
     const item: any = {
       'GUID': '12345',
+      'PODCAST_ID': '23456',
       'RSS_URL': 'A URL',
       'CRON': 'A CRON',
       'NEXT_START': 1000
     }
   
-    const expectedFeed = new RssSchedule('12345', 'A URL', 'A CRON', 1000);
+    const expectedFeed = new RssSchedule('12345', '23456', 'A URL', 'A CRON', 1000);
   
     // Test
     const actualFeed = itemToRssSchedule(item);

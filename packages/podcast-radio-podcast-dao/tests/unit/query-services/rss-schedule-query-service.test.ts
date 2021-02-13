@@ -11,6 +11,7 @@ describe('Rss Schedule Query Service', () => {
       Items: [
         {
           'GUID': '12345',
+          'PODCAST_ID': '23456',
           'RSS_URL': 'A URL',
           'CRON': 'A CRON',
           'NEXT_START': 1000
@@ -18,7 +19,7 @@ describe('Rss Schedule Query Service', () => {
       ]
     }
   
-    const expectedFeed = new RssSchedule('12345', 'A URL', 'A CRON', 1000);
+    const expectedFeed = new RssSchedule('12345', '23456', 'A URL', 'A CRON', 1000);
 
     const runner = new DynamoDBQueryRunner(null);
     const dao = new RssScheduleQueryService(runner);
@@ -50,6 +51,7 @@ describe('Rss Schedule Query Service', () => {
       Items: [
         {
           'GUID': '12345',
+          'PODCAST_ID': '23456',
           'RSS_URL': 'A URL',
           'CRON': 'A CRON',
           'NEXT_START': 1000
@@ -57,7 +59,7 @@ describe('Rss Schedule Query Service', () => {
       ]
     }
   
-    const expectedFeed = [new RssSchedule('12345', 'A URL', 'A CRON', 1000)];
+    const expectedFeed = [new RssSchedule('12345', '23456', 'A URL', 'A CRON', 1000)];
 
     const runner = new DynamoDBQueryRunner(null);
     const dao = new RssScheduleQueryService(runner);

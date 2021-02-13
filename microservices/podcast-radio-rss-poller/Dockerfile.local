@@ -1,6 +1,0 @@
-FROM node:14
-WORKDIR /app
-COPY package.json ./package.json
-RUN apt-get update
-RUN apt-get install -y zip
-RUN npm install -g nodemon

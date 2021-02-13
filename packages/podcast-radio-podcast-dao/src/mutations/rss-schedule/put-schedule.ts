@@ -7,6 +7,7 @@ export function getMutation(rssSchedule: RssSchedule): IQuery<DynamoDB.DocumentC
     TableName: 'RSS_SCHEDULE',
     Item: {
       GUID: rssSchedule.guid,
+      PODCAST_ID: rssSchedule.podcastId,
       RSS_URL: rssSchedule.url,
       CRON: rssSchedule.cronSchedule,
       NEXT_START: rssSchedule.nextStartSecs,

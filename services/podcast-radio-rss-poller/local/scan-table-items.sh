@@ -1,0 +1,1 @@
+aws dynamodb scan  --region=us-east-1 --endpoint-url=http://localhost:4566 --table-name=$1
