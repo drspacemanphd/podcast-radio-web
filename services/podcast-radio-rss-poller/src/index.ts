@@ -14,14 +14,14 @@ export async function handler(event: Record<string, any>): Promise<any> {
     const endpoint = getDbEndpoint();
 
     const podcastDao = new PodcastDao({ endpoint, region: process.env.DYNAMODB_REGION });
+    const rssScheduleDao = new RssScheduleDao({ endpoint, region: process.env.DYNAMODB_REGION });
 
-    await _saveNextRssSchedule(podcastDao, schedule);
+    await _saveNextRssSchedule(rssScheduleDao, schedule);
 
     const { podcast, episodes } = await RssScraper.scrape(new URL(schedule.url));
     const savedEpisodes: Episode[] = await _getSavedEpisodes(podcastDao, schedule.podcastId);
     const newEpisodes = _getNewEpisodes(episodes, savedEpisodes);
     
-    console.log(JSON.stringify(newEpisodes));
     return newEpisodes;
   } catch (err) {
     console.log(err.message);
@@ -31,14 +31,14 @@ export async function handler(event: Record<string, any>): Promise<any> {
 
 function _getNewEpisodes(episodesFromFeed: Episode[], episodesFromDao: Episode[]) {
   const daoEpisodeTitles = episodesFromDao.map(episode => episode.title);
-  return episodesFromFeed.filter(episode => daoEpisodeTitles.includes(episode.title));
+  return episodesFromFeed.filter(episode => !daoEpisodeTitles.includes(episode.title));
 }
 
 async function _getSavedEpisodes(podcastDao: PodcastDao, podcastId: string) {
   return await podcastDao.getEpisodesByPodcast(podcastId);
 }
 
-async function _saveNextRssSchedule(rssDao: PodcastDao, schedule: RssSchedule) {
+async function _saveNextRssSchedule(rssDao: RssScheduleDao, schedule: RssSchedule) {
   return await rssDao.insertRssSchedule(schedule);
 }
 
@@ -76,8 +76,8 @@ function _getNextStart(previousNextStart: number, cronExpression: string): numbe
   return Math.trunc(next.getTime() / 1000);
 }
 
-// Have to use the appropriate localstack hostname when running locally or in tests
+// Have to use the appropriate localstack hostname when running in tests
 function getDbEndpoint(): string {
-  return (process.env.NODE_ENV.toLowerCase() === 'local' || process.env.NODE_ENV.toLowerCase() === 'integration') ?
+  return process.env.NODE_ENV.toLowerCase() === 'integration' ?
     `http://${process.env.LOCALSTACK_HOSTNAME}:4566` : process.env.DYNAMODB_ENDPOINT;
 }

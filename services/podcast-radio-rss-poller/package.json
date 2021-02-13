@@ -23,9 +23,9 @@
   },
   "scripts": {
     "clean": "rm -rf ./dist/",
-    "local": "docker-compose -f docker-compose.local.yml down --remove-orphans && docker-compose -f docker-compose.local.yml up -d --build",
+    "local": "sh ./local/run-local.sh",
     "test:unit": "echo SUCCESS",
-    "test:integration:ci": "echo SUCCESS",
+    "test:integration": "echo SUCCESS",
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
   },
   "devDependencies": {
