@@ -21,6 +21,6 @@
   },
   "scripts": {
     "clean:infra": "rm -rf ./infrastructure/**/.terraform && rm -rf ./infrastructure/**/*.hcl && rm -rf ./infrastructure/**/*.tfstate*",
-    "release": "BUMP=$bump sh ./scripts/release.sh"
+    "release": "BUMP=$npm_config_bump sh ./scripts/release.sh"
   }
 }
