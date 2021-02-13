@@ -93,7 +93,7 @@ resource "aws_dynamodb_table_item" "rss_schedule_two" {
   "GUID": {"S": "23456"},
   "PODCAST_ID": {"S": "23456"},
   "RSS_URL": {"S": "http://feeds.feedburner.com/pod-save-america"},
-  "CRON": {"S": "*/2 * * * *"},
+  "CRON": {"S": "*/15 * * * *"},
   "NEXT_START": {"N": "${var.oneMinFromNow}"}
 }
 ITEM
@@ -123,7 +123,7 @@ resource "aws_dynamodb_table_item" "rss_schedule_four" {
   "GUID": {"S": "45678"},
   "PODCAST_ID": {"S": "12345"},
   "RSS_URL": {"S": "http://rss.art19.com/the-daily"},
-  "CRON": {"S": "*/2 * * * *"},
+  "CRON": {"S": "*/5 * * * *"},
   "NEXT_START": {"N": "${var.thirtySecsFromNow}"}
 }
 ITEM
