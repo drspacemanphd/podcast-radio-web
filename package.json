@@ -21,6 +21,6 @@
   },
   "scripts": {
     "clean:infra": "rm -rf ./infrastructure/**/.terraform && rm -rf ./infrastructure/**/*.hcl && rm -rf ./infrastructure/**/*.tfstate*",
-    "deploy": "lerna version --yes && lerna run build && lerna publish from-package --yes --contents dist"
+    "deploy": "lerna run build && lerna publish from-git --contents dist"
   }
 }
