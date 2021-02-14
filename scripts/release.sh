@@ -9,6 +9,6 @@ else
   yarn --frozen-lockfile
   lerna version "$BUMP"
   lerna run build
-  lerna publish --contents ./dist --yes
+  lerna publish --from-git --contents ./dist --yes
   return 0
 fi
