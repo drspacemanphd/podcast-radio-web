@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/drspacemanphd/podcast-radio-web/compare/@drspacemanphd/podcast-radio-scrapers@1.0.3...@drspacemanphd/podcast-radio-scrapers@1.0.1) (2021-02-14)
+
+**Note:** Version bump only for package @drspacemanphd/podcast-radio-scrapers
+
+
+
+
+
 ## [1.0.3](https://github.com/drspacemanphd/podcast-radio-web/compare/@drspacemanphd/podcast-radio-scrapers@1.0.2...@drspacemanphd/podcast-radio-scrapers@1.0.3) (2021-02-14)
 
 **Note:** Version bump only for package @drspacemanphd/podcast-radio-scrapers
