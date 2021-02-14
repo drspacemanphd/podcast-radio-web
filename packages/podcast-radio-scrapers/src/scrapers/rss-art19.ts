@@ -95,4 +95,3 @@ function _mapEpisode(props: EpisodeProps, podcast: Podcast): Episode {
   return new Episode('guid', props.title, props.author, podcast.guid, podcast.title, props.description,
     props.audioUrl, (mom.hours() * 60 * 60) + (mom.minutes() * 60) + mom.seconds(), new Date(props.publicationDate), 0);
 }
-
