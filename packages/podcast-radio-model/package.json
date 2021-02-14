@@ -1,6 +1,6 @@
 {
   "name": "@drspacemanphd/podcast-radio-model",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "A common model package for podcast radio",
   "main": "./dist/index",
   "types": "./dist/index",
@@ -21,10 +21,7 @@
     "typescript": "^4.1.2"
   },
   "scripts": {
-    "clean": "rm -rf ./dist/",
     "test:unit": "jest --coverage",
-    "test:integration:local": "echo SUCCESS",
-    "test:integration:ci": "echo SUCCESS",
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
   },
   "gitHead": "b3787dfd8e8dfc9d33a19e8ea8ef6677166ac744"
