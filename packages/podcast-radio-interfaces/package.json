@@ -1,6 +1,6 @@
 {
   "name": "@drspacemanphd/podcast-radio-interfaces",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "A common package of interfaces to be implemented",
   "main": "./dist/index",
   "types": "./dist/index",
@@ -22,7 +22,7 @@
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
   },
   "dependencies": {
-    "@drspacemanphd/podcast-radio-model": "^1.0.1"
+    "@drspacemanphd/podcast-radio-model": "1.0.0"
   },
   "gitHead": "3bc911a4ec2e7e1ad23896f15350885936137360"
 }
