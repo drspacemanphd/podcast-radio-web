@@ -5,6 +5,7 @@ if [ -z "$BUMP" ]; then
   return 1
 else
   npm run clean
+  yarn --frozen-lockfile --production
   lerna run build
   lerna version "$BUMP" && lerna run build && lerna publish from-git --yes --contents dist
   return 0
