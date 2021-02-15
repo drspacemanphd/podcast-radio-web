@@ -19,7 +19,6 @@ services:
     env_file: ./.env.integration
     volumes: 
       - ./:/app/
-      - ../../infrastructure:/app/infrastructure # necessary to bring in shared local infrastructure definitions     
-      - ../../packages:/app/packages # necessary only when referencing local non-published packages for local dev
+      - ../../infrastructure:/app/infrastructure # necessary to bring in shared local infrastructure definitions
     depends_on: 
       - localstack

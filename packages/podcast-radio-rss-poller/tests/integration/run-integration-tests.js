@@ -43,17 +43,15 @@ function poll() {
     throw new Error(poll.error);
   }
 
-  const line = poll.stdout.toString().split('\n').filter(s => s.includes('integration-tests'));
+  const line = poll.stdout.toString().split('\n').filter(s => s.includes('integration-tests'))[0];
 
-  if (line.length > 0 && line[0].includes('Exited (1)')) {
-    testsFinished = true
-    testsExitCode = 1;
-    console.log(spawnSync('docker', ['logs', 'integration-tests']).stderr.toString());
-  }
-
-  if (line.length > 0 && line[0].includes('Exited (0)')) {
+  if (line.includes('Exited (0)')) {
     testsFinished = true
     testsExitCode = 0;
+    console.log(spawnSync('docker', ['logs', 'integration-tests']).stderr.toString());
+  } else if (line.includes('Exited')) {
+    testsFinished = true
+    testsExitCode = 1;
     console.log(spawnSync('docker', ['logs', 'integration-tests']).stderr.toString());
   }
 }
