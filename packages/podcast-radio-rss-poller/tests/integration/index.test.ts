@@ -4,9 +4,7 @@ import { startScanner as startDeleteScanner } from './delete';
 
 describe('Rss Poller', () => {
   it('can successfully poll for a single new episode', async () => {
-      // Setup 
-      const deadline: number = new Date().getTime() + (60 * 1000 * parseInt(process.env.TEST_TIMEOUT_MINS));
-      
+      // Setup       
       const fiveMinsFromNowSecs: number = Math.trunc((new Date().getTime() + (60 * 1000 * 5)) / 1000);
       const rssDao: RssScheduleDao = new RssScheduleDao({ endpoint: process.env.DYNAMODB_ENDPOINT, region: process.env.DYNAMODB_REGION });
       
@@ -25,7 +23,6 @@ describe('Rss Poller', () => {
       expect(podLastEntry).toBeDefined();
       const podEarlyEntry = podEntries.filter(r => r.nextStartSecs < fiveMinsFromNowSecs);
       expect(podEarlyEntry).toBeDefined();
-
 
       // Start rss schedule entry delete process
       const deleteProcess = await startDeleteScanner();
