@@ -37,7 +37,7 @@ describe('Rss Poller', () => {
 
       clearTimeout(deleteProcess);
 
-      // Assert new entries have been added
+      // Assert new entry has been added
       const newDailyEntries: RssSchedule[] = await rssDao.getRssScheduleByUrl('http://rss.art19.com/the-daily');
       expect(newDailyEntries).toBeDefined();
       expect(newDailyEntries).toHaveLength(2);
