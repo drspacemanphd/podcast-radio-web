@@ -299,6 +299,40 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@drspacemanphd/podcast-radio-interfaces@0.0.2", "@drspacemanphd/podcast-radio-interfaces@^0.0.2":
+  version "0.0.2"
+  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-interfaces/0.0.2/20a498646ade6c26a3c3fead0cc26c838bcd16addbd15f0ea6823c52406536df#694093661e5250988e1cc348d9216f64ee07da8d"
+  integrity sha512-SSo3m2suJh8oJdjly4Agll938WsQr7h1xg0TA0UnLnHRyQpudX6Bglr4mrjIs/oVR3Woa62x4gbcGdxo6hljKA==
+  dependencies:
+    "@drspacemanphd/podcast-radio-model" "^0.0.2"
+
+"@drspacemanphd/podcast-radio-model@0.0.2", "@drspacemanphd/podcast-radio-model@^0.0.2":
+  version "0.0.2"
+  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-model/0.0.2/a6895e54c4eb8c54a714a1e4477aa4805bdcafacf76ae10a1ef09b88802f1f92#c910fcfbf638a202e48e4904b71ac5af4cf9aba5"
+  integrity sha512-4atTJiatAbTTbRZN5E3evkaSO/ehi+f8cCV9n+NV//xoPwmdOfm25Rsfn7W3ZTI4LM8n3kZ+x8ptSBfvSy4XLA==
+
+"@drspacemanphd/podcast-radio-podcast-dao@0.0.2":
+  version "0.0.2"
+  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-podcast-dao/0.0.2/a379c4d0c459f59bb1957ffc17b17e34685218f1c626cb9b60a42285e8a3855b#531a54ad0351bb0284356f92e049fbefe15570a1"
+  integrity sha512-ELzxn6HvoxuYT6lL0sv924WldAwMx1rJIvPpbqVQO4aFfK6SMxlW3SpS9K+QIgM5XU36OwWcP60KxbOq83UA3Q==
+  dependencies:
+    "@drspacemanphd/podcast-radio-interfaces" "^0.0.2"
+    "@drspacemanphd/podcast-radio-model" "^0.0.2"
+    aws-sdk "^2.799.0"
+    custom-env "^2.0.1"
+
+"@drspacemanphd/podcast-radio-scrapers@0.0.2":
+  version "0.0.2"
+  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-scrapers/0.0.2/e0baa5d0288990f18ea8370f84ecae3d1db233439862145a24d1930382cdf47e#12d2fc6e4df3e913ac5cfb99389a73271dfcf964"
+  integrity sha512-Q3SyFMCUqnSk0xrFKIwBZ61JLDC+2jD6sEj0TyKMc/XqV6btOfSJR+lrCf9fov1TzujQ//+/B2N05A2Occ+WIw==
+  dependencies:
+    "@drspacemanphd/podcast-radio-interfaces" "^0.0.2"
+    "@drspacemanphd/podcast-radio-model" "^0.0.2"
+    got "^11.8.1"
+    lodash "^4.17.20"
+    moment "^2.29.1"
+    xml-js "^1.6.11"
+
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@evocateur/libnpmaccess/-/libnpmaccess-3.1.2.tgz#ecf7f6ce6b004e9f942b098d92200be4a4b1c845"

@@ -1,6 +1,6 @@
 {
   "name": "@drspacemanphd/podcast-radio-scrapers",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Scraper function library to handle various RSS feed source XML formats",
   "keywords": [
     "Podcast",

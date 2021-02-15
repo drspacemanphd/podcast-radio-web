@@ -36,7 +36,7 @@ module "lambda_function" {
   lambda_code_path  = "../../../lambda.zip"
   description       = "poller for rss feeds"
   lambda_variables  = {
-    NODE_ENV = "local"
+    NODE_ENV = "integration"
   }
 }
 

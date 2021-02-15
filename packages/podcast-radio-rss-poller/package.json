@@ -1,6 +1,6 @@
 {
   "name": "@drspacemanphd/podcast-radio-rss-poller",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha",
   "description": "Microservice worker that polls rss feeds for changes and additions",
   "keywords": [
     "podcast",
@@ -41,10 +41,10 @@
     "typescript": "^4.1.2"
   },
   "dependencies": {
-    "@drspacemanphd/podcast-radio-interfaces": "^0.0.2",
-    "@drspacemanphd/podcast-radio-model": "^0.0.2",
-    "@drspacemanphd/podcast-radio-podcast-dao": "^0.0.2",
-    "@drspacemanphd/podcast-radio-scrapers": "^0.0.2",
+    "@drspacemanphd/podcast-radio-interfaces": "0.0.2",
+    "@drspacemanphd/podcast-radio-model": "0.0.2",
+    "@drspacemanphd/podcast-radio-podcast-dao": "0.0.2",
+    "@drspacemanphd/podcast-radio-scrapers": "0.0.2",
     "aws-sdk": "^2.799.0",
     "cron-schedule": "^2.2.4",
     "custom-env": "^2.0.1",
