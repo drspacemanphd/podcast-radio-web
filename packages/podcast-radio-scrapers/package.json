@@ -1,6 +1,6 @@
 {
   "name": "@drspacemanphd/podcast-radio-scrapers",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Scraper function library to handle various RSS feed source XML formats",
   "keywords": [
     "Podcast",
@@ -28,17 +28,17 @@
   },
   "devDependencies": {
     "@types/got": "^9.6.11",
+    "@types/jest": "^26.0.15",
     "@types/lodash": "^4.14.167",
     "@types/xml-js": "^1.0.0",
-    "ts-node": "^9.0.0",
-    "typescript": "^4.1.2",
-    "@types/jest": "^26.0.15",
     "jest": "^26.6.3",
-    "ts-jest": "^26.4.4"
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.1.2"
   },
   "dependencies": {
-    "@drspacemanphd/podcast-radio-interfaces": "^0.0.1",
-    "@drspacemanphd/podcast-radio-model": "^0.0.1",
+    "@drspacemanphd/podcast-radio-interfaces": "^0.0.2",
+    "@drspacemanphd/podcast-radio-model": "^0.0.2",
     "got": "^11.8.1",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
