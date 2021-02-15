@@ -1,6 +1,6 @@
 import got from 'got';
 import { URL } from 'url';
-import { scraper } from '../../src/scrapers/rss-art19';
+import { scraper } from '../../../src/scrapers/rss-art19';
 
 jest.mock('got');
 

@@ -1,7 +1,7 @@
 import got from 'got';
 import xmljs from 'xml-js';
 import { URL } from 'url';
-import { getFeed } from '../../src/utils/get-feed';
+import { getFeed } from '../../../src/utils/get-feed';
 
 const xml = `
 <?xml version="1.0" encoding="UTF-8"?>

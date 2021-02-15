@@ -22,7 +22,8 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "test:unit": "jest --testMatch=**/*.test.ts --verbose --coverage --collectCoverageFrom=./src/**/*.ts",
+    "test:unit": "jest --testMatch=**/unit/**/*.test.ts --verbose --coverage --collectCoverageFrom=./src/**/*.ts",
+    "test:integration": "jest --testMatch=**/integration/**/*.test.ts --runInBand --detectOpenHandles --verbose",
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
   },
   "devDependencies": {
