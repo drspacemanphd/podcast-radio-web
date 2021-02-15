@@ -1,6 +1,6 @@
 {
   "name": "@drspacemanphd/podcast-radio-podcast-dao",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A module for querying and maniuplating podcast and episode DB entries",
   "keywords": [
     "Podcast",
