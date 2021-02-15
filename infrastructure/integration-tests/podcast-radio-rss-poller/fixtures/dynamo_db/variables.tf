@@ -1,7 +1,7 @@
-variable threeMinsFromNow {
+variable thirtySecsFromNow {
   type        = string
   default     = ""
-  description = "Stringified representation of unix epoch in seconds for three minutes from execution"
+  description = "Stringified representation of unix epoch in seconds for thirty seconds from execution"
 }
 
 variable oneMinFromNow {

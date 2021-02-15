@@ -24,7 +24,7 @@
   "scripts": {
     "local": "sh ./local/run-local.sh",
     "test:unit": "jest --testMatch=**/unit/**/*.test.ts --verbose --coverage --collectCoverageFrom=./src/**/*.ts",
-    "test:integration": "echo SUCCESS",
+    "test:integration": "node ./tests/integration/run-integration-tests.js",
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
   },
   "devDependencies": {

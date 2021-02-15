@@ -1,4 +1,10 @@
-#!/bin/bash
+#!/bin/sh
+set -e
+
+apk add zip
+(cd ./dist && zip -r9q ../lambda.zip ../node_modules ../.env.integration)
+(cd ./infrastructure/integration-tests/podcast-radio-rss-poller && rm -rf .terraform)
+(cd ./infrastructure/integration-tests/podcast-radio-rss-poller && rm -rf terraform*)
 (cd ./infrastructure/integration-tests/podcast-radio-rss-poller && terraform init)
 (cd ./infrastructure/integration-tests/podcast-radio-rss-poller && terraform apply -auto-approve)
 jest --testMatch=**/integration/**/*.test.ts --runInBand --detectOpenHandles --verbose --testTimeout=60000

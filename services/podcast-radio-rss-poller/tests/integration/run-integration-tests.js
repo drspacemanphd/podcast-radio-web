@@ -13,7 +13,8 @@ function startTests() {
 }
 
 function composeUp() {
-  const dockerComposeUp = spawnSync('docker-compose', ['-f', 'docker-compose.integration-tests.yml', 'up', '-d', '--build']);
+  composeDown();
+  const dockerComposeUp = spawnSync('docker-compose', ['-f', 'docker-compose.integration.yml', 'up', '-d', '--build']);
 
   if (dockerComposeUp.status !== 0) {
     console.error(`docker-compose up returned error: ${dockerComposeUp.status}, ${dockerComposeUp.error}`);
@@ -43,7 +44,7 @@ function poll() {
   }
 
   const line = poll.stdout.toString().split('\n').filter(s => s.includes('integration-tests'));
-  
+
   if (line.length > 0 && line[0].includes('Exited (1)')) {
     testsFinished = true
     testsExitCode = 1;
@@ -71,7 +72,7 @@ function getWatcher(pollerId) {
 }
 
 function composeDown() {
-  const dockerComposeDown = spawnSync('docker-compose', ['-f', 'docker-compose.integration-tests.yml', 'down']);
+  const dockerComposeDown = spawnSync('docker-compose', ['-f', 'docker-compose.integration.yml', 'down']);
 
   if (dockerComposeDown.status !== 0) {
     console.error(`docker-compose down returned error: ${dockerComposeDown.status}, ${dockerComposeDown.error}`);

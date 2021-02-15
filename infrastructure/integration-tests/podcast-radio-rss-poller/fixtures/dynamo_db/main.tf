@@ -94,7 +94,7 @@ resource "aws_dynamodb_table_item" "rss_schedule_two" {
   "PODCAST_ID": {"S": "23456"},
   "RSS_URL": {"S": "http://feeds.feedburner.com/pod-save-america"},
   "CRON": {"S": "*/15 * * * *"},
-  "NEXT_START": {"N": "${var.threeMinsFromNow}"}
+  "NEXT_START": {"N": "${var.thirtySecsFromNow}"}
 }
 ITEM
 }
@@ -108,7 +108,7 @@ resource "aws_dynamodb_table_item" "rss_schedule_three" {
   "GUID": {"S": "34567"},
   "PODCAST_ID": {"S": "12345"},
   "RSS_URL": {"S": "http://rss.art19.com/the-daily"},
-  "CRON": {"S": "*/5 * * * *"},
+  "CRON": {"S": "*/15 * * * *"},
   "NEXT_START": {"N": "253402300799"}
 }
 ITEM
@@ -123,7 +123,7 @@ resource "aws_dynamodb_table_item" "rss_schedule_four" {
   "GUID": {"S": "45678"},
   "PODCAST_ID": {"S": "12345"},
   "RSS_URL": {"S": "http://rss.art19.com/the-daily"},
-  "CRON": {"S": "*/5 * * * *"},
+  "CRON": {"S": "*/15 * * * *"},
   "NEXT_START": {"N": "${var.oneMinFromNow}"}
 }
 ITEM

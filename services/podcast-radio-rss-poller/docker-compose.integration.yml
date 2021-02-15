@@ -6,16 +6,16 @@ services:
     ports:
       - "4566:4566"
     environment:
-      - LOCALSTACK_SERVICES=iam,s3,lambda,dynamodb,dynamodbstreams,sqs
-      - LAMBDA_EXECUTOR=docker-reuse
+      - LOCALSTACK_SERVICES=iam,lambda,dynamodb,dynamodbstreams,sqs
+      - LAMBDA_EXECUTOR=docker
       - LAMBDA_DOCKER_NETWORK=podcast-radio-rss-poller_default # annoyingly unless specified, lambda is executed outside default network
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
-  lambda:
+  integration-tests:
     image: drspacemanphd/nodejs-jest-terraform:1.0.0
-    container_name: "integration_tests"
+    container_name: "integration-tests"
     working_dir: /app
-    command: sh ./scripts/run-integration-tests.sh
+    command: sh ./tests/integration/run-integration-tests.sh
     env_file: ./.env.integration
     volumes: 
       - ./:/app/
