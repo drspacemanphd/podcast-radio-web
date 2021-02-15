@@ -17,7 +17,7 @@ function composeUp() {
   const dockerComposeUp = spawnSync('docker-compose', ['-f', 'docker-compose.integration.yml', 'up', '-d', '--build']);
 
   if (dockerComposeUp.status !== 0) {
-    console.error(`docker-compose up returned error: ${dockerComposeUp.status}, ${dockerComposeUp.error}`);
+    console.error(`docker-compose up returned error: ${dockerComposeUp.status}, ${dockerComposeUp.stderr.toString()}`);
     errorStdOut.push(dockerComposeUp.stderr.toString());
     throw new Error(dockerComposeUp.error);
   }
@@ -77,6 +77,8 @@ function composeDown() {
     errorStdOut.push(dockerComposeDown.stderr.toString());
     throw new Error(dockerComposeDown.error);
   }
+
+  spawnSync('docker', ['network', 'rm', 'podcast-radio-rss-poller_default']);
 
   return dockerComposeDown.status;
 }

@@ -18,8 +18,8 @@
     "typescript": "^4.1.2"
   },
   "scripts": {
-    "test:unit": "echo SUCCESS",
-    "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
+    "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist",
+    "test:integration": "echo SUCCESS"
   },
   "dependencies": {
     "@drspacemanphd/podcast-radio-model": "^0.0.2"

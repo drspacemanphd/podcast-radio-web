@@ -22,6 +22,7 @@
   },
   "scripts": {
     "test:unit": "jest --coverage",
+    "test:integration": "echo SUCCESS",
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
   },
   "gitHead": "b3787dfd8e8dfc9d33a19e8ea8ef6677166ac744"
