@@ -13,12 +13,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - uses: ferluisxd/create-npmrc@3
+      - name: Create npmrc
+        uses: ferluisxd/create-npmrc@3
         with:
           org_name: podcast-radio-web
-          auth_token: ${{secrets.NPM_AUTH_TOKEN}}
-          env:
-            AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Install lerna
