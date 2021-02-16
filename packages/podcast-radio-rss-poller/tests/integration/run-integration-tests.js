@@ -1,4 +1,4 @@
-const { spawn, spawnSync } = require('child_process');
+const { spawnSync } = require('child_process');
 
 let testsFinished = false;
 const errorStdOut = [];
@@ -29,9 +29,9 @@ function getPoller() {
   return setTimeout(() => {
     if (!testsFinished) {
       poll();
-      return setTimeout(getPoller, 500);
+      return setTimeout(getPoller, 5000);
     }
-  }, 500);
+  }, 5000);
 }
 
 function poll() {
@@ -43,9 +43,11 @@ function poll() {
     throw new Error(poll.error);
   }
 
-  const logs = spawnSync('docker', ['logs', 'integration-tests']);
-  console.log(logs.stdout.toString());
+  const localstack = poll.stdout.toString().split('\n').filter(s => s.includes('localstack'))[0];
 
+  console.log('LOCALSTACK');
+  console.log(localstack);
+  
   const line = poll.stdout.toString().split('\n').filter(s => s.includes('integration-tests'))[0];
 
   if (line.includes('Exited (0)')) {
