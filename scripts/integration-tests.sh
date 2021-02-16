@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 changed=$(lerna changed)
 echo $changed
 

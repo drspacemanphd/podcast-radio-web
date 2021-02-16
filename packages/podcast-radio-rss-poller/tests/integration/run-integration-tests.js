@@ -44,6 +44,7 @@ function poll() {
   }
 
   const line = poll.stdout.toString().split('\n').filter(s => s.includes('integration-tests'))[0];
+  console.log(line);
 
   if (line.includes('Exited (0)')) {
     testsFinished = true
