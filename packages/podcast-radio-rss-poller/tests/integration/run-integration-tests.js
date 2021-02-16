@@ -43,8 +43,10 @@ function poll() {
     throw new Error(poll.error);
   }
 
+  const logs = spawnSync('docker', ['logs', 'integration-tests']);
+  console.log(logs.stdout.toString());
+
   const line = poll.stdout.toString().split('\n').filter(s => s.includes('integration-tests'))[0];
-  console.log(line);
 
   if (line.includes('Exited (0)')) {
     testsFinished = true
