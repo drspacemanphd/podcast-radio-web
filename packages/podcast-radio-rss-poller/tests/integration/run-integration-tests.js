@@ -43,13 +43,11 @@ function poll() {
     throw new Error(poll.error);
   }
 
-  const localstack = poll.stdout.toString().split('\n').filter(s => s.includes('localstack_main'));
-  if (localstack) {
-    const logs = spawnSync('docker', ['logs', 'localstack_main']);
+  const line = poll.stdout.toString().split('\n').filter(s => s.includes('integration-tests'))[0];
+  if (line) {
+    const logs = spawnSync('docker', ['logs', 'integration-tests']);
     console.log(logs.stdout.toString());
   }
-
-  const line = poll.stdout.toString().split('\n').filter(s => s.includes('integration-tests'))[0];
 
   if (line.includes('Exited (0)')) {
     testsFinished = true
