@@ -45,7 +45,7 @@ function poll() {
 
   const line = poll.stdout.toString().split('\n').filter(s => s.includes('integration-tests'))[0];
   if (line) {
-    const logs = spawnSync('docker', ['logs', 'integration-tests']);
+    const logs = spawnSync('docker', ['logs', 'localstack_main']);
     console.log(logs.stdout.toString());
   }
 
