@@ -13,12 +13,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - name: Create npmrc
-        uses: ferluisxd/create-npmrc@3
+      - uses: oleksiyrudenko/gha-git-credentials@v2-latest
         with:
-          org_name: podcast-radio-web
-        env:
-          AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          token: '${{ secrets.GITHUB_TOKEN }}'
+      - name: Setup npmrc
+        run: printf "//npm.pkg.github.com/:_authToken=${{secrets.NPM_AUTH_TOKEN}}\n@drspacemanphd:registry=https://npm.pkg.github.com" > .npmrc
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Install lerna
