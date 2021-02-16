@@ -17,7 +17,7 @@ jobs:
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
       - name: Setup npmrc
-        run: echo "//npm.pkg.github.com/:_authToken=${{secrets.NPM_AUTH_TOKEN}}" > .npmrc
+        run: printf "//npm.pkg.github.com/:_authToken=${{secrets.NPM_AUTH_TOKEN}}\n@drspacemanphd:registry=https://npm.pkg.github.com" > .npmrc
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Install lerna
