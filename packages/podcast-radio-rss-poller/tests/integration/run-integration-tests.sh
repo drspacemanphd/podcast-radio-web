@@ -5,6 +5,7 @@ apk add zip
 npm run build
 (cd ./dist && zip -r9q ../lambda.zip  ./* ../node_modules ../.env.integration)
 ls -al
+cat ./dist/index.js
 (cd ./infrastructure/integration-tests/podcast-radio-rss-poller && rm -rf .terraform)
 (cd ./infrastructure/integration-tests/podcast-radio-rss-poller && rm -rf terraform*)
 (cd ./infrastructure/integration-tests/podcast-radio-rss-poller && terraform init)
