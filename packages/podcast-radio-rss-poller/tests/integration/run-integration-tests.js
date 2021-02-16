@@ -43,11 +43,9 @@ function poll() {
     throw new Error(poll.error);
   }
 
-  const lambda = poll.stdout.toString().split('\n').filter(s => s.includes('localstack_lambda_arn_aws_lambda_us-east-1_000000000000_function_podcast-radio-rss-poller'));
-  if (lambda) {
-    console.log(lambda);
-    const cmd = spawnSync('docker', ['exec', '-it', 'localstack_lambda_arn_aws_lambda_us-east-1_000000000000_function_podcast-radio-rss-poller', 'ls', '/var/task']);
-    console.log(cmd.stdout.toString());
+  const localstack = poll.stdout.toString().split('\n').filter(s => s.includes('localstack_main'));
+  if (localstack) {
+    console.log(localstack);
   }
 
   const line = poll.stdout.toString().split('\n').filter(s => s.includes('integration-tests'))[0];
