@@ -42,13 +42,6 @@ function poll() {
     errorStdOut.push(poll.stderr.toString());
     throw new Error(poll.error);
   }
-
-  console.log('LIST');
-  const list = spawnSync('docker', ['exec', '-it', 'integration-tests', 'ls', '-al']);
-  console.log(list.stdout.toString());
-  console.log('LOGS')
-  const logs = spawnSync('docker', ['logs', 'integration-tests']);
-  console.log(logs.stdout.toString())
   
   const line = poll.stdout.toString().split('\n').filter(s => s.includes('integration-tests'))[0];
 

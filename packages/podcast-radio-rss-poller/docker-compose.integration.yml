@@ -7,7 +7,7 @@ services:
       - "4566:4566"
     environment:
       - LOCALSTACK_SERVICES=iam,lambda,dynamodb,dynamodbstreams,sqs
-      - LAMBDA_EXECUTOR=docker
+      - LAMBDA_EXECUTOR=docker-reuse
       - LAMBDA_DOCKER_NETWORK=podcast-radio-rss-poller_default # annoyingly unless specified, lambda is executed outside default network
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
