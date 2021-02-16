@@ -45,7 +45,8 @@ function poll() {
 
   const localstack = poll.stdout.toString().split('\n').filter(s => s.includes('localstack_main'));
   if (localstack) {
-    console.log(localstack);
+    const logs = spawnSync('docker', ['logs', 'localstack_main']);
+    console.log(logs.stdout.toString());
   }
 
   const line = poll.stdout.toString().split('\n').filter(s => s.includes('integration-tests'))[0];
