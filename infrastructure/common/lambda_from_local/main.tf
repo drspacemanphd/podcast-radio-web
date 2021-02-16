@@ -65,7 +65,7 @@ resource "aws_lambda_function" "lambda_function" {
 
   filename          = var.lambda_code_path
 
-  runtime           = "nodejs12.x"
+  runtime           = "nodejs14.x"
   memory_size       = 512
   timeout           = 30
 
