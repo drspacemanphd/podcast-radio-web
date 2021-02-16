@@ -43,8 +43,12 @@ function poll() {
     throw new Error(poll.error);
   }
 
-  const localstack = spawnSync('docker', ['logs', 'localstack_main']);
-  console.log(localstack.stdout.toString());
+  console.log('LIST');
+  const list = spawnSync('docker', ['exec', '-it', 'integration-tests', 'ls', '-al']);
+  console.log(list.stdout.toString());
+  console.log('LOGS')
+  const logs = spawnSync('docker', ['logs', 'integration-tests']);
+  console.log(logs.stdout.toString())
   
   const line = poll.stdout.toString().split('\n').filter(s => s.includes('integration-tests'))[0];
 
