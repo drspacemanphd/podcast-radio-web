@@ -33,15 +33,6 @@ describe('Rss Poller', () => {
       console.log(`ending sleep at ${new Date()}`);
 
       clearTimeout(deleteProcess);
-
-      // Assert new entry has been added
-      const newDailyEntries: RssSchedule[] = await rssDao.getRssScheduleByUrl('http://rss.art19.com/the-daily');
-      expect(newDailyEntries).toBeDefined();
-      expect(newDailyEntries).toHaveLength(2);
-      const newDailyLastEntry = newDailyEntries.filter(r => r.nextStartSecs === 253402300799);
-      expect(newDailyLastEntry).toBeDefined();
-      const newDailyEarlyEntry = newDailyEntries.filter(r => r.nextStartSecs > fiveMinsFromNowSecs);
-      expect(newDailyEarlyEntry).toBeDefined();
   });
 });
 
