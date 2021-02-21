@@ -2,6 +2,20 @@ module "dynamodb_table" {
   source = "../../common/dynamo_db"
 }
 
+module "podcast_update_queue" {
+  source                      = "../../common/sqs"
+  queue_name                  = "podcast-update-queue"
+  visibility_timeout_seconds  = 60
+  account_id                  = "000000000000"
+}
+
+module "episode_update_queue" {
+  source                      = "../../common/sqs"
+  queue_name                  = "episode-update-queue"
+  visibility_timeout_seconds  = 60
+  account_id                  = "000000000000"
+}
+
 data "external" "thirtySecsFromNow" {
   program = ["node", "${path.module}/timestamp.js"]
 
@@ -37,6 +51,8 @@ module "lambda_function" {
   description       = "poller for rss feeds"
   lambda_variables  = {
     NODE_ENV = "integration"
+    PODCAST_UPDATE_QUEUE_URL = module.podcast_update_queue.sqs_queue_url
+    EPISODE_UPDATE_QUEUE_URL = module.episode_update_queue.sqs_queue_url
   }
 }
 

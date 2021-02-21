@@ -333,6 +333,15 @@
     aws-sdk "^2.799.0"
     custom-env "^2.0.1"
 
+"@drspacemanphd/podcast-radio-queue@latest":
+  version "0.0.1"
+  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-queue/0.0.1/5d538dc2b6e94f79efa4354eedd5b088cd98081e26e1d2fbb26646614d000e7f#5d50d0b7f665b29120542b319fbc4275681eb7d5"
+  integrity sha512-WPDGZGPaH+7N0Ej0+HyqMi3BBbMat0StwS3tUpUvLw4ck3g3ZKs33o8t4SdkVMH5XWEIv92v3yR7N5wc7xcLfw==
+  dependencies:
+    "@drspacemanphd/podcast-radio-interfaces" "^0.0.6"
+    "@drspacemanphd/podcast-radio-model" "^0.0.6"
+    aws-sdk "^2.799.0"
+
 "@drspacemanphd/podcast-radio-scrapers@0.0.4":
   version "0.0.4"
   resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-scrapers/0.0.4/08ce801e44fb7f84c5cb248be656cdbc7701e2e1842b2dc896f9a65e482abd66#4d9eebc82b60af2aff44b72c06578e134a4ddb66"

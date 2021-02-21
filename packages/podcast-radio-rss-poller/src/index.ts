@@ -2,26 +2,39 @@ import _ from 'lodash';
 import { URL } from 'url';
 import { v4 as uuidv4 } from 'uuid';
 import { parseCronExpression, Cron } from 'cron-schedule';
-import { Episode, RssSchedule } from '@drspacemanphd/podcast-radio-model';
+import { Podcast, Episode, RssSchedule } from '@drspacemanphd/podcast-radio-model';
 import { RssScraper } from '@drspacemanphd/podcast-radio-scrapers';
 import { PodcastDao, RssScheduleDao } from '@drspacemanphd/podcast-radio-podcast-dao';
+import { PodcastQueue, EpisodeQueue } from '@drspacemanphd/podcast-radio-queue';
 
 export async function handler(event: Record<string, any>): Promise<any> {
   try {
     const schedule: RssSchedule = _getNextRssSchedule(event);
     if (!schedule || !schedule.url || !schedule.podcastId) return;
 
-    const endpoint = getDbEndpoint();
+    const dbEndpoint = getDbEndpoint();
+    const sqsEndpoint = getSqsEndpoint();
 
-    const podcastDao = new PodcastDao({ endpoint, region: process.env.DYNAMODB_REGION });
-    const rssScheduleDao = new RssScheduleDao({ endpoint, region: process.env.DYNAMODB_REGION });
+    const podcastDao = new PodcastDao({ endpoint: dbEndpoint, region: process.env.DYNAMODB_REGION });
+    const rssScheduleDao = new RssScheduleDao({ endpoint: dbEndpoint, region: process.env.DYNAMODB_REGION });
+    const podcastQueue = new PodcastQueue({ endpoint: sqsEndpoint, region: process.env.SQS_REGION });
+    const episodeQueue = new EpisodeQueue({ endpoint: sqsEndpoint, region: process.env.SQS_REGION });
 
     await _saveNextRssSchedule(rssScheduleDao, schedule);
 
     const { podcast, episodes } = await RssScraper.scrape(new URL(schedule.url));
+    const savedPodcast: Podcast = await _getSavedPodcast(podcastDao, schedule.podcastId);
     const savedEpisodes: Episode[] = await _getSavedEpisodes(podcastDao, schedule.podcastId);
-    const newEpisodes = _getNewEpisodes(episodes, savedEpisodes);
-    
+
+    if (JSON.stringify(podcast) !== JSON.stringify(savedPodcast)) {
+      await podcastQueue.pushPodcastUpdate(podcast);
+    }
+
+    const newEpisodes: Episode[] = _getNewEpisodes(episodes, savedEpisodes);
+
+    const pushedEpisodes: Promise<any>[] = newEpisodes.map((episode: Episode) => episodeQueue.pushEpisodeUpdate(episode));
+    await Promise.all(pushedEpisodes);
+
     return newEpisodes;
   } catch (err) {
     console.log(err.message);
@@ -32,6 +45,10 @@ export async function handler(event: Record<string, any>): Promise<any> {
 function _getNewEpisodes(episodesFromFeed: Episode[], episodesFromDao: Episode[]) {
   const daoEpisodeTitles = episodesFromDao.map(episode => episode.title);
   return episodesFromFeed.filter(episode => !daoEpisodeTitles.includes(episode.title));
+}
+
+async function _getSavedPodcast(podcastDao: PodcastDao, podcastId: string) {
+  return await podcastDao.getPodcastById(podcastId);
 }
 
 async function _getSavedEpisodes(podcastDao: PodcastDao, podcastId: string) {
@@ -80,4 +97,10 @@ function _getNextStart(previousNextStart: number, cronExpression: string): numbe
 function getDbEndpoint(): string {
   return process.env.NODE_ENV.toLowerCase() === 'integration' ?
     `http://${process.env.LOCALSTACK_HOSTNAME}:4566` : process.env.DYNAMODB_ENDPOINT;
+}
+
+// Have to use the appropriate localstack hostname when running in tests
+function getSqsEndpoint(): string {
+  return process.env.NODE_ENV.toLowerCase() === 'integration' ?
+    `http://${process.env.LOCALSTACK_HOSTNAME}:4566` : process.env.SQS_ENDPOINT;
 }
