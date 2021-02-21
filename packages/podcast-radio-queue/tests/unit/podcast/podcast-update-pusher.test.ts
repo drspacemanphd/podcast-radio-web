@@ -1,13 +1,13 @@
 import { Podcast } from '@drspacemanphd/podcast-radio-model';
 import { PodcastUpdatePusher } from '../../../src/podcast/podcast-update-pusher';
 
-let params = null;
+let params: any = null;
 const mockBehavior = jest.fn();
 
 jest.mock('aws-sdk', () => ({
   SQS: function () {
     return {
-      sendMessage: (args) => {
+      sendMessage: (args: any) => {
         params = args;
         return {
           promise: mockBehavior
