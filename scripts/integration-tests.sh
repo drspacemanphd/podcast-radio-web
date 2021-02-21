@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-changed=$(lerna changed)
+changed=$(lerna changed --ci=false)
 echo $changed
 
 IFS=$'\n'
