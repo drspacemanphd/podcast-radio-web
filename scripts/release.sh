@@ -7,7 +7,7 @@ if [ -z "$BUMP" ]; then
 else
   npm run clean
   yarn --frozen-lockfile
-  lerna version "$BUMP"
+  lerna version "$BUMP" --yes
   lerna run build
   lerna publish from-git --contents ./dist --yes
   return 0
