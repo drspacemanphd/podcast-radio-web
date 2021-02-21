@@ -1,5 +1,5 @@
 resource "aws_iam_role" "lambda_execution_role" {
-  name = "${var.service_name}-lambda-execution-role"
+  name = "${var.service_name}-lambda-execution-role-dev"
 
   assume_role_policy = <<EOF
 {
@@ -49,7 +49,8 @@ EOF
 resource "aws_iam_role_policy_attachment" "additional_policies" {
   for_each    = toset([
     "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess",
-    "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+    "arn:aws:iam::aws:policy/AmazonS3FullAccess",
+    "arn:aws:iam::aws:policy/AmazonSQSFullAccess"
   ])
 
   role        = aws_iam_role.lambda_execution_role.id
@@ -74,9 +75,10 @@ resource "aws_s3_bucket" "lambda_code_bucket" {
 }
 
 resource "aws_s3_bucket_object" "lambda_code" {
-  bucket   = "${var.service_name}-function-code"
-  key      = var.service_name
+  bucket   = aws_s3_bucket.lambda_code_bucket.id
+  key      = "${var.service_name}.zip"
   source   = var.filename
+
 
   tags = {
     application = "podcast-radio-web"
@@ -88,19 +90,13 @@ resource "aws_s3_bucket_object" "lambda_code" {
 resource "aws_lambda_function" "lambda_function" {
   function_name     = var.service_name
   handler           = "index.handler"
-  role              = aws_iam_role.lambda_execution_role.id
+  role              = aws_iam_role.lambda_execution_role.arn
 
   description       = var.description
 
-  filename          = var.filename
-
-  # s3_bucket         = "${var.service_name}-function-code"
-  # s3_key            = aws_s3_bucket_object.lambda_code.id
-  # s3_object_version = aws_s3_bucket_object.lambda_code.version_id
-
-  s3_bucket         = var.s3_bucket
-  s3_key            = var.s3_key
-  s3_object_version = var.s3_object_version
+  s3_bucket         = "${var.service_name}-function-code"
+  s3_key            = aws_s3_bucket_object.lambda_code.id
+  s3_object_version = aws_s3_bucket_object.lambda_code.version_id
 
   runtime           = "nodejs12.x"
   memory_size       = 512
