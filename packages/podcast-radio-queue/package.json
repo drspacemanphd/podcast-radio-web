@@ -1,6 +1,6 @@
 {
   "name": "@drspacemanphd/podcast-radio-queue",
-  "version": "0.0.1-alpha",
+  "version": "0.0.1",
   "description": "A package to abstract queue-based operations",
   "keywords": [
     "Podcast",
