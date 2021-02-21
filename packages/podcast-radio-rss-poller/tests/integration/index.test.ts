@@ -39,5 +39,5 @@ describe('Rss Poller', () => {
 async function sleep(mins: number) {
   return new Promise(resolve => {
     return setTimeout(resolve, 60 * 1000 * mins);
-  })
+  });
 }

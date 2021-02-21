@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  localstack:
+    container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main}"
+    image: localstack/localstack:0.12.5
+    ports:
+      - "4566:4566"
+    environment:
+      - LOCALSTACK_SERVICES=sqs
+  tests:
+    container_name: "integration-tests"
+    image: drspacemanphd/nodejs-jest-terraform:1.0.0
+    command: sh ./tests/integration/run-integration-tests.sh
+    working_dir: /app
+    env_file: ./.env.integration
+    volumes: 
+      - ./:/app
+      - ../../infrastructure:/app/infrastructure # bring in infrastructure
+      - ../../node_modules:/app/node_modules # necessary as node_modules are hoisted here
+      - ../../packages:/app/packages # necessary anytime local packages are referenced
+    depends_on: 
+      - localstack

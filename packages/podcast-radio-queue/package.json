@@ -1,14 +1,13 @@
 {
-  "name": "@drspacemanphd/podcast-radio-podcast-dao",
-  "version": "0.0.5",
-  "description": "A module for querying and maniuplating podcast and episode DB entries",
+  "name": "@drspacemanphd/podcast-radio-queue",
+  "version": "1.0.0",
+  "description": "A package to abstract queue-based operations",
   "keywords": [
     "Podcast",
-    "Radio",
-    "Podcast",
-    "Episode"
+    "radio",
+    "queue"
   ],
-  "author": "drspacemanphd",
+  "author": "drspacemanphd <markabrown87@gmail.com>",
   "homepage": "https://github.com/drspacemanphd/podcast-radio-web#readme",
   "license": "ISC",
   "main": "./dist/index",
@@ -16,29 +15,27 @@
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/drspacemanphd/podcast-radio-web.git",
-    "directory": "packages/podcast-radio-podcast-dao"
+    "directory": "packages/podcast-radio-queue"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "clean": "rm -rf ./dist/",
     "local": "jest --testMatch=**/unit/**/*.test.ts --detectOpenHandles --verbose --coverage --collectCoverageFrom=./src/**/*.ts --watchAll",
     "test:unit": "jest --testMatch=**/unit/**/*.test.ts --verbose --coverage --collectCoverageFrom=./src/**/*.ts",
     "test:integration": "node ./tests/integration/run-integration-tests.js",
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
   },
-  "devDependencies": {
+  "dependencies": {
     "@types/jest": "^26.0.15",
     "jest": "^26.6.3",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.0.0",
     "typescript": "^4.1.2"
   },
-  "dependencies": {
+  "devDependencies": {
     "@drspacemanphd/podcast-radio-interfaces": "^0.0.5",
     "@drspacemanphd/podcast-radio-model": "^0.0.5",
     "aws-sdk": "^2.799.0"
-  },
-  "gitHead": "3bc911a4ec2e7e1ad23896f15350885936137360"
+  }
 }
