@@ -49,7 +49,8 @@ EOF
 resource "aws_iam_role_policy_attachment" "additional_policies" {
   for_each    = toset([
     "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess",
-    "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+    "arn:aws:iam::aws:policy/AmazonS3FullAccess",
+    "arn:aws:iam::aws:policy/AmazonSQSFullAccess"
   ])
 
   role        = aws_iam_role.lambda_execution_role.id

@@ -9,11 +9,6 @@ variable "service_name" {
   description = "name of the lambda function"
 }
 
-variable "lambda_code_path" {
-  type        = string
-  description = "path of the code from root of repo"
-}
-
 variable "description" {
   type        = string
   description = "description of the lambda functionality"
