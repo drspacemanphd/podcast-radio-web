@@ -3,6 +3,14 @@ name: Deploy Infrastructure to DEV
 on: workflow_dispatch
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install lerna
+        run: npm install -g lerna
+      - name: Build lambdas
+        run: lerna run build:deployment
   deploy:
     runs-on: ubuntu-latest
     steps:
