@@ -12,6 +12,8 @@ jobs:
           terraform_version: 0.14.5
       - name: Use DEV as local workspace
         run: cd ./infrastructure/dev
+      - name: Check dir
+        run: ls -al
       - name: Initialize DEV workspace
         run: terraform init
       - name: terraform plan
