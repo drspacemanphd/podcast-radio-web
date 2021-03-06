@@ -10,10 +10,8 @@ jobs:
       - uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 0.14.5
-      - name: Test dir
-        run: ls -al
-      - name: Set DEV as local workspace
-        run: terraform workspace select default ./infrastructure/dev
+      - name: Use DEV as local workspace
+        run: cd ./infrastructure/dev
       - name: Initialize DEV workspace
         run: terraform init
       - name: terraform plan
