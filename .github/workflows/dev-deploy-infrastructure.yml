@@ -33,5 +33,5 @@ jobs:
         run: lerna run build:deployment
       - name: Initialize DEV workspace
         run: cd ./infrastructure/dev && terraform init
-      - name: terraform plan
+      - name: Apply terraform
         run: cd ./infrastructure/dev && terraform apply --auto-approve
