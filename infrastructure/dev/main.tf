@@ -59,7 +59,7 @@ data "external" "oneMinFromNow" {
   program = ["node", "${path.module}/timestamp.js"]
 
   query = {
-    minsToAdd = "0.5"
+    minsToAdd = "5"
   }
 }
 

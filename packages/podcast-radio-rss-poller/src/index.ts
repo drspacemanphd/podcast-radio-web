@@ -25,6 +25,7 @@ export async function handler(event: Record<string, any>): Promise<any> {
     await _saveNextRssSchedule(rssScheduleDao, schedule);
 
     const { podcast, episodes } = await RssScraper.scrape(new URL(schedule.url));
+
     const savedPodcast: Podcast = await _getSavedPodcast(podcastDao, schedule.podcastId);
     const savedEpisodes: Episode[] = await _getSavedEpisodes(podcastDao, schedule.podcastId);
 
@@ -37,7 +38,7 @@ export async function handler(event: Record<string, any>): Promise<any> {
     const pushedEpisodes: Promise<any>[] = newEpisodes.map((episode: Episode) => episodeQueue.pushEpisodeUpdate(episode));
     await Promise.all(pushedEpisodes);
 
-    console.log(`QUEUED ${newEpisodes.length} EPISODES OF PODCAST ${podcast.guid}`);
+    console.log(`QUEUED ${newEpisodes.length} EPISODES OF PODCAST ${schedule.podcastId}`);
     return newEpisodes;
   } catch (err) {
     console.log(err.message);
