@@ -20,16 +20,16 @@ module "episode_update_queue" {
 
 module "lambda_function" {
   source            = "../common/lambda_from_s3"
-  service_name      = "podcast-radio-rss-poller-development"
+  service_name      = "podcast-radio-rss-poller-dev"
   environment       = "dev"
   description       = "poller for rss feeds"
   filename          = "../../packages/podcast-radio-rss-poller/lambda.zip"
   lambda_variables  = {
     NODE_ENV = "dev"
-    PODCAST_UPDATE_QUEUE_URL = module.podcast_update_queue.sqs_queue_url
-    EPISODE_UPDATE_QUEUE_URL = module.episode_update_queue.sqs_queue_url
     DYNAMODB_REGION = "us-east-1"
     SQS_REGION = "us-east-1"
+    PODCAST_UPDATE_QUEUE_URL = module.podcast_update_queue.sqs_queue_url
+    EPISODE_UPDATE_QUEUE_URL = module.episode_update_queue.sqs_queue_url
   }
 }
 

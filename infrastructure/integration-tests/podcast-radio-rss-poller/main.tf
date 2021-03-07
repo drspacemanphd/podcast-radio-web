@@ -51,8 +51,6 @@ module "lambda_function" {
   description       = "poller for rss feeds"
   lambda_variables  = {
     NODE_ENV = "integration"
-    PODCAST_UPDATE_QUEUE_URL = module.podcast_update_queue.sqs_queue_url
-    EPISODE_UPDATE_QUEUE_URL = module.episode_update_queue.sqs_queue_url
   }
 }
 

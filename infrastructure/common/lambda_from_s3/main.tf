@@ -76,8 +76,9 @@ resource "aws_s3_bucket" "lambda_code_bucket" {
 
 resource "aws_s3_bucket_object" "lambda_code" {
   bucket   = aws_s3_bucket.lambda_code_bucket.id
-  key      = "${var.service_name}.zip"
+  key      = filebase64sha256(var.filename)
   source   = var.filename
+  acl      = "authenticated-read"
 
 
   tags = {

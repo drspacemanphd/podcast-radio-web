@@ -25,7 +25,8 @@
     "local": "sh ./local/run-local.sh",
     "test:unit": "jest --testMatch=**/unit/**/*.test.ts --verbose --coverage --collectCoverageFrom=./src/**/*.ts",
     "test:integration": "node ./tests/integration/run-integration-tests.js",
-    "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
+    "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist",
+    "build:deployment": "sh ./scripts/build.sh"
   },
   "devDependencies": {
     "@types/got": "^9.6.11",
