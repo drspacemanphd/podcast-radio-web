@@ -313,6 +313,13 @@
   dependencies:
     "@drspacemanphd/podcast-radio-model" "^0.0.2"
 
+"@drspacemanphd/podcast-radio-interfaces@^0.0.6":
+  version "0.0.6"
+  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-interfaces/0.0.6/7a333187299c837b2ced6abdedef41bb6757cc6379f14ebb3495d281cbbbc5c0#bb5edae46d54b6c5aedd02e8dd75e86e24d03eed"
+  integrity sha512-hfH5qCRuxVUQ99jDPW+UylN9jZ2WyiV4Cq9cwoBAktUjCwa8MZIRJJhm64yVH7GbhoNWb4QOKs+JDfGCQsofSA==
+  dependencies:
+    "@drspacemanphd/podcast-radio-model" "^0.0.6"
+
 "@drspacemanphd/podcast-radio-model@0.0.4":
   version "0.0.4"
   resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-model/0.0.4/d60f430d375609f0ef6be9d8c32812532b060067a062b40a020b7d95793dd0b8#5c3eadaf45a9ba8a829161984b780488c525b4b4"
@@ -322,6 +329,11 @@
   version "0.0.2"
   resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-model/0.0.2/a6895e54c4eb8c54a714a1e4477aa4805bdcafacf76ae10a1ef09b88802f1f92#c910fcfbf638a202e48e4904b71ac5af4cf9aba5"
   integrity sha512-4atTJiatAbTTbRZN5E3evkaSO/ehi+f8cCV9n+NV//xoPwmdOfm25Rsfn7W3ZTI4LM8n3kZ+x8ptSBfvSy4XLA==
+
+"@drspacemanphd/podcast-radio-model@^0.0.6":
+  version "0.0.6"
+  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-model/0.0.6/4dd17b253a00e37f9c75aa9565bc691c78b548a490dd86d9d707266bd5d0a2aa#87edccb9adde58da951ffc7873ab74901a5dc6b3"
+  integrity sha512-JF4F9TP0r4p/DpGe3w9cpbcGD0DqH+CoDShjpDcxLwmoAuON16wK8pevgfzWCwPoGmODBz5liB5YwoQeCTEbfA==
 
 "@drspacemanphd/podcast-radio-podcast-dao@0.0.4":
   version "0.0.4"
