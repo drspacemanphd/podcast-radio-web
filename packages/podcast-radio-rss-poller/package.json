@@ -1,6 +1,6 @@
 {
   "name": "@drspacemanphd/podcast-radio-rss-poller",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Microservice worker that polls rss feeds for changes and additions",
   "keywords": [
     "podcast",
