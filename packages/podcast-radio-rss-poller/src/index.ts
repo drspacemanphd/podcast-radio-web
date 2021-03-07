@@ -7,6 +7,7 @@ import { RssScraper } from '@drspacemanphd/podcast-radio-scrapers';
 import { PodcastDao, RssScheduleDao } from '@drspacemanphd/podcast-radio-podcast-dao';
 import { PodcastQueue, EpisodeQueue } from '@drspacemanphd/podcast-radio-queue';
 
+// Handler
 export async function handler(event: Record<string, any>): Promise<any> {
   try {
     const schedule: RssSchedule = _getNextRssSchedule(event);
