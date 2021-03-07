@@ -306,15 +306,14 @@
   dependencies:
     "@drspacemanphd/podcast-radio-model" "^0.0.6"
 
-"@drspacemanphd/podcast-radio-model@0.0.7", "@drspacemanphd/podcast-radio-model@^0.0.7":
-  version "0.0.7"
-  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-model/0.0.7/da40c8822139de217b19987dfcd783e997de0ac7f172d56bc59a7620b203ca89#94a0d58f6366b5c17de36aa22c7bfd5921e33aff"
-  integrity sha512-1yllL+fc2X7j7a+0isqxRJtkQvlyUfqsuFfoKOUtOYUdiS0BlR5VtxntLcJKasvDygi+FDWiCtrIvzgxQ3IoNQ==
-
 "@drspacemanphd/podcast-radio-model@^0.0.6":
   version "0.0.6"
   resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-model/0.0.6/4dd17b253a00e37f9c75aa9565bc691c78b548a490dd86d9d707266bd5d0a2aa#87edccb9adde58da951ffc7873ab74901a5dc6b3"
   integrity sha512-JF4F9TP0r4p/DpGe3w9cpbcGD0DqH+CoDShjpDcxLwmoAuON16wK8pevgfzWCwPoGmODBz5liB5YwoQeCTEbfA==
+
+"@drspacemanphd/podcast-radio-model@git://github.com/drspacemanphd/podcast-radio-web.git#@drspacemanphd/podcast-radio-model@0.0.7":
+  version "0.0.1-alpha.0"
+  resolved "git://github.com/drspacemanphd/podcast-radio-web.git#6f82f2f60d3b404287a5214bdaa5d465c3ccd3f1"
 
 "@drspacemanphd/podcast-radio-podcast-dao@0.0.6":
   version "0.0.6"
