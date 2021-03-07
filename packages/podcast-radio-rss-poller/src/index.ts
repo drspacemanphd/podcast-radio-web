@@ -7,6 +7,7 @@ import { RssScraper } from '@drspacemanphd/podcast-radio-scrapers';
 import { PodcastDao, RssScheduleDao } from '@drspacemanphd/podcast-radio-podcast-dao';
 import { PodcastQueue, EpisodeQueue } from '@drspacemanphd/podcast-radio-queue';
 
+// Function handler
 export async function handler(event: Record<string, any>): Promise<any> {
   try {
     const schedule: RssSchedule = _getNextRssSchedule(event);
@@ -20,6 +21,7 @@ export async function handler(event: Record<string, any>): Promise<any> {
     const podcastQueue = new PodcastQueue({ endpoint: sqsEndpoint, region: process.env.SQS_REGION });
     const episodeQueue = new EpisodeQueue({ endpoint: sqsEndpoint, region: process.env.SQS_REGION });
 
+    console.log(`SAVING NEW SCHEDULE: ${JSON.stringify(schedule)}`);
     await _saveNextRssSchedule(rssScheduleDao, schedule);
 
     const { podcast, episodes } = await RssScraper.scrape(new URL(schedule.url));
@@ -35,6 +37,7 @@ export async function handler(event: Record<string, any>): Promise<any> {
     const pushedEpisodes: Promise<any>[] = newEpisodes.map((episode: Episode) => episodeQueue.pushEpisodeUpdate(episode));
     await Promise.all(pushedEpisodes);
 
+    console.log(`QUEUED ${newEpisodes.length} EPISODES OF PODCAST ${podcast.guid}`);
     return newEpisodes;
   } catch (err) {
     console.log(err.message);
@@ -63,6 +66,7 @@ function _getNextRssSchedule(event: Record<string, any>): RssSchedule {
   const record = _.get(event, 'Records[0]', {});
   
   if (record.eventName !== 'REMOVE') {
+    console.log(`LOGGED NON-REMOVE ${record.eventName} EVENT`)
     return null;
   }
 
@@ -75,8 +79,7 @@ function _getNextRssSchedule(event: Record<string, any>): RssSchedule {
   }
 
   const cron: string = _.get(record, 'dynamodb.OldImage["CRON"]["S"]', '*/15 * * * *');
-  const previousNextStart: number = parseInt(_.get(record, 'dynamodb.OldImage["NEXT_START"]["N"]'));
-  const newNextStart: number = _getNextStart(previousNextStart, cron);
+  const newNextStart: number = _getNextStart(cron);
 
   return new RssSchedule(
     uuidv4(),
@@ -87,9 +90,9 @@ function _getNextRssSchedule(event: Record<string, any>): RssSchedule {
   );
 }
 
-function _getNextStart(previousNextStart: number, cronExpression: string): number {
+function _getNextStart(cronExpression: string): number {
   const cron: Cron = parseCronExpression(cronExpression);
-  const next: Date = cron.getNextDate(new Date(previousNextStart * 1000));
+  const next: Date = cron.getNextDate();
   return Math.trunc(next.getTime() / 1000);
 }
 

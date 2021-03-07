@@ -20,7 +20,7 @@ module "episode_update_queue" {
 
 module "lambda_function" {
   source            = "../common/lambda_from_s3"
-  service_name      = "podcast-radio-rss-poller-development"
+  service_name      = "podcast-radio-rss-poller-dev"
   environment       = "dev"
   description       = "poller for rss feeds"
   filename          = "../../packages/podcast-radio-rss-poller/lambda.zip"
@@ -38,4 +38,38 @@ resource "aws_lambda_event_source_mapping" "rss_schedule_ttl" {
   function_name     = module.lambda_function.lambda_function_arn
   batch_size        = 1
   starting_position = "LATEST"
+}
+
+
+
+
+
+
+
+
+data "external" "thirtySecsFromNow" {
+  program = ["node", "${path.module}/timestamp.js"]
+
+  query = {
+    minsToAdd = "3"
+  }
+}
+
+data "external" "oneMinFromNow" {
+  program = ["node", "${path.module}/timestamp.js"]
+
+  query = {
+    minsToAdd = "0.5"
+  }
+}
+
+module "dynamodb_fixtures" {
+  source              = "./fixtures/dynamo_db"
+  thirtySecsFromNow    = data.external.thirtySecsFromNow.result.time
+  oneMinFromNow       = data.external.oneMinFromNow.result.time 
+  depends_on = [
+    module.dynamodb_table,
+    data.external.thirtySecsFromNow,
+    data.external.oneMinFromNow
+  ]
 }
