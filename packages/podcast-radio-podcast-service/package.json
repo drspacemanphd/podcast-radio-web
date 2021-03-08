@@ -1,0 +1,38 @@
+{
+  "name": "@drspacemanphd/podcast-radio-podcast-service",
+  "version": "0.0.1",
+  "description": "A microservice for updating podcast db entries and assets",
+  "keywords": [
+    "Podcast",
+    "radio",
+    "update"
+  ],
+  "author": "drspacemanphd <markabrown87@gmail.com>",
+  "homepage": "https://github.com/drspacemanphd/podcast-radio-web#readme",
+  "license": "ISC",
+  "main": "./dist/index.js",
+  "types": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/drspacemanphd/podcast-radio-web.git",
+    "directory": "packages/podcast-radio-podcast-service"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "@drspacemanphd/podcast-radio-interfaces": "0.0.6",
+    "@drspacemanphd/podcast-radio-model": "0.0.6",
+    "@drspacemanphd/podcast-radio-podcast-dao": "0.0.6",
+    "aws-sdk": "^2.799.0",
+    "custom-env": "^2.0.1"
+  }
+}
