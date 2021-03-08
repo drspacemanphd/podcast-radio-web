@@ -6,5 +6,4 @@ yarn --frozen-lockfile
 lerna version --conventional-commits --exact
 lerna run build
 lerna publish from-git --contents ./dist
-lerna version patch
 return 0
