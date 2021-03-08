@@ -22,7 +22,7 @@
     "test:integration": "echo SUCCESS"
   },
   "dependencies": {
-    "@drspacemanphd/podcast-radio-model": "0.0.7"
+    "@drspacemanphd/podcast-radio-model": "^0.0.7"
   },
   "gitHead": "3bc911a4ec2e7e1ad23896f15350885936137360"
 }
