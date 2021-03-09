@@ -2,8 +2,8 @@
   "name": "@drspacemanphd/podcast-radio-interfaces",
   "version": "0.0.10",
   "description": "A common package of interfaces to be implemented",
-  "main": "./dist/index",
-  "types": "./dist/index",
+  "main": "./index.js",
+  "types": "./types/index.d.ts",
   "author": "drspacemanphd",
   "license": "ISC",
   "repository": {

@@ -11,8 +11,8 @@
   "author": "drspacemanphd",
   "homepage": "https://github.com/drspacemanphd/podcast-radio-web#readme",
   "license": "ISC",
-  "main": "./dist/index",
-  "types": "./dist/index",
+  "main": "./index.js",
+  "types": "./types/index.d.ts",
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/drspacemanphd/podcast-radio-web.git",
@@ -24,7 +24,7 @@
   "scripts": {
     "local": "sh ./local/run-local.sh",
     "test:unit": "jest --testMatch=**/unit/**/*.test.ts --verbose --coverage --collectCoverageFrom=./src/**/*.ts",
-    "test:integration": "node ./tests/integration/run-integration-tests.js",
+    "test:integration": "docker-compose -f docker-compose.integration.yml up --build --exit-code-from integration-tests && docker-compose -f docker-compose.integration.yml down",
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist",
     "build:deployment": "sh ./scripts/build.sh"
   },

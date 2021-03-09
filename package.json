@@ -11,7 +11,8 @@
       "./packages/*"
     ],
     "nohoist": [
-      "**/podcast-radio-rss-poller/**"
+      "**/podcast-radio-rss-poller/**",
+      "**/podcast-radio-podcast-service/**"
     ]
   },
   "devDependencies": {
@@ -20,6 +21,6 @@
   },
   "scripts": {
     "clean": "sh ./scripts/clean.sh",
-    "release": "BUMP=$npm_config_bump sh ./scripts/release.sh"
+    "release": "sh ./scripts/release.sh"
   }
 }

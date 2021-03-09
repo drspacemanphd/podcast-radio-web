@@ -30,6 +30,7 @@ export async function handler(event: Record<string, any>): Promise<any> {
     const savedEpisodes: Episode[] = await _getSavedEpisodes(podcastDao, schedule.podcastId);
 
     if (JSON.stringify(podcast) !== JSON.stringify(savedPodcast)) {
+      podcast.guid = savedPodcast.guid;
       await podcastQueue.pushPodcastUpdate(podcast);
     }
 

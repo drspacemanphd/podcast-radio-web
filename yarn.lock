@@ -299,43 +299,43 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@drspacemanphd/podcast-radio-interfaces@0.0.7", "@drspacemanphd/podcast-radio-interfaces@^0.0.7":
-  version "0.0.7"
-  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-interfaces/0.0.7/38340541bc6e8fbfa2a90df37e95d8b14111f8f8b93867072ebe55893fe0ac8b#23510d56bb52666bc9c207bc862aed048b00d0ae"
-  integrity sha512-RhvaHIlAsIyCrlqZDSAoLlHwoGKtE0/iqw+W8sWzuT3Xe8trt1dgKuSJlSoytR7hwB5P4Sqbahq9cHWKohcrZw==
+"@drspacemanphd/podcast-radio-interfaces@^0.0.8":
+  version "0.0.8"
+  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-interfaces/0.0.8/192b765bdc8ecec91ee78b2e480eb9153b48e67cd30ac028a5439e261dc8cc42#7397697e807ad82e5a4f590d77a8be89245abe89"
+  integrity sha512-QlQfgzBBFWvSNiwubCYBr2+OpAJyUinu7SNWrP64Ssbs0mIaSD+2N5QtqAP1zxOWgQXYOdHLFTRvL5jmN8PU0A==
   dependencies:
-    "@drspacemanphd/podcast-radio-model" "^0.0.7"
+    "@drspacemanphd/podcast-radio-model" "^0.0.8"
 
-"@drspacemanphd/podcast-radio-model@0.0.7", "@drspacemanphd/podcast-radio-model@^0.0.7":
-  version "0.0.7"
-  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-model/0.0.7/da40c8822139de217b19987dfcd783e997de0ac7f172d56bc59a7620b203ca89#94a0d58f6366b5c17de36aa22c7bfd5921e33aff"
-  integrity sha512-1yllL+fc2X7j7a+0isqxRJtkQvlyUfqsuFfoKOUtOYUdiS0BlR5VtxntLcJKasvDygi+FDWiCtrIvzgxQ3IoNQ==
+"@drspacemanphd/podcast-radio-model@^0.0.8":
+  version "0.0.8"
+  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-model/0.0.8/f33f60d8f0a196d71a761af17b8a9c795f2916d2cfac99dc4803b699c78615fe#0a19720441eaa198001965128a146d3a9f541d4e"
+  integrity sha512-d3tbOzwoFS+B7BkOAL3lxx4eO2PK+3SfsIRHECKeCYQDHtiHvWbTl5izHedjRAxoX5aoZTHCWZjJmmKIeR1eLw==
 
-"@drspacemanphd/podcast-radio-podcast-dao@0.0.7":
-  version "0.0.7"
-  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-podcast-dao/0.0.7/4c59f666a68f8f76097b0547940b37d62c90fe8390daf94ac00a0de1c39f96e2#fdde7dba49054d64044f0003d82527e37ac30678"
-  integrity sha512-1YXptaLFBg1JstD4hsCMo4L9ENPvlLSuSemK55JKsKKfxSTYA+DiBtB35JR2LKfH1YcWhyWcWVWBoFdxtGNEdA==
+"@drspacemanphd/podcast-radio-podcast-dao@^0.0.8":
+  version "0.0.8"
+  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-podcast-dao/0.0.8/40755239e1fa95212de225be2bb05d05b2d27451f9f784d30e2a0dd1d532a1ed#d247f8ff15166e75767f2c5b29339411bbe390cd"
+  integrity sha512-Ga/z24LqyTy9bwKOOZLCpoHAdOoYGXGvvLXxE+JdK6W01EXcwPui6sjSnID4psd5jde7AH/iRMuE0dNBuY1+gQ==
   dependencies:
-    "@drspacemanphd/podcast-radio-interfaces" "^0.0.7"
-    "@drspacemanphd/podcast-radio-model" "^0.0.7"
+    "@drspacemanphd/podcast-radio-interfaces" "^0.0.8"
+    "@drspacemanphd/podcast-radio-model" "^0.0.8"
     aws-sdk "^2.799.0"
 
-"@drspacemanphd/podcast-radio-queue@0.0.2":
-  version "0.0.2"
-  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-queue/0.0.2/0c06a1b7b2ea87ac35609fe801ac06f76e291cb3b300115f73fbb834ac6c3404#6ab1d53fe665ad6e4b1c2735a99c22fadc541fac"
-  integrity sha512-V79nxOLva+Ov0GIN3CPuAgqF9FlMCPaznKG7YLBvua0gBcEgoWS/1SjMExgMUAxq6oJCKik/7qJcbZb31LSmnQ==
+"@drspacemanphd/podcast-radio-queue@^0.0.3":
+  version "0.0.3"
+  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-queue/0.0.3/d89c6d12e50d5027ef49c6b451ea42c8070fe27db56dc003e76431d60d1c8ccd#7a1b00418bddbc96df4993c6c814f85abfff70aa"
+  integrity sha512-cz7u4MMwtv91fmdEF4CPu8U4CxL37b77nU+fHHy4ZSyd2q+F6i1EGIHY/OmSx9qCVKAEizWkuy0GejN9Re9aMg==
   dependencies:
-    "@drspacemanphd/podcast-radio-interfaces" "^0.0.7"
-    "@drspacemanphd/podcast-radio-model" "^0.0.7"
+    "@drspacemanphd/podcast-radio-interfaces" "^0.0.8"
+    "@drspacemanphd/podcast-radio-model" "^0.0.8"
     aws-sdk "^2.799.0"
 
-"@drspacemanphd/podcast-radio-scrapers@0.0.7":
-  version "0.0.7"
-  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-scrapers/0.0.7/e24e1c2371e68b53813ed6928522f1a815e28bf916762065b969af949a2e40c7#a5e0303be1fb81c4c9d1ad1e5cbdaee1fe6fba3b"
-  integrity sha512-sygQRAROY633yxQGFhy7C4LQZvNSgOuarBP64NjYWFSzfKomNPdNHl8mlwR1ZEjYtWI76H0Ae2wstQZfOkWZ5Q==
+"@drspacemanphd/podcast-radio-scrapers@^0.0.8":
+  version "0.0.8"
+  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-scrapers/0.0.8/1c17a8c257da8008b28e628fe5d9399182dfa2fd3b57e47a3461e2d1ebcde868#f06bbfc8cf0906b15766d59b701907377094bb3a"
+  integrity sha512-AmJMxz0XIcNY8em659Ewt6AWhAH5dso/k1sUj6vVzBXbqnzyoFEECiXblFIuhx2QOTAn7+6+JVddbGW+hjVErw==
   dependencies:
-    "@drspacemanphd/podcast-radio-interfaces" "^0.0.7"
-    "@drspacemanphd/podcast-radio-model" "^0.0.7"
+    "@drspacemanphd/podcast-radio-interfaces" "^0.0.8"
+    "@drspacemanphd/podcast-radio-model" "^0.0.8"
     got "^11.8.1"
     lodash "^4.17.20"
     moment "^2.29.1"
