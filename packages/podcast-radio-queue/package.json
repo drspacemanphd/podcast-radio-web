@@ -10,8 +10,8 @@
   "author": "drspacemanphd <markabrown87@gmail.com>",
   "homepage": "https://github.com/drspacemanphd/podcast-radio-web#readme",
   "license": "ISC",
-  "main": "./dist/index",
-  "types": "./dist/index",
+  "main": "./index.js",
+  "types": "./types/index.d.ts",
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/drspacemanphd/podcast-radio-web.git",
