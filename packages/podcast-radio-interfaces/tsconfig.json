@@ -1,12 +1,18 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "composite": false,
     "outDir": "./dist",
-    "rootDir": "./"
+    "rootDir": ".",
+    "declaration": true,
+    "declarationDir": "./dist/types",
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "target": "es6",
+    "lib": [ "es6" ]
   },
   "exclude": [
-    "./node_modules",
-    "./dist",
-    "./tests/"
+    "node_modules",
+    "dist"
   ]
 }
