@@ -22,10 +22,9 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
-    "clean": "rm -rf ./dist/",
     "local": "jest --testMatch=**/unit/**/*.test.ts --detectOpenHandles --verbose --coverage --collectCoverageFrom=./src/**/*.ts --watchAll",
     "test:unit": "jest --testMatch=**/unit/**/*.test.ts --verbose --coverage --collectCoverageFrom=./src/**/*.ts",
-    "test:integration": "node ./tests/integration/run-integration-tests.js",
+    "test:integration": "docker-compose -f docker-compose.integration-tests.yml up --build --exit-code-from tests",
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
   },
   "devDependencies": {

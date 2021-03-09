@@ -12,7 +12,7 @@
     ],
     "nohoist": [
       "**/podcast-radio-rss-poller/**",
-      "**/podcast-radio-podcast-services/**"
+      "**/podcast-radio-podcast-service/**"
     ]
   },
   "devDependencies": {

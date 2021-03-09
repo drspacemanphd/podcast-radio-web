@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  localstack:
+    container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main}"
+    image: localstack/localstack:0.12.5
+    ports:
+      - "4566:4566"
+    environment:
+      - LOCALSTACK_SERVICES=iam,lambda,dynamodb,sqs
+      - LAMBDA_EXECUTOR=docker
+      - LAMBDA_DOCKER_NETWORK=podcast-radio-podcast-service # annoyingly unless specified, lambda is executed outside default network
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+  integration-tests:
+    image: drspacemanphd/nodejs-jest-terraform:1.0.0
+    container_name: "integration-tests"
+    working_dir: /app
+    command: sh ./tests/integration/run-integration-tests.sh
+    env_file: ./.env.integration
+    volumes: 
+      - ./:/app/
+      - ../../infrastructure:/app/infrastructure # necessary to bring in shared local infrastructure definitions
+    depends_on: 
+      - localstack
