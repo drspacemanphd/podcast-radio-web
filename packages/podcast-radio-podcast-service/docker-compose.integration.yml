@@ -9,7 +9,7 @@ services:
       - LOCALSTACK_SERVICES=iam,lambda,dynamodb,sqs
       - LAMBDA_EXECUTOR=docker
       - LAMBDA_DOCKER_NETWORK=podcast-radio-podcast-service_default # annoyingly unless specified, lambda is executed outside default network
-      - DEBUG=true
+      - DEBUG=1
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
   integration-tests:
