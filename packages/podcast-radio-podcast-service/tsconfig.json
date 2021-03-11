@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "composite": false,
+    "outDir": "./dist",
+    "rootDir": "./",
+    "declaration": true,
+    "declarationDir": "./dist/types",
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "module": "CommonJS",
+    "target": "ES6",
+    "lib": ["ES6"]
+  },
+  "exclude": [
+    "./node_modules",
+    "./dist",
+    "./tests",
+    "./scripts",
+    "./local"
+  ]
+}

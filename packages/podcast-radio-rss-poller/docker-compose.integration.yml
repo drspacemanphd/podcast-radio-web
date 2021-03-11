@@ -20,5 +20,6 @@ services:
     volumes: 
       - ./:/app/
       - ../../infrastructure:/app/infrastructure # necessary to bring in shared local infrastructure definitions
+      - ../../packages:/app/packages # necessary in case any local packages are symlinked
     depends_on: 
       - localstack
