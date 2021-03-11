@@ -41,7 +41,7 @@
   "scripts": {
     "local": "sh ./local/run-local.sh",
     "test:unit": "echo SUCCESS",
-    "test:integration": "docker-compose -f docker-compose.integration.yml up --build --exit-code-from integration-tests && docker-compose -f docker-compose.integration.yml down",
+    "test:integration": "docker-compose -f docker-compose.integration.yml up --build --exit-code-from integration-tests && docker ps -a && docker network ls && docker-compose -f docker-compose.integration.yml down",
     "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist",
     "build:deployment": "sh ./scripts/build.sh"
   }
