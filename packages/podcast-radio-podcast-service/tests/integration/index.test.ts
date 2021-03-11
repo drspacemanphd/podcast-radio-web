@@ -18,8 +18,6 @@ describe('A Dummy Test', () => {
       podcasts.unshift(new Podcast(i.toString(), `TITLE ${i}`, `AUTHOR ${i}`, `DESCRIPTION ${i}`, [`CATEGORY ${i}`]));
     }
 
-    process.stdout.write(JSON.stringify(podcasts));
-
     // Test
     const promises: Promise<any>[] = podcasts.map(p => queue.pushPodcastUpdate(p));
     const results = await Promise.all(promises);
