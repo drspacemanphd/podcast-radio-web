@@ -6,8 +6,8 @@ export async function handler(event: Record<string, any>): Promise<any> {
   const endpoint: string = getDbEndpoint();
   const podcastDao = new PodcastDao({ endpoint, region: process.env.DYNAMODB_REGION });
   const podcast: Podcast = getPodcastFromEvent(event);
-  process.stdout.write(JSON.stringify(podcast));
   const saved = await podcastDao.insertPodcast(podcast);
+  console.log(`SAVED THE FOLLOWING PODCAST ${JSON.stringify(saved)}`);
 }
 
 function getPodcastFromEvent(event: Record<string, any>): Podcast {
