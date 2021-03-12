@@ -99,7 +99,7 @@ resource "aws_lambda_function" "lambda_function" {
   s3_key            = aws_s3_bucket_object.lambda_code.id
   s3_object_version = aws_s3_bucket_object.lambda_code.version_id
 
-  runtime           = "nodejs14.x"
+  runtime           = "nodejs12.x"
   memory_size       = 512
   timeout           = 30
 
