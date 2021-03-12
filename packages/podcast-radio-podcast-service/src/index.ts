@@ -8,7 +8,6 @@ export async function handler(event: Record<string, any>): Promise<any> {
   const podcast: Podcast = getPodcastFromEvent(event);
   process.stdout.write(JSON.stringify(podcast));
   const saved = await podcastDao.insertPodcast(podcast);
-  process.stdout.write(JSON.stringify(saved));
 }
 
 function getPodcastFromEvent(event: Record<string, any>): Podcast {
