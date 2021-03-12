@@ -10,8 +10,11 @@ services:
       - LAMBDA_EXECUTOR=docker
       - LAMBDA_DOCKER_NETWORK=podcast-radio-podcast-service_default # annoyingly unless specified, lambda is executed outside default network
       - LS_LOG=debug
+      - LAMBDA_REMOTE_DOCKER=false
+      - HOST_TMP_FOLDER=/tmp
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/tmp:/tmp/localstack"
   integration-tests:
     image: drspacemanphd/nodejs-jest-terraform:1.0.0
     container_name: "integration-tests"
