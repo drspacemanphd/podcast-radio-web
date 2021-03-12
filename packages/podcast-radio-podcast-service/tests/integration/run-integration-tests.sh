@@ -9,6 +9,6 @@ npm run build
 (cd ./infrastructure/integration-tests/podcast-radio-podcast-service && rm -rf terraform*)
 (cd ./infrastructure/integration-tests/podcast-radio-podcast-service && terraform init)
 (cd ./infrastructure/integration-tests/podcast-radio-podcast-service && terraform apply -auto-approve)
-unzip lambda.zip -d ./lambda
+unzip lambda.zip -d ./lambda -q
 (cd ./lambda && ls -al)
 jest --testMatch=**/integration/**/*.test.ts --runInBand --detectOpenHandles --verbose --testTimeout=60000
