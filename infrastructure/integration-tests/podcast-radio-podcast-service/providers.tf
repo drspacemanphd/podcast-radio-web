@@ -13,5 +13,6 @@ provider "aws" {
     iam            = "http://localstack:4566"
     lambda         = "http://localstack:4566"
     sqs            = "http://localstack:4566"
+    s3             = "http://localstack:4566"
   }
 }
