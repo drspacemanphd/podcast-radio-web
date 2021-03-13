@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-changed=$(set CI=false lerna changed)
+changed=$(set CI=false && lerna changed)
 echo $changed
 
 IFS=$'\n'
