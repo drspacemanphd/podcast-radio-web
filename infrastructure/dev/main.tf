@@ -18,9 +18,9 @@ module "episode_update_queue" {
   account_id                  = data.aws_caller_identity.current.account_id
 }
 
-module "lambda_function" {
+module "rss_poller_lambda" {
   source            = "../common/lambda_from_s3"
-  service_name      = "podcast-radio-rss-poller-dev"
+  service_name      = "podcast-radio-rss-poller"
   environment       = "dev"
   description       = "poller for rss feeds"
   filename          = "../../packages/podcast-radio-rss-poller/lambda.zip"
@@ -33,9 +33,23 @@ module "lambda_function" {
   }
 }
 
+module "podcast_service_lambda" {
+  source            = "../common/lambda_from_s3"
+  service_name      = "podcast-radio-podcast-service"
+  environment       = "dev"
+  description       = "microservice for handling podcast updates and assets"
+  filename          = "../../packages/podcast-radio-podcast-service/lambda.zip"
+  lambda_variables  = {
+    NODE_ENV = "dev"
+    DYNAMODB_REGION = "us-east-1"
+    SQS_REGION = "us-east-1"
+    PODCAST_UPDATE_QUEUE_URL = module.podcast_update_queue.sqs_queue_url
+  }
+}
+
 resource "aws_lambda_event_source_mapping" "rss_schedule_ttl" {
   event_source_arn  = module.dynamodb_table.dynamodb_rss_schedule_table_stream_arn
-  function_name     = module.lambda_function.lambda_function_arn
+  function_name     = module.rss_poller_lambda.lambda_function_arn
   batch_size        = 1
   starting_position = "LATEST"
 }
