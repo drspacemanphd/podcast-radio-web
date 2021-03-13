@@ -24,12 +24,13 @@ export async function handler(event: Record<string, any>): Promise<any> {
     console.log(`SAVING NEW SCHEDULE: ${JSON.stringify(schedule)}`);
     await _saveNextRssSchedule(rssScheduleDao, schedule);
 
-    const { podcast, episodes } = await RssScraper.scrape(new URL(schedule.url));
+    const lookback = process.env.SCRAPE_LOOKBACK ? parseInt( process.env.SCRAPE_LOOKBACK) : 10;
+    const { podcast, episodes } = await RssScraper.scrape(new URL(schedule.url), lookback);
 
     const savedPodcast: Podcast = await _getSavedPodcast(podcastDao, schedule.podcastId);
     const savedEpisodes: Episode[] = await _getSavedEpisodes(podcastDao, schedule.podcastId);
 
-    if (JSON.stringify(podcast) !== JSON.stringify(savedPodcast)) {
+    if (_shouldUpdatePodcast(podcast, savedPodcast)) {
       podcast.guid = savedPodcast.guid;
       await podcastQueue.pushPodcastUpdate(podcast);
     }
@@ -68,7 +69,7 @@ function _getNextRssSchedule(event: Record<string, any>): RssSchedule {
   const record = _.get(event, 'Records[0]', {});
   
   if (record.eventName !== 'REMOVE') {
-    console.log(`LOGGED NON-REMOVE ${record.eventName} EVENT`)
+    console.log(`LOGGED NON-REMOVE ${record.eventName} EVENT`);
     return null;
   }
 
@@ -94,8 +95,20 @@ function _getNextRssSchedule(event: Record<string, any>): RssSchedule {
 
 function _getNextStart(cronExpression: string): number {
   const cron: Cron = parseCronExpression(cronExpression);
-  const next: Date = cron.getNextDate();
+  const next: Date = cron.getNextDates(2)[1];
   return Math.trunc(next.getTime() / 1000);
+}
+
+function _shouldUpdatePodcast(scrapedPodcast: Podcast, savedPodcast: Podcast) {
+  const scrapedClone = _.cloneDeep(scrapedPodcast);
+  const savedClone = _.cloneDeep(savedPodcast);
+
+  if (!scrapedClone) return false;
+  if (!savedClone) return true;
+
+  scrapedClone.guid = savedClone.guid;
+
+  return JSON.stringify(scrapedClone) !== JSON.stringify(savedClone);
 }
 
 // Have to use the appropriate localstack hostname when running in tests

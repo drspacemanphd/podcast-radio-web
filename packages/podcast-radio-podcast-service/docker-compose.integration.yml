@@ -26,6 +26,5 @@ services:
       - ../../infrastructure:/packages/app/infrastructure # necessary to bring in shared local infrastructure definitions
       - ../../packages/:/packages/ # necessary in case any local packages are symlinked
       - ../../node_modules/:/packages/node_modules/ # necessary in case any local packages are symlinked
-
     depends_on: 
       - localstack
