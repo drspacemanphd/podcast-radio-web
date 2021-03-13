@@ -22,7 +22,7 @@ describe('Podcast Radio Podcast Service', () => {
     const promises: Promise<any>[] = podcasts.map(p => queue.pushPodcastUpdate(p));
     const results = await Promise.all(promises);
 
-    await sleep(20000);
+    await sleep(30000);
 
     // Assert
     // Expect 5 new podcasts to be created
