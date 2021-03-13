@@ -16,38 +16,11 @@ module "episode_update_queue" {
   account_id                  = "000000000000"
 }
 
-data "external" "thirtySecsFromNow" {
-  program = ["node", "${path.module}/timestamp.js"]
-
-  query = {
-    minsToAdd = "3"
-  }
-}
-
-data "external" "oneMinFromNow" {
-  program = ["node", "${path.module}/timestamp.js"]
-
-  query = {
-    minsToAdd = "0.5"
-  }
-}
-
-module "dynamodb_fixtures" {
-  source              = "./fixtures/dynamo_db"
-  thirtySecsFromNow    = data.external.thirtySecsFromNow.result.time
-  oneMinFromNow       = data.external.oneMinFromNow.result.time 
-  depends_on = [
-    module.dynamodb_table,
-    data.external.thirtySecsFromNow,
-    data.external.oneMinFromNow
-  ]
-}
-
 module "lambda_function" {
-  source            = "../../common/lambda_from_local"
+  source            = "../../common/lambda_from_s3"
   service_name      = "podcast-radio-rss-poller"
   environment       = "integration"
-  lambda_code_path  = "../../../lambda.zip"
+  filename  = "/tmp/lambda.zip"
   description       = "poller for rss feeds"
   lambda_variables  = {
     NODE_ENV = "integration"

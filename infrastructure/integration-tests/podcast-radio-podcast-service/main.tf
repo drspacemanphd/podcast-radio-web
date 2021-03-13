@@ -2,6 +2,13 @@ module "dynamodb_table" {
   source = "../../common/dynamo_db"
 }
 
+module "dynamo_db_table_fixtures" {
+  source            = "./fixtures/dynamo_db"
+  depends_on = [
+    module.dynamodb_table
+  ]
+}
+
 module "podcast_update_queue" {
   source                      = "../../common/sqs"
   queue_name                  = "podcast-update-queue"
@@ -10,11 +17,11 @@ module "podcast_update_queue" {
 }
 
 module "lambda_function" {
-  source            = "../../common/lambda_from_local"
-  service_name      = "podcast-radio-podcast-service-poller"
+  source            = "../../common/lambda_from_s3"
+  service_name      = "podcast-radio-podcast-service"
   environment       = "integration"
-  lambda_code_path  = "../../../lambda.zip"
-  description       = "microservice that updates podcast entries and assets"
+  description       = "microservice that handles podcast updates "
+  filename          = "/tmp/lambda.zip"
   lambda_variables  = {
     NODE_ENV = "integration"
   }

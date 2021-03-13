@@ -6,9 +6,9 @@ services:
     ports:
       - "4566:4566"
     environment:
-      - LOCALSTACK_SERVICES=iam,lambda,dynamodb,dynamodbstreams,sqs,s3
+      - LOCALSTACK_SERVICES=iam,lambda,dynamodb,sqs,s3
       - LAMBDA_EXECUTOR=docker
-      - LAMBDA_DOCKER_NETWORK=podcast-radio-rss-poller_default # annoyingly unless specified, lambda is executed outside default network
+      - LAMBDA_DOCKER_NETWORK=podcast-radio-podcast-service_default # annoyingly unless specified, lambda is executed outside default network
       - LS_LOG=debug
       - LAMBDA_REMOTE_DOCKER=false
       - HOST_TMP_FOLDER=/tmp

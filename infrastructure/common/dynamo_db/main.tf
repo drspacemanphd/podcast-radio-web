@@ -92,7 +92,7 @@ resource "aws_dynamodb_table" "rss_schedule" {
     type = "S"
   }
 
-    attribute {
+  attribute {
     name = "NEXT_START"
     type = "N"
   }

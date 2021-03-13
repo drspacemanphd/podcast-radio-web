@@ -8,7 +8,7 @@ resource "aws_dynamodb_table_item" "podcast_one" {
   "TITLE": {"S": "The Daily"},
   "AUTHOR": {"S": "The New York Times"},
   "DESCRIPTION": {"S": "The Daily Description"},
-  "IMAGE_URL": {"S": "https://is3-ssl.mzstatic.com/image/thumb/Podcasts114/v4/93/cf/99/93cf9960-fff3-205e-6655-72c03ddeccb2/mza_10545582232493904175.jpeg/600x600bb.jpg"}
+  "IMAGE_URL": {"S": "THIS_IS_AN_OLD_IMAGE_URL"}
 }
 ITEM
 }
@@ -68,38 +68,7 @@ resource "aws_dynamodb_table_item" "episode_two" {
 ITEM
 }
 
-
 resource "aws_dynamodb_table_item" "rss_schedule_one" {
-  table_name    = "RSS_SCHEDULE"
-  hash_key      = "GUID"
-
-  item = <<ITEM
-{
-  "GUID": {"S": "12345"},
-  "PODCAST_ID": {"S": "23456"},
-  "RSS_URL": {"S": "http://feeds.feedburner.com/pod-save-america"},
-  "CRON": {"S": "*/15 * * * *"},
-  "NEXT_START": {"N": "253402300799"}
-}
-ITEM
-}
-
-resource "aws_dynamodb_table_item" "rss_schedule_two" {
-  table_name    = "RSS_SCHEDULE"
-  hash_key      = "GUID"
-
-  item = <<ITEM
-{
-  "GUID": {"S": "23456"},
-  "PODCAST_ID": {"S": "23456"},
-  "RSS_URL": {"S": "http://feeds.feedburner.com/pod-save-america"},
-  "CRON": {"S": "*/15 * * * *"},
-  "NEXT_START": {"N": "${var.thirtySecsFromNow}"}
-}
-ITEM
-}
-
-resource "aws_dynamodb_table_item" "rss_schedule_three" {
   table_name    = "RSS_SCHEDULE"
   hash_key      = "GUID"
 
@@ -114,7 +83,7 @@ resource "aws_dynamodb_table_item" "rss_schedule_three" {
 ITEM
 }
 
-resource "aws_dynamodb_table_item" "rss_schedule_four" {
+resource "aws_dynamodb_table_item" "rss_schedule_two" {
   table_name    = "RSS_SCHEDULE"
   hash_key      = "GUID"
 
