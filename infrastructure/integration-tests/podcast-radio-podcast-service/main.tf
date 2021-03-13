@@ -2,6 +2,13 @@ module "dynamodb_table" {
   source = "../../common/dynamo_db"
 }
 
+module "dynamo_db_table_fixtures" {
+  source            = "./fixtures/dynamo_db"
+  depends_on = [
+    module.dynamodb_table
+  ]
+}
+
 module "podcast_update_queue" {
   source                      = "../../common/sqs"
   queue_name                  = "podcast-update-queue"
@@ -13,7 +20,7 @@ module "lambda_function" {
   source            = "../../common/lambda_from_s3"
   service_name      = "podcast-radio-podcast-service"
   environment       = "integration"
-  description       = "poller for rss feeds"
+  description       = "microservice that handles podcast updates "
   filename          = "/tmp/lambda.zip"
   lambda_variables  = {
     NODE_ENV = "integration"
