@@ -11,5 +11,5 @@ echo $packages
 for i in "${packages[@]}"; do   # access each element of array
   package=${i:15}
   echo $package
-  (cd ./packages/$package && npm run test:integration)
+  # (cd ./packages/$package && npm run test:integration)
 done
