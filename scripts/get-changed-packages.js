@@ -1,6 +1,6 @@
 const { spawnSync, execSync } = require('child_process');
 
-const allPackages = spawnSync('lerna', ['ls']).stdout.toString('utf-8').split(/\n/);
+const allPackages = spawnSync('lerna', ['ls']).stdout.toString('utf-8').split(/\n/)
 
 const diffedFiles = spawnSync('git', ['diff', 'master', '--name-only']);
 if (diffedFiles.error) {
@@ -27,7 +27,7 @@ const diffedPackages = diffedFiles.stdout.toString('utf-8')
 const packageSet = Array.from(new Set(diffedPackages));
 
 if (packageSet.includes('infrastructure')) {
-  process.stdout.write(allPackages.join('\n'));
-} else {
-  process.stdout.write(packageSet.join('\n'));
+  process.stdout.write(`${allPackages.join(';')}`);
+} else if (packageSet.length) {
+  process.stdout.write(`${packageSet.join(';')}`);
 }
