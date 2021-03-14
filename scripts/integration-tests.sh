@@ -2,6 +2,7 @@
 set -e
 
 changed=$(node ./scripts/get-changed-packages.js)
+echo $changed
 
 IFS=$'\n'
 readarray -t packages <<<"$changed" #reading str as an array as tokens separated by IFS  
