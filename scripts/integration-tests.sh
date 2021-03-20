@@ -1,7 +1,9 @@
 #!/bin/bash
 set -e
 
-git diff
+echo $(lerna ls)
+echo ''
+echo $(git diff master --name-only)
 
 changed=$(node ./scripts/get-changed-packages.js)
 
