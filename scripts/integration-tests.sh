@@ -2,7 +2,6 @@
 set -e
 
 git fetch origin master
-echo $(git diff --name-only master)
 
 changed=$(node ./scripts/get-changed-packages.js)
 
