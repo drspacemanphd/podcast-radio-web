@@ -16,6 +16,7 @@ echo ${packages[@]}
 for (( i=0; i<${#packages[@]}; i++ )); do   # access each element of array
   if [ "${packages[$i]}" != '' ]; then
     package=${packages[i]:15}
+    echo $package
     (cd ./packages/$package && npm run test:integration)
   fi
 done
