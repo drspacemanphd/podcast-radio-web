@@ -25,4 +25,4 @@ jobs:
       - name: Bootstrap
         run: lerna bootstrap
       - name: Run Integration Tests
-        run: bash ./scripts/integration-tests.sh
+        run: lerna run test:integration
