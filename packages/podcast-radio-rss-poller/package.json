@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@drspacemanphd/podcast-radio-interfaces": "^0.0.8",
-    "@drspacemanphd/podcast-radio-model": "^0.0.8",
+    "@drspacemanphd/podcast-radio-model": "^0.1.2",
     "@drspacemanphd/podcast-radio-podcast-dao": "^0.0.8",
     "@drspacemanphd/podcast-radio-queue": "^0.0.3",
     "@drspacemanphd/podcast-radio-scrapers": "^0.0.8",

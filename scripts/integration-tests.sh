@@ -10,6 +10,9 @@ if [ ${#packages[@]} = 0 ]; then
   exit 0
 fi
 
+echo "The Following Packaged Will Be Tested"
+echo ${packages[@]}
+
 for (( i=0; i<${#packages[@]}; i++ )); do   # access each element of array
   if [ "${packages[$i]}" != '' ]; then
     package=${packages[i]:15}

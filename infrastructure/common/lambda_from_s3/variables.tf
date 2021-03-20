@@ -20,24 +20,6 @@ variable filename {
   description = "file path for the lambda code zip file"
 }
 
-variable s3_bucket {
-  type        = string
-  default     = ""
-  description = "s3 bucket name for the lambda code"
-}
-
-variable s3_key {
-  type        = string
-  default     = ""
-  description = "s3 key for the lambda code"
-}
-
-variable s3_object_version {
-  type        = string
-  default     = ""
-  description = "s3 object version for the lambda code"
-}
-
 variable lambda_variables {
   type        = map
   description = "map of environment variables for lambda to assume"

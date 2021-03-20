@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@drspacemanphd/podcast-radio-interfaces": "^0.0.8",
-    "@drspacemanphd/podcast-radio-model": "^0.0.8",
+    "@drspacemanphd/podcast-radio-model": "^0.1.2",
     "got": "^11.8.1",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",

@@ -31,7 +31,7 @@ describe('Query Runner', () => {
           'AUTHOR': 'AN_AUTHOR',
           'DESCRIPTION': 'A_DESCRIPTION',
           'CATEGORIES': ['A CAT'],
-          'IMAGE_URL': 'An image url',
+          'IMAGE': 'An image url',
           'KEYWORDS': ['A keyword'],
           'TAGS': ['a tag']
         }

@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@drspacemanphd/podcast-radio-interfaces": "^0.0.8",
-    "@drspacemanphd/podcast-radio-model": "^0.0.8",
+    "@drspacemanphd/podcast-radio-model": "^0.1.2",
     "aws-sdk": "^2.799.0"
   },
   "gitHead": "3bc911a4ec2e7e1ad23896f15350885936137360"

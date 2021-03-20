@@ -8,7 +8,7 @@ resource "aws_dynamodb_table_item" "podcast_one" {
   "TITLE": {"S": "The Daily"},
   "AUTHOR": {"S": "The New York Times"},
   "DESCRIPTION": {"S": "The Daily Description"},
-  "IMAGE_URL": {"S": "https://is3-ssl.mzstatic.com/image/thumb/Podcasts114/v4/93/cf/99/93cf9960-fff3-205e-6655-72c03ddeccb2/mza_10545582232493904175.jpeg/600x600bb.jpg"}
+  "IMAGE": {"S": "https://is3-ssl.mzstatic.com/image/thumb/Podcasts114/v4/93/cf/99/93cf9960-fff3-205e-6655-72c03ddeccb2/mza_10545582232493904175.jpeg/600x600bb.jpg"}
 }
 ITEM
 }
@@ -23,7 +23,7 @@ resource "aws_dynamodb_table_item" "podcast_two" {
   "TITLE": {"S": "Pod Save America"},
   "AUTHOR": {"S": "Crooked Media"},
   "DESCRIPTION": {"S": "Crooked Media Description"},
-  "IMAGE_URL": {"S": "https://is3-ssl.mzstatic.com/image/thumb/Music118/v4/cc/96/de/cc96de50-f978-80f6-6be3-26d41369a10b/source/100x100bb.jpg"}
+  "IMAGE": {"S": "https://is3-ssl.mzstatic.com/image/thumb/Music118/v4/cc/96/de/cc96de50-f978-80f6-6be3-26d41369a10b/source/100x100bb.jpg"}
 }
 ITEM
 }

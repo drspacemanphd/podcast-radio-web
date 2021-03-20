@@ -11,7 +11,7 @@ const podcastPropMap: Record<string, string> = {
   'itunes:author': 'author',
   'itunes:summary': 'description',
   'itunes:category': 'categories',
-  'itunes.image': 'imageUrl',
+  'itunes.image': 'image',
 }
 
 const podcastAttributeMap: Record<string, string> = {
@@ -87,7 +87,7 @@ async function scrape(url: URL, limit: number = 10): Promise<{ podcast: Podcast,
 }
 
 function _mapPodcast(props: PodcastProps): Podcast {
-  return new Podcast('guid', props.title, props.author, props.description, props.categories, props.imageUrl);
+  return new Podcast('guid', props.title, props.author, props.description, props.categories, props.image);
 }
 
 function _mapEpisode(props: EpisodeProps, podcast: Podcast): Episode {

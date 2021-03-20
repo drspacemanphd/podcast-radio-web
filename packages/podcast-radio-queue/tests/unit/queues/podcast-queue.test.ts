@@ -26,7 +26,7 @@ describe('Podcast queue', () => {
   it('can send a podcast update', async () => {
     // Setup
     const queue: PodcastQueue = new PodcastQueue({ endpoint: 'endpoint', region: 'region', podcastUpdateQueueUrl: 'queue url' });
-    const podcast: Podcast = new Podcast('12345', 'PODCAST_TITLE', 'AUTHOR', 'DESCRIPTION', ['CATEGORIES'], 'IMAGE_URL');
+    const podcast: Podcast = new Podcast('12345', 'PODCAST_TITLE', 'AUTHOR', 'DESCRIPTION', ['CATEGORIES'], 'IMAGE');
 
     // Mock
     mockBehavior.mockImplementationOnce(() => Promise.resolve('MESSAGE CORRECTLY SENT'));
@@ -48,7 +48,7 @@ describe('Podcast queue', () => {
   it('can send a podcast update with default configs', async () => {
     // Setup
     const queue: PodcastQueue = new PodcastQueue({});
-    const podcast: Podcast = new Podcast('12345', 'PODCAST_TITLE', 'AUTHOR', 'DESCRIPTION', ['CATEGORIES'], 'IMAGE_URL');
+    const podcast: Podcast = new Podcast('12345', 'PODCAST_TITLE', 'AUTHOR', 'DESCRIPTION', ['CATEGORIES'], 'IMAGE');
 
     // Mock
     mockBehavior.mockImplementationOnce(() => Promise.resolve('MESSAGE CORRECTLY SENT'));
@@ -68,7 +68,7 @@ describe('Podcast queue', () => {
   it('can throw an error when updating the podcast', async () => {
     // Setup
     const queue: PodcastQueue = new PodcastQueue({});
-    const podcast: Podcast = new Podcast('12345', 'PODCAST_TITLE', 'AUTHOR', 'DESCRIPTION', ['CATEGORIES'], 'IMAGE_URL');
+    const podcast: Podcast = new Podcast('12345', 'PODCAST_TITLE', 'AUTHOR', 'DESCRIPTION', ['CATEGORIES'], 'IMAGE');
 
     // Mock
     mockBehavior.mockImplementationOnce(() => Promise.reject(new Error('ERROR THROWN')));
