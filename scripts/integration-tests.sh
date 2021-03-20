@@ -3,8 +3,7 @@ set -e
 
 echo $(lerna ls)
 echo ''
-echo $(git status)
-echo $(git diff --name-only origin/master --)
+echo $(git diff --name-only origin/master "${GITHUB_REF##*/}")
 
 changed=$(node ./scripts/get-changed-packages.js)
 
