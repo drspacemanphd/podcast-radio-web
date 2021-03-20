@@ -30,6 +30,6 @@ const packageSet = Array.from(new Set(diffedPackages));
 
 if (packageSet.includes('infrastructure')) {
   process.stdout.write(`${allPackages.join(';')}`);
-} else if (packageSet.length) {
+} else (packageSet.length) {
   process.stdout.write(`${packageSet.join(';')}`);
 }
