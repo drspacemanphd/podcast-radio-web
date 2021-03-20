@@ -4,7 +4,7 @@ set -e
 echo $(lerna ls)
 echo ''
 echo $(git status)
-echo $(git diff --name-only master --)
+echo $(git diff --name-only origin/master --)
 
 changed=$(node ./scripts/get-changed-packages.js)
 
