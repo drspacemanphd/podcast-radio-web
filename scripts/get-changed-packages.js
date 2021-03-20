@@ -2,7 +2,7 @@ const { spawnSync } = require('child_process');
 
 const allPackages = spawnSync('lerna', ['ls']).stdout.toString('utf-8').split(/\n/);
 
-const diffedFiles = spawnSync('git', ['diff', '--name-only', 'master']);
+const diffedFiles = spawnSync('git', ['diff', '--name-only', 'origin/master']);
 if (diffedFiles.error) {
   throw new Error(diffedFiles.error.stack);
 }
