@@ -11,8 +11,9 @@
       "./packages/*"
     ],
     "nohoist": [
-      "**/podcast-radio-rss-poller/**",
-      "**/podcast-radio-podcast-service/**"
+      "**/@drspacemanphd/*",
+      "**/podcast-radio-podcast-service/**",
+      "**/podcast-radio-rss-poller/**"
     ]
   },
   "devDependencies": {

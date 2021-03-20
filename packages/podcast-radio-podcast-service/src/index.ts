@@ -1,17 +1,17 @@
 import _ from 'lodash';
 import { Podcast } from '@drspacemanphd/podcast-radio-model';
 import { PodcastDao as PodcastDBDao } from '@drspacemanphd/podcast-radio-podcast-dao';
-import { PodcastDao as PodcastAssetDao } from '@drspacemanphd/podcast-radio-asset-dao';
+// import { PodcastDao as PodcastAssetDao } from '@drspacemanphd/podcast-radio-asset-dao';
 
 export async function handler(event: Record<string, any>): Promise<any> {
   const endpoint: string = getDbEndpoint();
   const podcastDBDao = new PodcastDBDao({ endpoint, region: process.env.DYNAMODB_REGION });
-  const podcastAssetDao = new PodcastAssetDao({ endpoint, region: process.env.S3_REGION });
+  // const podcastAssetDao = new PodcastAssetDao({ endpoint, region: process.env.S3_REGION });
 
   const podcast: Podcast = getPodcastFromEvent(event);
   
-  const key: string = podcastAssetDao.updatePodcastImageFromUrl(podcast.guid, podcast.image);
-  podcast.image = key;
+  // const key: string = podcastAssetDao.updatePodcastImageFromUrl(podcast.guid, podcast.image);
+  // podcast.image = key;
   const saved = await podcastDBDao.insertPodcast(podcast);
   console.log(`SAVED THE FOLLOWING PODCAST ${JSON.stringify(saved)}`);
 }

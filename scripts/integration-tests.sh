@@ -1,9 +1,7 @@
 #!/bin/bash
 set -e
 
-echo $(lerna ls)
-echo ''
-git fetch
+git fetch origin master
 echo $(git diff --name-only master)
 
 changed=$(node ./scripts/get-changed-packages.js)
