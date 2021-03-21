@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@drspacemanphd/podcast-radio-interfaces": "^0.0.13",
-    "@drspacemanphd/podcast-radio-model": "^0.1.3",
+    "@drspacemanphd/podcast-radio-model": "0.1.2",
     "aws-sdk": "^2.799.0"
   }
 }
