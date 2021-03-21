@@ -15,7 +15,7 @@ describe('Podcast Query Service', () => {
           'AUTHOR': 'AN_AUTHOR',
           'DESCRIPTION': 'A_DESCRIPTION',
           'CATEGORIES': ['A CAT'],
-          'IMAGE_URL': 'An image url',
+          'IMAGE': 'An image url',
           'KEYWORDS': ['A keyword'],
           'TAGS': ['a tag']
         }
@@ -57,7 +57,7 @@ describe('Podcast Query Service', () => {
           'AUTHOR': 'AN_AUTHOR',
           'DESCRIPTION': 'A_DESCRIPTION',
           'CATEGORIES': ['A CAT'],
-          'IMAGE_URL': 'An image url',
+          'IMAGE': 'An image url',
           'KEYWORDS': ['A keyword'],
           'TAGS': ['a tag']
         }
@@ -86,7 +86,7 @@ describe('Podcast Query Service', () => {
           'AUTHOR': 'AN_AUTHOR',
           'DESCRIPTION': 'A_DESCRIPTION',
           'CATEGORIES': ['A CAT'],
-          'IMAGE_URL': 'An image url',
+          'IMAGE': 'An image url',
           'KEYWORDS': ['A keyword'],
           'TAGS': ['a tag']
         }

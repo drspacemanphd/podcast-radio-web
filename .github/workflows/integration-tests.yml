@@ -22,7 +22,7 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Install lerna
         run: npm install -g lerna
-      - name: Bootstrap
-        run: lerna bootstrap
+      - name: Build
+        run: lerna run build
       - name: Run Integration Tests
         run: bash ./scripts/integration-tests.sh

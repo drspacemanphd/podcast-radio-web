@@ -8,7 +8,7 @@ resource "aws_dynamodb_table_item" "podcast_five" {
   "TITLE": {"S": "TITLE ZERO"},
   "AUTHOR": {"S": "AUTHOR ZERO"},
   "DESCRIPTION": {"S": "DESCRIPTION ZERO"},
-  "IMAGE_URL": {"S": "IMAGE_ZERO"}
+  "IMAGE": {"S": "IMAGE_ZERO"}
 }
 ITEM
 }
@@ -23,7 +23,7 @@ resource "aws_dynamodb_table_item" "podcast_six" {
   "TITLE": {"S": "TITLE ZERO"},
   "AUTHOR": {"S": "AUTHOR ZERO"},
   "DESCRIPTION": {"S": "DESCRIPTION ZERO"},
-  "IMAGE_URL": {"S": "IMAGE_ZERO"}
+  "IMAGE": {"S": "IMAGE_ZERO"}
 }
 ITEM
 }

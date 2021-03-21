@@ -10,8 +10,12 @@
   "author": "drspacemanphd <markabrown87@gmail.com>",
   "homepage": "https://github.com/drspacemanphd/podcast-radio-web#readme",
   "license": "ISC",
-  "main": "./index.js",
-  "types": "./types/index.d.ts",
+  "main": "./dist/index",
+  "types": "./dist/types/index",
+  "files": [
+    "./dist",
+    "package.json"
+  ],
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/drspacemanphd/podcast-radio-web.git",
@@ -32,8 +36,9 @@
   },
   "dependencies": {
     "@drspacemanphd/podcast-radio-interfaces": "^0.0.8",
-    "@drspacemanphd/podcast-radio-model": "^0.1.0",
+    "@drspacemanphd/podcast-radio-model": "^0.1.2",
     "@drspacemanphd/podcast-radio-podcast-dao": "^0.0.8",
+    "@drspacemanphd/podcast-radio-asset-dao": "^0.0.1",
     "aws-sdk": "^2.799.0",
     "lodash": "^4.17.20",
     "custom-env": "^2.0.1"
@@ -42,7 +47,7 @@
     "local": "sh ./local/run-local.sh",
     "test:unit": "echo SUCCESS",
     "test:integration": "docker-compose -f docker-compose.integration.yml up --build --exit-code-from integration-tests && docker-compose -f docker-compose.integration.yml down",
-    "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist",
+    "build": "tsc -p ./tsconfig.json",
     "build:deployment": "sh ./scripts/build.sh"
   }
 }

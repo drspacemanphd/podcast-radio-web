@@ -1,12 +1,10 @@
-import { Podcast, Episode } from '@drspacemanphd/podcast-radio-model';
-
 export interface PodcastProps {
   guid?: string,
   title?: string,
   author?: string,
   description?: string,
   categories?: Array<string>,
-  imageUrl?: string,
+  image?: string,
 }
 
 export interface EpisodeProps {

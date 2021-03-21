@@ -1,0 +1,47 @@
+{
+  "name": "@drspacemanphd/podcast-radio-asset-dao",
+  "version": "0.0.1",
+  "description": "A data access layer for podcast radio assets",
+  "keywords": [
+    "Podcast",
+    "Radio",
+    "Asset"
+  ],
+  "author": "drspacemanphd <markabrown87@gmail.com>",
+  "homepage": "https://github.com/drspacemanphd/podcast-radio-web#readme",
+  "license": "ISC",
+  "main": "./dist/index",
+  "types": "./dist/types/index",
+  "files": [
+    "./dist",
+    "package.json"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/drspacemanphd/podcast-radio-web.git",
+    "directory": "packages/podcast-radio-asset-dao"
+  },
+  "scripts": {
+    "local": "jest --testMatch=**/unit/**/*.test.ts --detectOpenHandles --verbose --coverage --collectCoverageFrom=./src/**/*.ts --watchAll",
+    "test:unit": "echo SUCCESS",
+    "test:integration": "echo SUCCESS",
+    "build": "tsc -p ./tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "@types/got": "^9.6.11",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "@drspacemanphd/podcast-radio-interfaces": "^0.0.12",
+    "@drspacemanphd/podcast-radio-model": "^0.1.2",
+    "aws-sdk": "^2.799.0",
+    "got": "^11.8.1"
+  }
+}

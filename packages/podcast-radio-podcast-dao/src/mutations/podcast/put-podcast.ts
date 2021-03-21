@@ -10,7 +10,7 @@ export function getMutation(podcast: Podcast): IQuery<DynamoDB.DocumentClient.Pu
       TITLE: podcast.title,
       AUTHOR: podcast.author,
       DESCRIPTION: podcast.description,
-      IMAGE_URL: podcast.imageUrl,
+      IMAGE: podcast.image,
       CATEGORIES: podcast.categories,
       KEYWORDS: podcast.keywords,
       TAGS: podcast.tags

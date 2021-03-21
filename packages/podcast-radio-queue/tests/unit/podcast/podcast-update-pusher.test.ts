@@ -26,7 +26,7 @@ describe('Podcast Update Pusher', () => {
   it('can push a podcast', async () => {
     // Setup
     const podcastUpdatePusher: PodcastUpdatePusher = new PodcastUpdatePusher({ endpoint: 'endpoint', region: 'region', queueUrl: 'queue url'});
-    const podcast: Podcast = new Podcast('12345', 'PODCAST_TITLE', 'AUTHOR', 'DESCRIPTION', ['CATEGORIES'], 'IMAGE_URL');
+    const podcast: Podcast = new Podcast('12345', 'PODCAST_TITLE', 'AUTHOR', 'DESCRIPTION', ['CATEGORIES'], 'IMAGE');
 
     // Mock
     mockBehavior.mockImplementationOnce(() => Promise.resolve('MESSAGE CORRECTLY SENT'));
@@ -46,7 +46,7 @@ describe('Podcast Update Pusher', () => {
 
   it('can push a podcast with default config', async () => {
     const podcastUpdatePusher: PodcastUpdatePusher = new PodcastUpdatePusher({});
-    const podcast: Podcast = new Podcast('12345', 'PODCAST_TITLE', 'AUTHOR', 'DESCRIPTION', ['CATEGORIES'], 'IMAGE_URL');
+    const podcast: Podcast = new Podcast('12345', 'PODCAST_TITLE', 'AUTHOR', 'DESCRIPTION', ['CATEGORIES'], 'IMAGE');
 
     // Mock
     mockBehavior.mockImplementationOnce(() => Promise.resolve('MESSAGE CORRECTLY SENT'));
@@ -65,7 +65,7 @@ describe('Podcast Update Pusher', () => {
 
   it('can throw an error', async () => {
     const podcastUpdatePusher: PodcastUpdatePusher = new PodcastUpdatePusher({});
-    const podcast: Podcast = new Podcast('12345', 'PODCAST_TITLE', 'AUTHOR', 'DESCRIPTION', ['CATEGORIES'], 'IMAGE_URL');
+    const podcast: Podcast = new Podcast('12345', 'PODCAST_TITLE', 'AUTHOR', 'DESCRIPTION', ['CATEGORIES'], 'IMAGE');
 
     // Mock
     mockBehavior.mockImplementationOnce(() => Promise.reject(new Error('ERROR THROWN')));

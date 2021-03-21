@@ -4,7 +4,7 @@ export default class Podcast {
   author: string;
   description: string;
   categories: Array<string>;
-  imageUrl?: string;
+  image?: string;
   keywords?: Array<string>;
   tags?: Array<string>;
 
@@ -14,7 +14,7 @@ export default class Podcast {
     author: string,
     description: string,
     categories: Array<string>,
-    imageUrl?: string,
+    image?: string,
     keywords?: Array<string>,
     tags?: Array<string>,
   ) {
@@ -23,7 +23,7 @@ export default class Podcast {
     this.author = author;
     this.description = description;
     this.categories = categories;
-    this.imageUrl = imageUrl;
+    this.image = image;
     this.keywords = keywords;
     this.tags = tags;
   }
@@ -35,7 +35,7 @@ export default class Podcast {
       podcast.author,
       podcast.description,
       podcast.categories,
-      podcast.imageUrl,
+      podcast.image,
       podcast.keywords,
       podcast.tags,
     );

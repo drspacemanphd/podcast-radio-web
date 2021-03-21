@@ -8,7 +8,7 @@ resource "aws_dynamodb_table_item" "podcast_one" {
   "TITLE": {"S": "The Daily"},
   "AUTHOR": {"S": "The New York Times"},
   "DESCRIPTION": {"S": "The Daily Description"},
-  "IMAGE_URL": {"S": "THIS_IS_AN_OLD_IMAGE_URL"}
+  "IMAGE": {"S": "THIS_IS_AN_OLD_IMAGE_URL"}
 }
 ITEM
 }
@@ -23,7 +23,7 @@ resource "aws_dynamodb_table_item" "podcast_two" {
   "TITLE": {"S": "Pod Save America"},
   "AUTHOR": {"S": "Crooked Media"},
   "DESCRIPTION": {"S": "Crooked Media Description"},
-  "IMAGE_URL": {"S": "https://is3-ssl.mzstatic.com/image/thumb/Music118/v4/cc/96/de/cc96de50-f978-80f6-6be3-26d41369a10b/source/100x100bb.jpg"}
+  "IMAGE": {"S": "https://is3-ssl.mzstatic.com/image/thumb/Music118/v4/cc/96/de/cc96de50-f978-80f6-6be3-26d41369a10b/source/100x100bb.jpg"}
 }
 ITEM
 }

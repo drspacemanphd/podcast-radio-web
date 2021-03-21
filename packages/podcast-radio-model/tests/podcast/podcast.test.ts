@@ -18,7 +18,7 @@ describe('Podcast', () => {
     expect(podcast.author).toEqual('author');
     expect(podcast.description).toEqual('description');
     expect(podcast.categories).toEqual(['category 1']);
-    expect(podcast.imageUrl).toEqual('image-url');
+    expect(podcast.image).toEqual('image-url');
     expect(podcast.keywords).toEqual(['keyword 1']);
     expect(podcast.tags).toEqual(['tag 1']);
   });
@@ -122,7 +122,7 @@ describe('Podcast', () => {
       author: 'author',
       description: 'description',
       categories: ['category 1'],
-      imageUrl: 'image-url',
+      image: 'image-url',
       keywords: ['keyword 1', 'keyword 2'],
       tags: ['tag 1', 'tag 2'],
     }

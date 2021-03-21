@@ -5,6 +5,7 @@ import { IGetRssScheduleById, IGetRssScheduleByUrl, IInsertRssSchedule } from '.
 export * from './podcast';
 export * from './episode';
 export * from './rss-schedule';
+export * from './asset';
 
 export interface IPodcastDao extends 
   IGetPodcastById, IGetPodcastByTitle, IGetPodcastByAuthor, IInsertPodcast,
