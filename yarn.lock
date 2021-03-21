@@ -306,6 +306,11 @@
   dependencies:
     "@drspacemanphd/podcast-radio-model" "^0.0.8"
 
+"@drspacemanphd/podcast-radio-model@0.1.2":
+  version "0.1.2"
+  resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-model/0.1.2/6ae56dbd006a617d2b213e5a4402aea4a3a57e05b4e0d17536713440a3488438#4538b7749abf4dad335a05b879a1510ad132d472"
+  integrity sha512-nvYn3uw8n9EtJ+IWcWVX6rNna7jSlFCBo0NtZPxR/E1OgucjO6g+krCLe2kMB7AxbFyibooGzyFX11OBLlNQ8Q==
+
 "@drspacemanphd/podcast-radio-model@^0.0.8":
   version "0.0.8"
   resolved "https://npm.pkg.github.com/download/@drspacemanphd/podcast-radio-model/0.0.8/f33f60d8f0a196d71a761af17b8a9c795f2916d2cfac99dc4803b699c78615fe#0a19720441eaa198001965128a146d3a9f541d4e"
