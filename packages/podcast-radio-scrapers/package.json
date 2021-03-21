@@ -11,8 +11,12 @@
   "author": "drspacemanphd",
   "homepage": "https://github.com/drspacemanphd/podcast-radio-web#readme",
   "license": "ISC",
-  "main": "./index.js",
-  "types": "./types/index.d.ts",
+  "main": "./dist/index",
+  "types": "./dist/types/index",
+  "files": [
+    "./dist",
+    "package.json"
+  ],
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/drspacemanphd/podcast-radio-web.git",
@@ -24,7 +28,7 @@
   "scripts": {
     "test:unit": "jest --testMatch=**/unit/**/*.test.ts --verbose --coverage --collectCoverageFrom=./src/**/*.ts",
     "test:integration": "jest --testMatch=**/integration/**/*.test.ts --runInBand --detectOpenHandles --verbose",
-    "build": "tsc -p ./tsconfig.json && cp ./package.json ./dist"
+    "build": "tsc -p ./tsconfig.json"
   },
   "devDependencies": {
     "@types/got": "^9.6.11",
