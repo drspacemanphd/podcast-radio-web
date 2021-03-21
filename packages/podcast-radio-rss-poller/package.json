@@ -1,6 +1,6 @@
 {
   "name": "@drspacemanphd/podcast-radio-rss-poller",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Microservice worker that polls rss feeds for changes and additions",
   "keywords": [
     "podcast",
@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@drspacemanphd/podcast-radio-interfaces": "^0.0.8",
-    "@drspacemanphd/podcast-radio-model": "^0.1.2",
+    "@drspacemanphd/podcast-radio-model": "^0.1.3",
     "@drspacemanphd/podcast-radio-podcast-dao": "^0.0.8",
     "@drspacemanphd/podcast-radio-queue": "^0.0.3",
     "@drspacemanphd/podcast-radio-scrapers": "^0.0.8",
