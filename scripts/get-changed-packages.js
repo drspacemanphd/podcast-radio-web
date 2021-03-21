@@ -7,8 +7,6 @@ if (diffedFiles.error) {
   throw new Error(diffedFiles.error.stack);
 }
 
-diffedFiles.stdout.toString('utf-8')
-
 const diffedPackages = diffedFiles.stdout.toString('utf-8')
   .split(/\n/)
   .map(file => {
@@ -28,6 +26,7 @@ const diffedPackages = diffedFiles.stdout.toString('utf-8')
 
 const packageSet = Array.from(new Set(diffedPackages));
 process.stdout.write(`${allPackages.join(';')}`);
+
 // if (packageSet.includes('infrastructure')) {
 //   process.stdout.write(`${allPackages.join(';')}`);
 // } else {
