@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "podcast-radio-bucket" {
-  bucket           = "podcast-radio-bucket-${var.environment}"
+  bucket           = var.bucket_name
   acl              = "authenticated-read"
 
   versioning {

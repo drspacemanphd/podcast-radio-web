@@ -9,7 +9,7 @@ export function getMutation(podcastId: string, body: S3.Body, options?: Partial<
       Body: body,
       ACL: options?.ACL || 'authenticated-read',
       ContentType: options?.ContentType || 'image/jpeg',
-      CacheControl: options?.CacheControl || 'max-age=14400'
+      CacheControl: options?.CacheControl || 'max-age=14400',
     }
   }
 }

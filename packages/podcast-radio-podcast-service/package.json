@@ -38,7 +38,7 @@
     "@drspacemanphd/podcast-radio-asset-dao": "^0.0.2",
     "@drspacemanphd/podcast-radio-interfaces": "^0.0.8",
     "@drspacemanphd/podcast-radio-model": "0.1.3",
-    "@drspacemanphd/podcast-radio-podcast-dao": "^0.0.8",
+    "@drspacemanphd/podcast-radio-podcast-dao": "^0.0.12",
     "aws-sdk": "^2.799.0",
     "custom-env": "^2.0.1",
     "lodash": "^4.17.20"

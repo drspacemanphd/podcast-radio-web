@@ -16,6 +16,11 @@ module "podcast_update_queue" {
   account_id                  = "000000000000"
 }
 
+module "podcast_radio_bucket" {
+  source            = "../../common/s3"
+  bucket_name       = "podcast-radio-assets"
+}
+
 module "lambda_function" {
   source            = "../../common/lambda_from_s3"
   service_name      = "podcast-radio-podcast-service"
