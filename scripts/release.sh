@@ -5,5 +5,5 @@ npm run clean
 yarn --frozen-lockfile
 lerna version --conventional-commits
 lerna run build
-lerna publish from-git --contents ./dist
+lerna publish from-git
 return 0
