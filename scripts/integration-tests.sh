@@ -7,9 +7,9 @@ echo "current branch"
 echo $(git branch)
 echo "current sha"
 echo $(git rev-parse HEAD)
-
+echo "log"
+echo $(git log)
 commit=$(git rev-parse HEAD)
-diff=$(git diff master..master --name-only)
 
 git pull origin master
 
