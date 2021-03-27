@@ -3,6 +3,8 @@ set -e
 
 git fetch origin master
 
+git diff --name-only
+
 changed=$(node ./scripts/get-changed-packages.js)
 
 IFS=';' read -ra packages <<< "$changed"

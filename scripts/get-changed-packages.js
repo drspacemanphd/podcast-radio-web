@@ -2,7 +2,7 @@ const { spawnSync } = require('child_process');
 
 const allPackages = spawnSync('lerna', ['ls']).stdout.toString('utf-8').split(/\n/);
 
-const diffedFiles = spawnSync('git', ['diff', '--name-only', 'master']);
+const diffedFiles = spawnSync('git', ['diff', 'master', '--name-only']);
 if (diffedFiles.error) {
   throw new Error(diffedFiles.error.stack);
 }
@@ -25,7 +25,6 @@ const diffedPackages = diffedFiles.stdout.toString('utf-8')
   });
 
 const packageSet = Array.from(new Set(diffedPackages));
-// process.stdout.write(`${allPackages.join(';')}`);
 
 if (packageSet.includes('infrastructure')) {
   process.stdout.write(`${allPackages.join(';')}`);
