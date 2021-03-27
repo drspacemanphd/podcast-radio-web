@@ -1,25 +1,42 @@
 data "aws_caller_identity" "current" {}
 
-module "dynamodb_table" {
-  source = "../common/dynamo_db"
+module "episode_table" {
+  source = "../modules/episode-table"
+  environment = "dev"
+}
+
+module "podcast_table" {
+  source = "../modules/podcast-table"
+  environment = "dev"
+}
+
+module "rss_schedule_table" {
+  source = "../modules/rss-schedule-table"
+  environment = "dev"
+}
+
+module "podcast_radio_bucket" {
+  source = "../modules/podcast-radio-s3-bucket"
+  bucket_name = "podcast-radio-assets-dev"
+  environment = "dev"
 }
 
 module "podcast_update_queue" {
-  source                      = "../common/sqs"
+  source                      = "../modules/podcast-update-queue"
   queue_name                  = "podcast-update-queue"
   visibility_timeout_seconds  = 60
   account_id                  = data.aws_caller_identity.current.account_id
 }
 
 module "episode_update_queue" {
-  source                      = "../common/sqs"
+  source                      = "../modules/episode-update-queue"
   queue_name                  = "episode-update-queue"
   visibility_timeout_seconds  = 60
   account_id                  = data.aws_caller_identity.current.account_id
 }
 
 module "rss_poller_lambda" {
-  source            = "../common/lambda_from_s3"
+  source            = "../modules/rss-poller-lambda"
   service_name      = "podcast-radio-rss-poller"
   environment       = "dev"
   description       = "poller for rss feeds"
@@ -34,7 +51,7 @@ module "rss_poller_lambda" {
 }
 
 module "podcast_service_lambda" {
-  source            = "../common/lambda_from_s3"
+  source            = "../modules/podcast-service-lambda"
   service_name      = "podcast-radio-podcast-service"
   environment       = "dev"
   description       = "microservice for handling podcast updates and assets"
@@ -48,7 +65,7 @@ module "podcast_service_lambda" {
 }
 
 resource "aws_lambda_event_source_mapping" "rss_schedule_ttl" {
-  event_source_arn  = module.dynamodb_table.dynamodb_rss_schedule_table_stream_arn
+  event_source_arn  = module.rss_schedule_table.dynamodb_rss_schedule_table_stream_arn
   function_name     = module.rss_poller_lambda.lambda_function_arn
   batch_size        = 1
   starting_position = "LATEST"
