@@ -3,7 +3,12 @@ set -e
 
 git fetch origin master
 
-git branch
+echo "current branch"
+echo $(git branch)
+echo "current sha"
+echo $(git rev-parse HEAD)
+
+diff=$(git diff $(git rev-parse HEAD) master --name-only)
 
 git pull origin master
 
