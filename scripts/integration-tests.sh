@@ -8,7 +8,8 @@ echo $(git branch)
 echo "current sha"
 echo $(git rev-parse HEAD)
 
-diff=$(git diff $(git rev-parse HEAD) master --name-only)
+commit=$(git rev-parse HEAD)
+diff=$(git diff $commit master --name-only)
 
 git pull origin master
 
