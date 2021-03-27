@@ -3,7 +3,9 @@ set -e
 
 git fetch origin master
 
-git diff --name-only
+git branch
+
+git pull origin master
 
 changed=$(node ./scripts/get-changed-packages.js)
 
