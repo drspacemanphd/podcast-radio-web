@@ -1,31 +1,33 @@
-module "dynamodb_table" {
-  source = "../../common/dynamo_db"
+module "podcast_table" {
+  source = "../../modules/podcast-table"
+  environment = "integration"
 }
 
-module "dynamo_db_table_fixtures" {
+module "podcast_table_fixtures" {
   source            = "./fixtures/dynamo_db"
   depends_on = [
-    module.dynamodb_table
+    module.podcast_table
   ]
 }
 
+module "podcast_radio_bucket" {
+  source = "../../modules/podcast-radio-s3-bucket"
+  bucket_name = "podcast-radio-assets-integration"
+  environment = "dev"
+}
+
 module "podcast_update_queue" {
-  source                      = "../../common/sqs"
+  source                      = "../../modules/podcast-update-queue"
   queue_name                  = "podcast-update-queue"
   visibility_timeout_seconds  = 60
   account_id                  = "000000000000"
 }
 
-module "podcast_radio_bucket" {
-  source            = "../../common/s3"
-  bucket_name       = "podcast-radio-assets"
-}
-
 module "lambda_function" {
-  source            = "../../common/lambda_from_s3"
+  source            = "../../modules/podcast-service-lambda"
   service_name      = "podcast-radio-podcast-service"
   environment       = "integration"
-  description       = "microservice that handles podcast updates "
+  description       = "microservice that handles podcast updates"
   filename          = "/tmp/lambda.zip"
   lambda_variables  = {
     NODE_ENV = "integration"

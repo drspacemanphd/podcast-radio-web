@@ -1,5 +1,16 @@
-module "dynamodb_table" {
-  source = "../../common/dynamo_db"
+module "podcast_table" {
+  source = "../../modules/podcast-table"
+  environment = "integration"
+}
+
+module "episode_table" {
+  source = "../../modules/episode-table"
+  environment = "integration"
+}
+
+module "rss_schedule_table" {
+  source = "../../modules/rss-schedule-table"
+  environment = "integration"
 }
 
 data "external" "thirtySecsFromNow" {
@@ -24,7 +35,9 @@ module "dynamodb_fixtures" {
   thirtySecsFromNow    = data.external.thirtySecsFromNow.result.time
   oneMinFromNow       = data.external.oneMinFromNow.result.time 
   depends_on = [
-    module.dynamodb_table,
+    module.podcast_table,
+    module.episode_table,
+    module.rss_schedule_table,
     data.external.thirtySecsFromNow,
     data.external.oneMinFromNow
   ]

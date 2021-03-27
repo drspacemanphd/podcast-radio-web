@@ -14,9 +14,10 @@ variable "description" {
   description = "description of the lambda functionality"
 }
 
-variable "lambda_code_path" {
+variable filename {
   type        = string
-  description = "path of the code"
+  default     = ""
+  description = "file path for the lambda code zip file"
 }
 
 variable lambda_variables {
