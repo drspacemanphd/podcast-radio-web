@@ -3,15 +3,11 @@ set -e
 
 git fetch origin master
 
-echo "current branch"
-echo $(git branch)
 echo "current sha"
 echo $(git rev-parse HEAD)
-echo "log"
-echo $(git log)
 commit=$(git rev-parse HEAD)
 
-git pull origin master
+echo $(git diff HEAD master --name-only)
 
 changed=$(node ./scripts/get-changed-packages.js)
 
