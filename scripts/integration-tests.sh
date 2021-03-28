@@ -7,7 +7,7 @@ echo "current sha"
 echo $(git rev-parse HEAD)
 commit=$(git rev-parse HEAD)
 
-echo $(git diff HEAD master --name-only)
+git diff HEAD origin/master --name-only
 
 changed=$(node ./scripts/get-changed-packages.js)
 
