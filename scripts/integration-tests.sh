@@ -5,7 +5,7 @@ git fetch origin master
 
 changed=$(node ./scripts/get-changed-packages.js)
 
-IFS=$'\n' read -ra packages <<< "$changed"
+IFS=';' read -ra packages <<< "$changed"
 
 if [ ${#packages[@]} = 0 ]; then
   echo "No packages changed"
