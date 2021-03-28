@@ -27,7 +27,7 @@ const diffedPackages = diffedFiles.stdout.toString('utf-8')
 const packageSet = Array.from(new Set(diffedPackages));
 
 if (packageSet.includes('infrastructure')) {
-  process.stdout.write(`${allPackages.join(';')}`);
+  process.stdout.write(`${allPackages.join('\n')}`);
 } else {
-  process.stdout.write(`${packageSet.join(';')}`);
+  process.stdout.write(`${packageSet.join('\n')}`);
 }
