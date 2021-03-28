@@ -3,12 +3,6 @@ set -e
 
 git fetch origin master
 
-echo "current sha"
-echo $(git rev-parse HEAD)
-commit=$(git rev-parse HEAD)
-
-git diff HEAD origin/master --name-only
-
 changed=$(node ./scripts/get-changed-packages.js)
 
 IFS=';' read -ra packages <<< "$changed"
